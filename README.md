@@ -72,8 +72,8 @@ I design and ship performance-focused web experiences with a cinematic UI layer�
 1) Equip Node.js (LTS recommended)
 
 2) Clone the repository
-      git clone <YOUR_REPO_URL>
-      cd <YOUR_PROJECT_DIR>
+      git clone https://github.com/aryanexe07/aryan-exe
+      cd aryan-exe
 
 3) Initialize dependencies
       npm install
@@ -98,29 +98,10 @@ I design and ship performance-focused web experiences with a cinematic UI layer�
 → Deployment Link:
 ```
 
-🔗 **[Open Mission Control / Deployment Link](https://aryan-exe.vercel.app/)**
+🔗 **[Open Deployment Link](https://aryan-exe.vercel.app/)**
 
 ━━━━━━━━━━━━━━━━━━━━
 
-## SYSTEM STATUS
-
-```text
-┌──────────────────── PLAYER STATS ────────────────────┐
-│ K/D Ratio       : [X.XX]   (placeholder)            │
-│ Win Rate        : [XX%]    (placeholder)            │
-│ Accuracy        : [XX%]    (placeholder)            │
-│ Time on Site    : [HH:MM]  (placeholder)            │
-└──────────────────────────────────────────────────────┘
-```
-
-### GitHub Telemetry (Recommended)
-- Commits / Week: `TBD`
-- Repositories: `TBD`
-- Contributions streak: `TBD`
-
-> Optional: embed real GitHub stats widgets in place of placeholders.
-
-━━━━━━━━━━━━━━━━━━━━
 
 ## CONTACT / LINKS
 
@@ -129,8 +110,7 @@ I design and ship performance-focused web experiences with a cinematic UI layer�
 Channel: Professional / Recruiter-ready
 ```
 
-- 📩 Email: `<YOUR_EMAIL_HERE>`
-- 💬 Discord: `<YOUR_DISCORD_HANDLE_OR_LINK>`
+- 📩 Email: `aryantailor.me@gmail.com`
 - 🔗 GitHub: **[github.com/aryanexe07](https://github.com/aryanexe07)**
 - 🧠 LinkedIn: **[linkedin.com/in/aryan-tailor](https://linkedin.com/in/aryan-tailor)**
 
@@ -139,6 +119,4 @@ Channel: Professional / Recruiter-ready
 ## FOOTER
 
 **“Minimal clutter. Maximum intent.”**
-
-> Update agent codename, tagline, deployment link, gallery images, and stats placeholders to match your real project.
 
