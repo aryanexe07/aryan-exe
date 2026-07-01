@@ -106,7 +106,7 @@ I design and ship performance-focused web experiences with a cinematic UI layer�
 → Deployment Link:
 ```
 
-🔗 **[Open Mission Control / Deployment Link](<YOUR_DEPLOYED_URL_HERE>)**
+🔗 **[Open Mission Control / Deployment Link](https://aryan-exe.vercel.app/)**
 
 ━━━━━━━━━━━━━━━━━━━━
 
