@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Teko:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+
+:root {
+  --bg: #0B0F19;
+  --surface: #111827;
+  --card: #1A2233;
+  --text: #FFFFFF;
+  --text-muted: #9CA3AF;
+  --border: rgba(255,255,255,0.08);
+
+  --home: #4F7DF3;
+  --about: #8B5CF6;
+  --projects: #F97316;
+  --github: #14B8A6;
+  --skills: #22C55E;
+  --contact: #EC4899;
+
+  --font-hero: 'Anton', sans-serif;
+  --font-label: 'Teko', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+[data-theme="light"] {
+  --bg: #FFFFFF;
+  --surface: #F9FAFB;
+  --card: #F3F4F6;
+  --text: #111111;
+  --text-muted: #555555;
+  --border: rgba(17,17,17,0.1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 300ms ease, color 300ms ease;
+}
+
+/* Scrollable content areas */
+.scroll-area {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.15) transparent;
+  transition: background-color 300ms ease, color 300ms ease;
+}
+
+.scroll-area::-webkit-scrollbar {
+  width: 4px;
+}
+.scroll-area::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scroll-area::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.15);
+  border-radius: 2px;
+  transition: background-color 300ms ease;
+}
+
+[data-theme="light"] .scroll-area {
+  scrollbar-color: rgba(17,17,17,0.15) transparent;
+}
+
+[data-theme="light"] .scroll-area::-webkit-scrollbar-thumb {
+  background: rgba(17,17,17,0.15);
+}
+
+/* Font helpers */
+.font-hero { font-family: var(--font-hero); }
+.font-label { font-family: var(--font-label); }
+.font-body { font-family: var(--font-body); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
