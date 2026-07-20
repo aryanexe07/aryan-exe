@@ -15,30 +15,45 @@ import { Layers, Shield, BookOpen } from 'lucide-react';
 function GreenBlocks() {
   return (
     <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
-      {/* Modular blocks */}
-      {[
-        { right: '4%', top: '10%', w: 120, h: 80 },
-        { right: '16%', top: '5%', w: 60, h: 60 },
-        { right: '8%', top: '40%', w: 90, h: 120 },
-      ].map((b, i) => (
-        <motion.div
-          key={i}
-          animate={{ y: [0, i % 2 === 0 ? -8 : 8, 0] }}
-          transition={{ duration: 8 + i * 1.5, repeat: Infinity, ease: 'easeInOut', delay: i * 0.8 }}
-          style={{
-            position: 'absolute',
-            right: b.right,
-            top: (b as { top?: string }).top,
-            bottom: (b as { bottom?: string }).bottom,
-
-            width: b.w,
-            height: b.h,
-            border: '1px solid rgba(34,197,94,0.15)',
-            borderRadius: '2px',
-            background: 'rgba(34,197,94,0.03)',
-          }}
-        />
-      ))}
+      {/* Subtle dot-grid pattern background */}
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        backgroundImage: 'radial-gradient(circle, rgba(34,197,94,0.08) 1px, transparent 1px)',
+        backgroundSize: '24px 24px',
+        opacity: 0.4,
+      }} />
+      
+      {/* Stat badges in top-right */}
+      <div style={{
+        position: 'absolute',
+        right: '4%',
+        top: '8%',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '0.75rem',
+        alignItems: 'flex-end',
+      }}>
+        <div style={{
+          fontFamily: 'var(--font-label)',
+          fontSize: '11px',
+          letterSpacing: '0.2em',
+          color: 'rgba(34,197,94,0.7)',
+          textAlign: 'right',
+        }}>
+          12+ TECHNOLOGIES
+        </div>
+        <div style={{
+          fontFamily: 'var(--font-label)',
+          fontSize: '11px',
+          letterSpacing: '0.2em',
+          color: 'rgba(34,197,94,0.7)',
+          textAlign: 'right',
+        }}>
+          SINCE 2025
+        </div>
+      </div>
+      
       <div style={{
         position: 'absolute', right: 0, top: '20%', width: '40%', height: '60%',
         background: 'radial-gradient(ellipse, rgba(34,197,94,0.07) 0%, transparent 70%)',
@@ -91,6 +106,7 @@ export default function SkillsSection() {
             {categories.map((cat, index) => {
               const catSkills = skills.filter(s => s.category === cat.key);
               const Icon = cat.icon;
+              const isPrimary = cat.key === 'PRIMARY';
               return (
                 <motion.div
                   key={cat.key}
@@ -98,33 +114,39 @@ export default function SkillsSection() {
                   transition={{ delay: index * 0.1, duration: 0.45, ease: 'easeOut' }}
                   whileHover={{ y: -6, scale: 1.02, boxShadow: '0 18px 36px rgba(34,197,94,0.12)' }}
                   style={{
-                    padding: '1.5rem',
-                    background: 'var(--card)',
-                    border: '1px solid var(--border)',
+                    padding: isPrimary ? '2rem' : '1.25rem',
+                    background: isPrimary ? 'rgba(34,197,94,0.08)' : 'var(--card)',
+                    border: isPrimary ? '2px solid rgba(34,197,94,0.3)' : '1px solid rgba(34,197,94,0.15)',
                     borderRadius: '20px',
-                    borderTop: `3px solid ${cat.color}`,
+                    borderTop: isPrimary ? `4px solid ${cat.color}` : `2px solid ${cat.color}`,
                     transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                    gridColumn: isPrimary ? 'span 2' : 'span 1',
                   }}
                 >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: isPrimary ? '1rem' : '0.75rem' }}>
                     <div style={{
-                      width: '32px', height: '32px', display: 'grid', placeItems: 'center',
-                      background: 'rgba(34,197,94,0.12)', borderRadius: '8px',
-                      border: `1px solid rgba(34,197,94,0.24)`,
+                      width: isPrimary ? '40px' : '32px',
+                      height: isPrimary ? '40px' : '32px',
+                      display: 'grid', placeItems: 'center',
+                      background: isPrimary ? 'rgba(34,197,94,0.2)' : 'rgba(34,197,94,0.12)',
+                      borderRadius: '8px',
+                      border: isPrimary ? `2px solid rgba(34,197,94,0.4)` : `1px solid rgba(34,197,94,0.24)`,
                     }}>
-                      <Icon size={16} color={cat.color} />
+                      <Icon size={isPrimary ? 20 : 16} color={cat.color} />
                     </div>
                     <div style={{
                       display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
-                      padding: '0.5rem 0.85rem', borderRadius: '8px',
-                      background: `${cat.color}12`, border: `1px solid ${cat.color}22`,
+                      padding: isPrimary ? '0.6rem 1rem' : '0.5rem 0.85rem',
+                      borderRadius: '8px',
+                      background: isPrimary ? `${cat.color}20` : `${cat.color}12`,
+                      border: isPrimary ? `1px solid ${cat.color}30` : `1px solid ${cat.color}22`,
                     }}>
-                      <span style={{ fontFamily: 'var(--font-label)', fontSize: '12px', letterSpacing: '0.2em', color: cat.color, textTransform: 'uppercase' }}>
+                      <span style={{ fontFamily: 'var(--font-label)', fontSize: isPrimary ? '13px' : '12px', letterSpacing: '0.2em', color: cat.color, textTransform: 'uppercase' }}>
                         {cat.label}
                       </span>
                     </div>
                   </div>
-                  <p style={{ fontFamily: 'var(--font-body)', fontSize: '12px', color: 'var(--text-muted)', marginBottom: '1.25rem' }}>
+                  <p style={{ fontFamily: 'var(--font-body)', fontSize: isPrimary ? '13px' : '12px', color: 'var(--text-muted)', marginBottom: isPrimary ? '1.5rem' : '1.25rem' }}>
                     {cat.desc}
                   </p>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
@@ -137,11 +159,11 @@ export default function SkillsSection() {
                         whileHover={{ scale: 1.03, y: -1, backgroundColor: cat.color, color: '#fff', borderColor: cat.color }}
                         style={{
                           fontFamily: 'var(--font-label)',
-                          fontSize: '14px',
+                          fontSize: isPrimary ? '15px' : '14px',
                           letterSpacing: '0.06em',
-                          padding: '0.55rem 0.85rem',
-                          background: `${cat.color}10`,
-                          border: `1px solid ${cat.color}28`,
+                          padding: isPrimary ? '0.65rem 1rem' : '0.55rem 0.85rem',
+                          background: isPrimary ? `${cat.color}15` : `${cat.color}10`,
+                          border: isPrimary ? `1px solid ${cat.color}35` : `1px solid ${cat.color}28`,
                           borderRadius: '6px',
                           color: 'var(--text)',
                           cursor: 'pointer',
