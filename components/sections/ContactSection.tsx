@@ -9,6 +9,20 @@ import { Mail, GitBranch, Link2, FileText, Send, CheckCircle, AlertCircle } from
 function PinkPanel() {
   return (
     <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
+      {/* Background image */}
+      <img
+        src="/contact.jpg"
+        alt=""
+        style={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          opacity: 0.25,
+          pointerEvents: 'none',
+        }}
+      />
       <motion.div
         animate={{ y: [0, -12, 0] }}
         transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
