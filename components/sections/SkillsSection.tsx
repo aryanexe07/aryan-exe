@@ -199,6 +199,7 @@ export default function SkillsSection() {
         @media (max-width: 768px) {
           .skills-cards-grid {
             grid-template-columns: 1fr !important;
+            gap: 1rem !important;
           }
           .skills-stat-badges {
             position: relative !important;
@@ -207,10 +208,22 @@ export default function SkillsSection() {
             flex-direction: row !important;
             align-items: center !important;
             justify-content: center !important;
-            margin-bottom: 1.5rem !important;
+            margin-bottom: 1rem !important;
           }
           .skills-stat-badges div {
             text-align: center !important;
+            font-size: 10px !important;
+          }
+          .skills-cards-grid > div {
+            padding: 1rem !important;
+          }
+          .skills-cards-grid > div p {
+            font-size: 11px !important;
+            margin-bottom: 0.75rem !important;
+          }
+          .skills-cards-grid > div span {
+            font-size: 12px !important;
+            padding: 0.4rem 0.6rem !important;
           }
         }
       `}</style>

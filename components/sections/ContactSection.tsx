@@ -115,7 +115,7 @@ export default function ContactSection() {
       <div style={{
         height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center',
         padding: '0 8rem 0 4rem', position: 'relative', zIndex: 2,
-      }}>
+      }} className="contact-container">
         <motion.div variants={container} initial="initial" animate="animate"
           style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', maxWidth: '900px' }}
           className="contact-grid"
@@ -257,6 +257,11 @@ export default function ContactSection() {
           .contact-grid {
             grid-template-columns: 1fr !important;
             gap: 2rem !important;
+          }
+          .contact-container {
+            max-height: 70vh !important;
+            overflow-y: auto !important;
+            padding: 0 1.5rem !important;
           }
         }
       `}</style>

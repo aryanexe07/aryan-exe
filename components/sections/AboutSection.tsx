@@ -245,7 +245,7 @@ export default function AboutSection() {
           alignItems: 'flex-start',
           justifyContent: 'flex-end',
           paddingTop: 0,
-        }}>
+        }} className="about-banner">
           <ValorantVideoBanner />
         </div>
       </div>
@@ -256,10 +256,15 @@ export default function AboutSection() {
         }
         @media (max-width: 768px) {
           .about-cards-grid { grid-template-columns: 1fr !important; }
-        }
-        @media (max-width: 768px) {
+          .about-banner { display: none !important; }
           .md\\:flex-row { flex-direction: column !important; }
           .md\\:justify-between { justify-content: center !important; }
+        }
+        @media (max-width: 768px) {
+          .about-cards-grid {
+            max-height: 60vh !important;
+            overflow-y: auto !important;
+          }
         }
       `}</style>
     </SectionWrapper>
