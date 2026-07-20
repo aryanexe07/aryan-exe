@@ -4,14 +4,67 @@ import { motion } from 'framer-motion';
 import SectionWrapper from '@/components/SectionWrapper';
 import { NavSection, config } from '@/data/config';
 import { ArrowRight, Mail } from 'lucide-react';
+import { useTheme } from '@/components/ThemeProvider';
+import { useEffect, useRef } from 'react';
 
 interface Props {
   onNavigate: (s: NavSection) => void;
 }
 
 function FloatingGeometry() {
+  const { theme } = useTheme();
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handleVisibilityChange = () => {
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      
+      if (document.hidden) {
+        video.pause();
+      } else if (!prefersReducedMotion) {
+        video.play();
+      }
+    };
+
+    // Initial check for prefers-reduced-motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      video.pause();
+      video.currentTime = 0;
+    }
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, []);
+
   return (
     <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
+      {/* Background video in right panel */}
+      <video
+        ref={videoRef}
+        src="/homescreen.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        style={{
+          position: 'absolute',
+          right: '-4%',
+          top: '8%',
+          width: '42%',
+          height: '78%',
+          objectFit: 'cover',
+          opacity: 0.15,
+          mixBlendMode: theme === 'light' ? 'multiply' : 'screen',
+          pointerEvents: 'none',
+        }}
+      />
       {/* Large blue rectangle — primary shape */}
       <motion.div
         animate={{ y: [0, -12, 0] }}
