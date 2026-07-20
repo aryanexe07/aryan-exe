@@ -1,32 +1,9 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
-
 export default function ValorantVideoBanner() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [isMobile, setIsMobile] = useState(false);
-
-  // Detect mobile and prevent video loading
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
-  // Control video playback speed and ensure no re-renders
-  useEffect(() => {
-    if (videoRef.current && !isMobile) {
-      videoRef.current.playbackRate = 0.55;
-    }
-  }, [isMobile]);
-
   // Valorant-style asymmetrical triangular clip-path polygon
   // Creates sharp point at bottom
   const clipPathValue = 'polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%)';
-
-  // Hide video on mobile - completely unmounts the component
-  if (isMobile) return null;
 
   return (
     <div style={{
@@ -37,7 +14,7 @@ export default function ValorantVideoBanner() {
       willChange: 'transform',
       transform: 'translateZ(0)',
     }}>
-      {/* Video container */}
+      {/* Image container */}
       <div
         style={{
           position: 'absolute',
@@ -49,13 +26,10 @@ export default function ValorantVideoBanner() {
           willChange: 'auto',
         }}
       >
-        {/* Video element - not animated, static node */}
-        <video
-          ref={videoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
+        {/* Static image */}
+        <img
+          src="/about-bg.jpg"
+          alt=""
           style={{
             position: 'absolute',
             top: 0,
@@ -66,10 +40,7 @@ export default function ValorantVideoBanner() {
             objectPosition: 'center',
             display: 'block',
           }}
-        >
-          <source src="/about-bg.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        />
 
         {/* Gradient overlay for depth */}
         <div
