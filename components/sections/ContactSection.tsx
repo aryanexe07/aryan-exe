@@ -118,6 +118,7 @@ export default function ContactSection() {
       }}>
         <motion.div variants={container} initial="initial" animate="animate"
           style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', maxWidth: '900px' }}
+          className="contact-grid"
         >
           {/* Left */}
           <div>
@@ -250,6 +251,15 @@ export default function ContactSection() {
           </motion.form>
         </motion.div>
       </div>
+      
+      <style>{`
+        @media (max-width: 768px) {
+          .contact-grid {
+            grid-template-columns: 1fr !important;
+            gap: 2rem !important;
+          }
+        }
+      `}</style>
     </SectionWrapper>
   );
 }

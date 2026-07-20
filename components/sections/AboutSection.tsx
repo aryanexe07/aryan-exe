@@ -163,6 +163,7 @@ export default function AboutSection() {
                 willChange: 'transform',
                 transform: 'translateZ(0)',
               }}
+              className="about-cards-grid"
             >
               {cards.map((card, index) => {
                 const Icon = card.icon;
@@ -251,10 +252,14 @@ export default function AboutSection() {
 
       <style>{`
         @media (max-width: 1024px) {
-          .about-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .about-cards-grid { grid-template-columns: repeat(2, 1fr) !important; }
         }
-        @media (max-width: 640px) {
-          .about-grid { grid-template-columns: 1fr !important; }
+        @media (max-width: 768px) {
+          .about-cards-grid { grid-template-columns: 1fr !important; }
+        }
+        @media (max-width: 768px) {
+          .md\\:flex-row { flex-direction: column !important; }
+          .md\\:justify-between { justify-content: center !important; }
         }
       `}</style>
     </SectionWrapper>

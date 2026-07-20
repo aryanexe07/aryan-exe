@@ -33,7 +33,7 @@ function GreenBlocks() {
         flexDirection: 'column',
         gap: '0.75rem',
         alignItems: 'flex-end',
-      }}>
+      }} className="skills-stat-badges">
         <div style={{
           fontFamily: 'var(--font-label)',
           fontSize: '11px',
@@ -102,6 +102,7 @@ export default function SkillsSection() {
           <motion.div
             variants={container}
             style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}
+            className="skills-cards-grid"
           >
             {categories.map((cat, index) => {
               const catSkills = skills.filter(s => s.category === cat.key);
@@ -193,6 +194,26 @@ export default function SkillsSection() {
           </motion.p>
         </motion.div>
       </div>
+      
+      <style>{`
+        @media (max-width: 768px) {
+          .skills-cards-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .skills-stat-badges {
+            position: relative !important;
+            right: auto !important;
+            top: auto !important;
+            flex-direction: row !important;
+            align-items: center !important;
+            justify-content: center !important;
+            margin-bottom: 1.5rem !important;
+          }
+          .skills-stat-badges div {
+            text-align: center !important;
+          }
+        }
+      `}</style>
     </SectionWrapper>
   );
 }
