@@ -17,7 +17,7 @@ function FloatingGeometry() {
     const video = videoRef.current;
     if (!video) return;
 
-    // Ensure muted is set as DOM property before attempting play
+    // Ensure muted is set as DOM property for autoplay
     video.muted = true;
 
     const handleVisibilityChange = () => {
@@ -25,27 +25,12 @@ function FloatingGeometry() {
       
       if (document.hidden) {
         video.pause();
-      } else if (!prefersReducedMotion) {
+      } else if (!prefersReducedMotion && video.paused) {
         video.play().catch(err => {
           console.error('Video autoplay failed:', err);
         });
       }
     };
-
-    // Initial check for prefers-reduced-motion
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    console.log('Video debug - paused:', video.paused, 'readyState:', video.readyState, 'prefersReducedMotion:', prefersReducedMotion, 'muted:', video.muted);
-    
-    if (prefersReducedMotion) {
-      video.pause();
-      video.currentTime = 0;
-    } else {
-      video.play().then(() => {
-        console.log('Video autoplay successful');
-      }).catch(err => {
-        console.error('Video autoplay failed:', err);
-      });
-    }
 
     // Listen for changes to prefers-reduced-motion
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
