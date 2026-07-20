@@ -49,7 +49,7 @@ function TealBackground() {
         }}
       />
       {/* Radar rings */}
-      {[0, 1, 2, 3].map((i) => (
+      {[0, 1].map((i) => (
         <motion.div
           key={i}
           animate={{ scale: [1, 1.015, 1] }}
@@ -73,7 +73,7 @@ function TealBackground() {
         position: 'absolute', right: 0, top: '20%',
         width: '40%', height: '60%',
         background: 'radial-gradient(ellipse, rgba(20,184,166,0.08) 0%, transparent 70%)',
-        filter: 'blur(50px)',
+        filter: 'blur(20px)',
       }} />
     </div>
   );

@@ -69,7 +69,7 @@ function DiagonalAccent() {
         width: '40%',
         height: '60%',
         background: 'radial-gradient(ellipse, rgba(139,92,246,0.08) 0%, transparent 70%)',
-        filter: 'blur(60px)',
+        filter: 'blur(20px)',
       }} />
     </div>
   );

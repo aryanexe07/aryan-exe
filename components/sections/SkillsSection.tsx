@@ -20,8 +20,6 @@ function GreenBlocks() {
         { right: '4%', top: '10%', w: 120, h: 80 },
         { right: '16%', top: '5%', w: 60, h: 60 },
         { right: '8%', top: '40%', w: 90, h: 120 },
-        { right: '22%', top: '55%', w: 70, h: 50 },
-        { right: '4%', bottom: '10%', w: 100, h: 70 },
       ].map((b, i) => (
         <motion.div
           key={i}
@@ -44,7 +42,7 @@ function GreenBlocks() {
       <div style={{
         position: 'absolute', right: 0, top: '20%', width: '40%', height: '60%',
         background: 'radial-gradient(ellipse, rgba(34,197,94,0.07) 0%, transparent 70%)',
-        filter: 'blur(50px)',
+        filter: 'blur(20px)',
       }} />
     </div>
   );

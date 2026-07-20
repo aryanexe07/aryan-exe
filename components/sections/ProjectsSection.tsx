@@ -34,7 +34,7 @@ function OrangeGrid() {
         position: 'absolute', right: 0, top: '20%',
         width: '30%', height: '60%',
         background: 'radial-gradient(ellipse, rgba(249,115,22,0.07) 0%, transparent 70%)',
-        filter: 'blur(40px)',
+        filter: 'blur(20px)',
       }} />
     </div>
   );

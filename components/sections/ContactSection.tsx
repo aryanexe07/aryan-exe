@@ -46,7 +46,7 @@ function PinkPanel() {
         position: 'absolute', right: 0, top: '15%',
         width: '40%', height: '70%',
         background: 'radial-gradient(ellipse, rgba(236,72,153,0.08) 0%, transparent 70%)',
-        filter: 'blur(50px)',
+        filter: 'blur(20px)',
       }} />
     </div>
   );
