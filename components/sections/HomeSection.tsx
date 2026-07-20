@@ -33,6 +33,8 @@ function FloatingGeometry() {
 
     // Initial check for prefers-reduced-motion
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    console.log('Video debug - paused:', video.paused, 'readyState:', video.readyState, 'prefersReducedMotion:', prefersReducedMotion);
+    
     if (prefersReducedMotion) {
       video.pause();
       video.currentTime = 0;
@@ -70,6 +72,7 @@ function FloatingGeometry() {
       <video
         ref={videoRef}
         src="/homescreen.mp4"
+        autoPlay
         loop
         muted
         playsInline
@@ -98,6 +101,8 @@ const fadeUp = {
 };
 
 export default function HomeSection({ onNavigate }: Props) {
+  const { theme } = useTheme();
+  
   return (
     <SectionWrapper section="HOME" scrollable={false}>
       <FloatingGeometry />
@@ -110,17 +115,19 @@ export default function HomeSection({ onNavigate }: Props) {
         position: 'relative',
         zIndex: 2,
       }}>
-        {/* Gradient scrim overlay for text contrast */}
-        <div style={{
-          position: 'absolute',
-          left: 0,
-          top: 0,
-          bottom: 0,
-          width: '60%',
-          background: 'linear-gradient(to right, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.4) 40%, transparent 100%)',
-          pointerEvents: 'none',
-          zIndex: -1,
-        }} />
+        {/* Gradient scrim overlay for text contrast - only in dark mode */}
+        {theme === 'dark' && (
+          <div style={{
+            position: 'absolute',
+            left: 0,
+            top: 0,
+            bottom: 0,
+            width: '60%',
+            background: 'linear-gradient(to right, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.4) 40%, transparent 100%)',
+            pointerEvents: 'none',
+            zIndex: -1,
+          }} />
+        )}
         <motion.div
           variants={staggerChildren}
           initial="initial"
