@@ -25,7 +25,9 @@ function FloatingGeometry() {
       if (document.hidden) {
         video.pause();
       } else if (!prefersReducedMotion) {
-        video.play();
+        video.play().catch(err => {
+          console.warn('Video autoplay failed:', err);
+        });
       }
     };
 
@@ -34,137 +36,54 @@ function FloatingGeometry() {
     if (prefersReducedMotion) {
       video.pause();
       video.currentTime = 0;
+    } else {
+      video.play().catch(err => {
+        console.warn('Video autoplay failed:', err);
+      });
     }
+
+    // Listen for changes to prefers-reduced-motion
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const handleMediaChange = (e: MediaQueryListEvent) => {
+      if (e.matches) {
+        video.pause();
+        video.currentTime = 0;
+      } else if (!document.hidden) {
+        video.play().catch(err => {
+          console.warn('Video autoplay failed:', err);
+        });
+      }
+    };
+    mediaQuery.addEventListener('change', handleMediaChange);
 
     document.addEventListener('visibilitychange', handleVisibilityChange);
 
     return () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
+      mediaQuery.removeEventListener('change', handleMediaChange);
     };
   }, []);
 
   return (
     <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
-      {/* Background video in right panel */}
+      {/* Full-page background video */}
       <video
         ref={videoRef}
         src="/homescreen.mp4"
-        autoPlay
         loop
         muted
         playsInline
         style={{
           position: 'absolute',
-          right: '-4%',
-          top: '8%',
-          width: '42%',
-          height: '78%',
+          inset: 0,
+          width: '100%',
+          height: '100%',
           objectFit: 'cover',
-          opacity: 0.15,
+          opacity: 0.38,
           mixBlendMode: theme === 'light' ? 'multiply' : 'screen',
           pointerEvents: 'none',
         }}
       />
-      {/* Large blue rectangle — primary shape */}
-      <motion.div
-        animate={{ y: [0, -12, 0] }}
-        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-        style={{
-          position: 'absolute',
-          right: '-4%',
-          top: '8%',
-          width: '42%',
-          height: '78%',
-          background: '#4F7DF3',
-          opacity: 0.06,
-          borderRadius: '2px',
-        }}
-      />
-      {/* Outlined rect 1 */}
-      <motion.div
-        animate={{ y: [0, 16, 0], rotate: [0, 2, 0] }}
-        transition={{ duration: 11, repeat: Infinity, ease: 'easeInOut' }}
-        style={{
-          position: 'absolute',
-          right: '8%',
-          top: '12%',
-          width: '36%',
-          height: '66%',
-          border: '1px solid rgba(79,125,243,0.2)',
-          borderRadius: '2px',
-        }}
-      />
-      {/* Outlined rect 2 — inner */}
-      <motion.div
-        animate={{ y: [0, -8, 0] }}
-        transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-        style={{
-          position: 'absolute',
-          right: '12%',
-          top: '20%',
-          width: '28%',
-          height: '52%',
-          border: '1px solid rgba(79,125,243,0.15)',
-          borderRadius: '2px',
-        }}
-      />
-      {/* Grid overlay */}
-      <div style={{
-        position: 'absolute',
-        right: 0,
-        top: 0,
-        width: '50%',
-        height: '100%',
-        backgroundImage: `
-          linear-gradient(rgba(79,125,243,0.06) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(79,125,243,0.06) 1px, transparent 1px)
-        `,
-        backgroundSize: '48px 48px',
-      }} />
-      {/* Floating circle 1 */}
-      <motion.div
-        animate={{ y: [0, -20, 0], x: [0, 8, 0] }}
-        transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-        style={{
-          position: 'absolute',
-          right: '18%',
-          top: '15%',
-          width: '80px',
-          height: '80px',
-          borderRadius: '50%',
-          border: '1px solid rgba(79,125,243,0.25)',
-        }}
-      />
-      {/* Floating circle 2 */}
-      <motion.div
-        animate={{ y: [0, 14, 0], x: [0, -6, 0] }}
-        transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut', delay: 4 }}
-        style={{
-          position: 'absolute',
-          right: '28%',
-          bottom: '20%',
-          width: '40px',
-          height: '40px',
-          borderRadius: '50%',
-          background: 'rgba(79,125,243,0.08)',
-        }}
-      />
-      {/* Blue glow */}
-      <div style={{
-        position: 'absolute',
-        right: '5%',
-        top: '20%',
-        width: '40%',
-        height: '60%',
-        background: 'radial-gradient(ellipse, rgba(79,125,243,0.12) 0%, transparent 70%)',
-        filter: 'blur(40px)',
-      }} />
-      {/* Corner bracket top-right */}
-      <div style={{ position: 'absolute', right: '6%', top: '10%', width: '32px', height: '32px',
-        borderTop: '2px solid rgba(79,125,243,0.4)', borderRight: '2px solid rgba(79,125,243,0.4)' }} />
-      {/* Corner bracket bottom-left of rect */}
-      <div style={{ position: 'absolute', right: '42%', bottom: '14%', width: '24px', height: '24px',
-        borderBottom: '2px solid rgba(79,125,243,0.3)', borderLeft: '2px solid rgba(79,125,243,0.3)' }} />
     </div>
   );
 }
@@ -191,6 +110,17 @@ export default function HomeSection({ onNavigate }: Props) {
         position: 'relative',
         zIndex: 2,
       }}>
+        {/* Gradient scrim overlay for text contrast */}
+        <div style={{
+          position: 'absolute',
+          left: 0,
+          top: 0,
+          bottom: 0,
+          width: '60%',
+          background: 'linear-gradient(to right, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.4) 40%, transparent 100%)',
+          pointerEvents: 'none',
+          zIndex: -1,
+        }} />
         <motion.div
           variants={staggerChildren}
           initial="initial"
