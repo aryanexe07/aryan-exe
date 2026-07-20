@@ -6,25 +6,24 @@ import ValorantVideoBanner from '@/components/ValorantVideoBanner';
 import { User, GraduationCap, Briefcase, Zap } from 'lucide-react';
 
 const cards = [
-  {
-    icon: User,
+  {icon: User,
     title: 'WHO I AM',
-    content: 'A full-stack developer who treats code as a design material. I care about the gap between how things work and how they feel — and spend most of my time closing it.',
+    content: 'A developer who treats code as a design material, at the intersection of software and machine learning. I care about the gap between how things work and how they feel — and spend most of my time closing it.',
   },
   {
     icon: GraduationCap,
     title: 'EDUCATION',
-    content: 'B.Tech in Computer Science. Self-directed learner who builds side projects faster than finishing assigned readings. Coursework in DSA, OS, and Distributed Systems.',
+    content: 'B.Tech in Computer Science. Self-directed learner who builds side projects faster than finishing assigned readings. Coursework in DSA, OS, Distributed Systems, and applied ML.',
   },
   {
     icon: Briefcase,
     title: 'EXPERIENCE',
-    content: '3+ years across startups and freelance engagements. Shipped production features for 10k+ user products. From prototype to polished — I do the full stack.',
+    content: 'Building full-stack web apps and AI-powered tools — from prototype to polished. Comfortable across the stack: frontend, backend, and the ML layer in between.',
   },
   {
     icon: Zap,
     title: 'INTERESTS',
-    content: 'Performance engineering, design systems, developer tooling, open-source. When not coding: mechanical keyboards, science fiction, and endlessly optimizing my workflow.',
+    content: 'Competitive programming, AI/ML experimentation, developer tooling, open-source. When not coding: window shopping, movie/anime nights, and endlessly optimizing my workflow.',
   },
 ];
 

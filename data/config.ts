@@ -2,7 +2,7 @@ export const config = {
   name: 'Aryan',
   handle: 'ARYAN.EXE',
   tagline: 'Crafting digital experiences that make an impact.',
-  bio: 'I build fast, accessible, and delightful digital experiences with clean code and purposeful design.',
+  bio: 'Full-stack developer building web apps and AI/ML-driven tools, with clean code and purposeful design.',
   email: 'aryantailor.me@gmail.com',
   githubUsername: 'aryanexe07',
   githubUrl: 'https://github.com/aryanexe07',
