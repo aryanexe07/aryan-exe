@@ -1,10 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { GitBranch, Link2, Menu, X, Sun, Moon } from 'lucide-react';
+import { GitBranch, Link2, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { NavSection, sectionColors, config } from '@/data/config';
-import { useTheme } from '@/components/ThemeProvider';
 
 const navItems: NavSection[] = ['HOME', 'ABOUT', 'PROJECTS', 'GITHUB', 'SKILLS', 'CONTACT'];
 
@@ -15,7 +14,6 @@ interface Props {
 
 export default function Navbar({ active, onNavigate }: Props) {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { theme, toggleTheme } = useTheme();
 
   return (
     <>
@@ -137,27 +135,6 @@ export default function Navbar({ active, onNavigate }: Props) {
           >
             <Link2 size={18} />
           </a>
-          <motion.button
-            onClick={toggleTheme}
-            whileHover={{ scale: 1.1, rotate: theme === 'dark' ? 180 : 0 }}
-            whileTap={{ scale: 0.95 }}
-            style={{
-              background: 'transparent',
-              border: '1px solid var(--border)',
-              borderRadius: '6px',
-              width: '32px',
-              height: '32px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              cursor: 'pointer',
-              color: 'var(--text-muted)',
-              transition: 'color 300ms ease',
-            }}
-            aria-label="Toggle theme"
-          >
-            {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
-          </motion.button>
         </div>
       </nav>
 

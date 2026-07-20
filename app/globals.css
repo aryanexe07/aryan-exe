@@ -22,14 +22,6 @@
   --font-body: 'Inter', sans-serif;
 }
 
-[data-theme="light"] {
-  --bg: #FFFFFF;
-  --surface: #F9FAFB;
-  --card: #F3F4F6;
-  --text: #111111;
-  --text-muted: #555555;
-  --border: rgba(17,17,17,0.1);
-}
 
 * {
   box-sizing: border-box;
@@ -67,13 +59,6 @@ html, body {
   transition: background-color 300ms ease;
 }
 
-[data-theme="light"] .scroll-area {
-  scrollbar-color: rgba(17,17,17,0.15) transparent;
-}
-
-[data-theme="light"] .scroll-area::-webkit-scrollbar-thumb {
-  background: rgba(17,17,17,0.15);
-}
 
 /* Font helpers */
 .font-hero { font-family: var(--font-hero); }

@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import SectionWrapper from '@/components/SectionWrapper';
 import { NavSection, config } from '@/data/config';
 import { ArrowRight, Mail } from 'lucide-react';
-import { useTheme } from '@/components/ThemeProvider';
 import { useEffect, useRef } from 'react';
 
 interface Props {
@@ -12,12 +11,14 @@ interface Props {
 }
 
 function FloatingGeometry() {
-  const { theme } = useTheme();
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
+
+    // Ensure muted is set as DOM property before attempting play
+    video.muted = true;
 
     const handleVisibilityChange = () => {
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -26,21 +27,23 @@ function FloatingGeometry() {
         video.pause();
       } else if (!prefersReducedMotion) {
         video.play().catch(err => {
-          console.warn('Video autoplay failed:', err);
+          console.error('Video autoplay failed:', err);
         });
       }
     };
 
     // Initial check for prefers-reduced-motion
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    console.log('Video debug - paused:', video.paused, 'readyState:', video.readyState, 'prefersReducedMotion:', prefersReducedMotion);
+    console.log('Video debug - paused:', video.paused, 'readyState:', video.readyState, 'prefersReducedMotion:', prefersReducedMotion, 'muted:', video.muted);
     
     if (prefersReducedMotion) {
       video.pause();
       video.currentTime = 0;
     } else {
-      video.play().catch(err => {
-        console.warn('Video autoplay failed:', err);
+      video.play().then(() => {
+        console.log('Video autoplay successful');
+      }).catch(err => {
+        console.error('Video autoplay failed:', err);
       });
     }
 
@@ -52,7 +55,7 @@ function FloatingGeometry() {
         video.currentTime = 0;
       } else if (!document.hidden) {
         video.play().catch(err => {
-          console.warn('Video autoplay failed:', err);
+          console.error('Video autoplay failed:', err);
         });
       }
     };
@@ -83,7 +86,7 @@ function FloatingGeometry() {
           height: '100%',
           objectFit: 'cover',
           opacity: 0.38,
-          mixBlendMode: theme === 'light' ? 'multiply' : 'screen',
+          mixBlendMode: 'screen',
           pointerEvents: 'none',
         }}
       />
@@ -101,8 +104,6 @@ const fadeUp = {
 };
 
 export default function HomeSection({ onNavigate }: Props) {
-  const { theme } = useTheme();
-  
   return (
     <SectionWrapper section="HOME" scrollable={false}>
       <FloatingGeometry />
@@ -115,19 +116,17 @@ export default function HomeSection({ onNavigate }: Props) {
         position: 'relative',
         zIndex: 2,
       }}>
-        {/* Gradient scrim overlay for text contrast - only in dark mode */}
-        {theme === 'dark' && (
-          <div style={{
-            position: 'absolute',
-            left: 0,
-            top: 0,
-            bottom: 0,
-            width: '60%',
-            background: 'linear-gradient(to right, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.4) 40%, transparent 100%)',
-            pointerEvents: 'none',
-            zIndex: -1,
-          }} />
-        )}
+        {/* Gradient scrim overlay for text contrast */}
+        <div style={{
+          position: 'absolute',
+          left: 0,
+          top: 0,
+          bottom: 0,
+          width: '60%',
+          background: 'linear-gradient(to right, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.4) 40%, transparent 100%)',
+          pointerEvents: 'none',
+          zIndex: -1,
+        }} />
         <motion.div
           variants={staggerChildren}
           initial="initial"
