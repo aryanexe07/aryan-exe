@@ -23,7 +23,7 @@ export const projects: Project[] = [
     scale: '3,400 LOC', // fill in your actual LOC
     performance: '93 Lighthouse', // run Lighthouse and paste score
     githubUrl: 'https://github.com/aryanexe07/Novella', // your repo link
-    demoUrl: 'https://novella-roan.vercel.app/', // if deployed
+    demoUrl: 'https://itsnovella.vercel.app/', // if deployed
     category: 'INTERACTIVE',
   },
   {
