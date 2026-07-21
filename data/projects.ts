@@ -70,7 +70,7 @@ export const projects: Project[] = [
     scale: '1,500 LOC',
     performance: '60fps',
     githubUrl: 'https://github.com/aryanexe07/3D-Solar-System',
-    demoUrl: 'N/A',
+    demoUrl: 'https://3d-solar-system-delta.vercel.app/',
     category: 'EXPERIMENTS',
   },
   {
