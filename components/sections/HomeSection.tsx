@@ -133,7 +133,7 @@ export default function HomeSection({ onNavigate }: Props) {
                 width: '6px', height: '6px', borderRadius: '50%',
                 background: '#4F7DF3',
                 display: 'inline-block',
-                animation: 'pulse 2s infinite',
+                animation: 'pulse 3s infinite',
               }} />
               AVAILABLE FOR WORK
             </span>
