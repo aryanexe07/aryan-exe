@@ -1,10 +1,17 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import SectionWrapper from '@/components/SectionWrapper';
 import ValorantVideoBanner from '@/components/ValorantVideoBanner';
 import { User, GraduationCap, Briefcase, Zap, Layers, Shield, BookOpen } from 'lucide-react';
 import { skills } from '@/data/skills';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const cards = [
   {
@@ -33,6 +40,19 @@ const skillCategories = [
   { key: 'PRIMARY' as const, label: 'PRIMARY', icon: Layers, desc: 'Daily drivers. Production-proven.' },
   { key: 'SECONDARY' as const, label: 'SECONDARY', icon: Shield, desc: 'Solid working knowledge.' },
   { key: 'LEARNING' as const, label: 'LEARNING', icon: BookOpen, desc: 'Actively building depth.' },
+];
+
+const bioSentence = [
+  { text: 'I', highlight: false },
+  { text: 'build', highlight: false },
+  { text: 'products', highlight: false },
+  { text: 'at', highlight: false },
+  { text: 'the', highlight: false },
+  { text: 'intersection', highlight: true },
+  { text: 'of', highlight: true },
+  { text: 'engineering', highlight: true },
+  { text: 'and', highlight: true },
+  { text: 'design.', highlight: true },
 ];
 
 function DiagonalAccent() {
@@ -97,6 +117,57 @@ const cardItem = {
 };
 
 export default function AboutSection() {
+  const bioRef = useRef<HTMLParagraphElement>(null);
+  const highlightBoxRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    if (!bioRef.current) return;
+
+    const scrollContainer = bioRef.current.closest('.scroll-area') || window;
+    const words = bioRef.current.querySelectorAll('.bio-word');
+
+    const ctx = gsap.context(() => {
+      // Word-by-word reveal
+      gsap.fromTo(
+        words,
+        { color: 'rgba(255, 255, 255, 0.3)', opacity: 0.3 },
+        {
+          color: '#FFFFFF',
+          opacity: 1,
+          stagger: 0.1,
+          scrollTrigger: {
+            trigger: bioRef.current,
+            scroller: scrollContainer,
+            start: 'top 85%',
+            end: 'top 50%',
+            scrub: true,
+          },
+        }
+      );
+
+      // Highlight box scaleX animation
+      if (highlightBoxRef.current) {
+        gsap.fromTo(
+          highlightBoxRef.current,
+          { scaleX: 0 },
+          {
+            scaleX: 1,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: bioRef.current,
+              scroller: scrollContainer,
+              start: 'top 70%',
+              end: 'top 55%',
+              scrub: true,
+            },
+          }
+        );
+      }
+    }, bioRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <SectionWrapper section="ABOUT" scrollable={true}>
       <DiagonalAccent />
@@ -149,16 +220,52 @@ export default function AboutSection() {
               <span style={{ color: '#8B5CF6' }}>the code.</span>
             </motion.h2>
 
-            <motion.p variants={item} style={{
-              fontFamily: 'var(--font-body)',
-              fontSize: '16px',
-              color: 'var(--text-muted)',
-              marginBottom: '2.5rem',
-              willChange: 'transform, opacity',
-              transform: 'translateZ(0)',
-            }}>
-              I build products at the intersection of engineering and design.
-            </motion.p>
+            {/* Bio with Scroll-Scrubbed Text Reveal */}
+            <p
+              ref={bioRef}
+              style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: '18px',
+                lineHeight: 1.6,
+                marginBottom: '2.5rem',
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: '0.35rem',
+                alignItems: 'center',
+                position: 'relative',
+              }}
+            >
+              {bioSentence.map((word, i) => (
+                <span
+                  key={i}
+                  className="bio-word"
+                  style={{
+                    display: 'inline-block',
+                    transition: 'color 0.1s ease',
+                    position: 'relative',
+                    zIndex: 2,
+                  }}
+                >
+                  {word.highlight && i === 5 && (
+                    <span
+                      ref={highlightBoxRef}
+                      style={{
+                        position: 'absolute',
+                        inset: '-2px -6px',
+                        background: 'rgba(139, 92, 246, 0.25)',
+                        border: '1px solid rgba(139, 92, 246, 0.4)',
+                        borderRadius: '6px',
+                        transformOrigin: 'left center',
+                        zIndex: -1,
+                        width: 'calc(100% * 5 + 1.4rem)',
+                        pointerEvents: 'none',
+                      }}
+                    />
+                  )}
+                  {word.text}
+                </span>
+              ))}
+            </p>
 
             {/* Overview Cards */}
             <motion.div
