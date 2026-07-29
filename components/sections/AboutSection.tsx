@@ -11,24 +11,7 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-const bioParagraphs = [
-  {
-    dropCap: 'A',
-    text: ' developer who treats code as a design material, building products at the intersection of software engineering and applied machine learning. I care deeply about the gap between how complex systems work under the hood and how they feel to the end user — spending most of my time closing that gap through clean architecture and intentional design.',
-    highlight: false,
-  },
-  {
-    dropCap: 'M',
-    text: ' y journey spans full-stack web applications, custom desktop tools, and production data pipelines. Whether architecting neo-brutalist document editors like Novella, engineering offline-first UPI ledgers like Splitzy, or optimizing ML data extraction engines at Trezix, I focus on performance, modularity, and smooth user interactions.',
-    highlight: false,
-  },
-  {
-    dropCap: 'B',
-    text: ' eyond building client software, I actively contribute to open-source tools like Neovim\'s telescope plugin, experiment with WebGL Three.js simulations, and automate developer tooling via CI/CD workflows. I treat every project as an opportunity to iterate on code quality and push visual craftsmanship.',
-    highlight: true,
-    highlightPhrase: 'intersection of software engineering and applied machine learning.',
-  },
-];
+const bioText = 'A developer who treats code as a design material, building products at the intersection of software engineering and applied machine learning. I care deeply about the gap between how complex systems work under the hood and how they feel to the end user — spending most of my time closing that gap through clean architecture and intentional design. My journey spans full-stack web applications, custom desktop tools, and production data pipelines. Whether architecting neo-brutalist document editors like Novella, engineering offline-first UPI ledgers like Splitzy, or optimizing ML data extraction engines at Trezix, I focus on performance, modularity, and smooth user interactions. Beyond building client software, I actively contribute to open-source tools like Neovim\'s telescope plugin, experiment with WebGL Three.js simulations, and automate developer tooling via CI/CD workflows. I treat every project as an opportunity to iterate on code quality and push visual craftsmanship.';
 
 function DiagonalAccent() {
   return (
@@ -79,28 +62,27 @@ function DiagonalAccent() {
 
 export default function AboutSection() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const bioContainerRef = useRef<HTMLDivElement>(null);
+  const bioLeftRef = useRef<HTMLParagraphElement>(null);
   const highlightBoxRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    if (!bioContainerRef.current) return;
+    if (!bioLeftRef.current) return;
 
-    const scrollContainer = bioContainerRef.current.closest('.scroll-area') || window;
-    const words = bioContainerRef.current.querySelectorAll('.bio-word');
+    const scrollContainer = bioLeftRef.current.closest('.scroll-area') || window;
+    const words = bioLeftRef.current.querySelectorAll('.bio-word');
 
     const ctx = gsap.context(() => {
-      // Continuous word-by-word reveal across the whole bio content
+      // Continuous word-by-word reveal across the whole left bio content
       gsap.fromTo(
         words,
-        { color: 'rgba(255, 255, 255, 0.25)', opacity: 0.25 },
+        { color: 'rgba(255, 255, 255, 0.25)' },
         {
           color: '#FFFFFF',
-          opacity: 1,
           stagger: 0.05,
           scrollTrigger: {
-            trigger: bioContainerRef.current,
+            trigger: bioLeftRef.current,
             scroller: scrollContainer,
-            start: 'top 75%',
+            start: 'top 65%',
             end: 'bottom 60%',
             scrub: true,
           },
@@ -118,22 +100,25 @@ export default function AboutSection() {
             scrollTrigger: {
               trigger: highlightBoxRef.current,
               scroller: scrollContainer,
-              start: 'top 75%',
-              end: 'top 60%',
+              start: 'top 65%',
+              end: 'top 55%',
               scrub: true,
             },
           }
         );
       }
-    }, bioContainerRef);
+    }, bioLeftRef);
 
     return () => ctx.revert();
   }, []);
+
+  const words = bioText.split(' ');
 
   return (
     <SectionWrapper section="ABOUT" scrollable={true}>
       <DiagonalAccent />
 
+      {/* Main scrolling wrapper for About */}
       <div
         ref={containerRef}
         style={{
@@ -148,25 +133,25 @@ export default function AboutSection() {
         }}
         className="md:flex-row flex-col md:justify-between justify-start"
       >
-        {/* Left side content */}
+        {/* Left side content - contains sticky header + two column split */}
         <div style={{
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'flex-start',
-          padding: '0 8rem 0 4rem',
-          maxWidth: '1000px',
-          flex: '0 1 auto',
+          padding: '0 4rem 0 4rem',
+          maxWidth: '1100px',
+          flex: '1 1 auto',
           width: '100%',
-        }} className="w-full md:w-auto md:max-w-none max-w-full px-4 md:px-0 md:pl-16 md:pr-32">
+        }} className="w-full px-4 md:px-16">
           
-          {/* STICKY MISSION BRIEF HEADER BLOCK */}
+          {/* STICKY MISSION BRIEF HEADER BLOCK - pinned using sticky container */}
           <div style={{
             position: 'sticky',
             top: '0px',
             zIndex: 10,
-            background: 'rgba(10, 13, 20, 0.85)',
+            background: 'rgba(10, 13, 20, 0.9)',
             backdropFilter: 'blur(12px)',
-            padding: '1.25rem 0 1rem 0',
+            padding: '1.5rem 0 1rem 0',
             marginBottom: '2rem',
             borderBottom: '1px solid rgba(139, 92, 246, 0.15)',
           }}>
@@ -190,75 +175,79 @@ export default function AboutSection() {
             </h2>
           </div>
 
-          {/* CONTINUOUS FLOWING BIO WITH DROP CAPS & WORD REVEAL */}
-          <div ref={bioContainerRef} style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem', marginBottom: '3rem' }}>
-            {bioParagraphs.map((para, idx) => {
-              const words = para.text.trim().split(' ');
-              return (
-                <p
-                  key={idx}
-                  style={{
-                    fontFamily: 'var(--font-body)',
-                    fontSize: '18px',
-                    lineHeight: 1.8,
-                    margin: 0,
-                    position: 'relative',
-                  }}
-                >
-                  {/* Drop Cap */}
-                  <span
-                    className="bio-word"
-                    style={{
-                      float: 'left',
-                      fontFamily: 'var(--font-hero)',
-                      fontSize: '52px',
-                      lineHeight: '0.8',
-                      paddingRight: '12px',
-                      paddingTop: '4px',
-                      color: '#8B5CF6',
-                      fontWeight: 'bold',
-                    }}
-                  >
-                    {para.dropCap}
-                  </span>
+          {/* TWO COLUMN SPLIT */}
+          <div style={{
+            display: 'flex',
+            gap: '2.5rem',
+            width: '100%',
+            alignItems: 'flex-start',
+          }} className="flex-col md:flex-row">
+            
+            {/* Left Column: Animating Word-by-Word Reveal */}
+            <div style={{ flex: 1 }}>
+              <p
+                ref={bioLeftRef}
+                style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '18px',
+                  lineHeight: 1.8,
+                  margin: 0,
+                  position: 'relative',
+                  fontWeight: 600,
+                }}
+              >
+                {words.map((word, wIdx) => {
+                  const isHighlightWord = wIdx >= 8 && wIdx <= 15;
+                  return (
+                    <span
+                      key={wIdx}
+                      className="bio-word"
+                      style={{
+                        display: 'inline-block',
+                        marginRight: '0.35rem',
+                        position: 'relative',
+                        zIndex: 2,
+                      }}
+                    >
+                      {isHighlightWord && wIdx === 8 && (
+                        <span
+                          ref={highlightBoxRef}
+                          style={{
+                            position: 'absolute',
+                            inset: '-2px -6px',
+                            background: 'rgba(139, 92, 246, 0.25)',
+                            border: '1px solid rgba(139, 92, 246, 0.4)',
+                            borderRadius: '6px',
+                            transformOrigin: 'left center',
+                            zIndex: -1,
+                            width: 'calc(100% * 8 + 2.5rem)',
+                            pointerEvents: 'none',
+                          }}
+                        />
+                      )}
+                      {word}
+                    </span>
+                  );
+                })}
+              </p>
+            </div>
 
-                  {/* Flowing Word Spans */}
-                  {words.map((word, wIdx) => {
-                    const isTargetHighlight = para.highlight && wIdx >= 4 && wIdx <= 11;
-                    return (
-                      <span
-                        key={wIdx}
-                        className="bio-word"
-                        style={{
-                          display: 'inline-block',
-                          marginRight: '0.35rem',
-                          position: 'relative',
-                          zIndex: 2,
-                        }}
-                      >
-                        {isTargetHighlight && wIdx === 4 && (
-                          <span
-                            ref={highlightBoxRef}
-                            style={{
-                              position: 'absolute',
-                              inset: '-2px -6px',
-                              background: 'rgba(139, 92, 246, 0.25)',
-                              border: '1px solid rgba(139, 92, 246, 0.4)',
-                              borderRadius: '6px',
-                              transformOrigin: 'left center',
-                              zIndex: -1,
-                              width: 'calc(100% * 8 + 2.5rem)',
-                              pointerEvents: 'none',
-                            }}
-                          />
-                        )}
-                        {word}
-                      </span>
-                    );
-                  })}
-                </p>
-              );
-            })}
+            {/* Right Column: Static Muted Version */}
+            <div style={{ flex: 1 }} className="hidden md:block">
+              <p
+                style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '18px',
+                  lineHeight: 1.8,
+                  margin: 0,
+                  color: 'rgba(255, 255, 255, 0.25)',
+                  fontWeight: 400,
+                }}
+              >
+                {bioText}
+              </p>
+            </div>
+
           </div>
 
         </div>

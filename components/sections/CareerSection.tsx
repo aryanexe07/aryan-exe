@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import SectionWrapper from '@/components/SectionWrapper';
-import { Calendar, Plus, Briefcase, Award, Code, GraduationCap } from 'lucide-react';
+import { Calendar, Plus, Briefcase, GraduationCap } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -40,6 +40,7 @@ const trezixEntry: MajorEntryData = {
 
 const novellaEntry: MajorEntryData = {
   company: 'Novella',
+  logo: 'https://ui-avatars.com/api/?name=Novella&background=14B8A6&color=fff&size=80',
   role: 'Lead Developer & Architect',
   dateRange: 'Present',
   highlights: [
@@ -63,26 +64,25 @@ const minorEntries: MinorEntryData[] = [
 
 function TealBackground() {
   return (
-    <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
+    <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none', zIndex: 1 }}>
       <motion.div
         animate={{ scale: [1, 1.03, 1] }}
         transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
         style={{
           position: 'absolute',
-          right: '-8%',
-          top: '50%',
-          transform: 'translateY(-50%)',
-          width: '480px',
-          height: '480px',
+          right: '5%',
+          top: '30%',
+          width: '320px',
+          height: '320px',
           borderRadius: '50%',
-          background: 'rgba(20,184,166,0.06)',
+          background: 'rgba(20,184,166,0.04)',
         }}
       />
       <div style={{
-        position: 'absolute', right: 0, top: '20%',
-        width: '40%', height: '60%',
-        background: 'radial-gradient(ellipse, rgba(20,184,166,0.08) 0%, transparent 70%)',
-        filter: 'blur(20px)',
+        position: 'absolute', right: '5%', top: '20%',
+        width: '30%', height: '50%',
+        background: 'radial-gradient(ellipse, rgba(20,184,166,0.05) 0%, transparent 70%)',
+        filter: 'blur(30px)',
       }} />
     </div>
   );
@@ -109,8 +109,8 @@ export default function CareerSection() {
           scrollTrigger: {
             trigger: sectionRef.current,
             scroller: scrollContainer,
-            start: 'top 40%',
-            end: 'bottom 80%',
+            start: 'top 30%',
+            end: 'bottom 70%',
             scrub: true,
           },
         }
@@ -125,8 +125,8 @@ export default function CareerSection() {
           scrollTrigger: {
             trigger: sectionRef.current,
             scroller: scrollContainer,
-            start: 'top 40%',
-            end: 'bottom 80%',
+            start: 'top 30%',
+            end: 'bottom 70%',
             scrub: true,
           },
         }
@@ -165,7 +165,7 @@ export default function CareerSection() {
         style={{
           minHeight: '100%', display: 'flex', flexDirection: 'column',
           padding: '2rem 4rem 6rem 4rem', position: 'relative', zIndex: 2,
-          maxWidth: '1100px', margin: '0 auto',
+          maxWidth: '1200px', margin: '0 auto',
         }}
         className="px-4 md:px-16"
       >
@@ -179,18 +179,19 @@ export default function CareerSection() {
           </h2>
         </motion.div>
 
-        {/* Scroll-Driven Timeline Grid Container */}
-        <div style={{ position: 'relative', width: '100%', paddingLeft: '2.5rem' }}>
+        {/* Scroll-Driven Timeline alternating layout */}
+        <div style={{ position: 'relative', width: '100%', padding: '1rem 0' }}>
           {/* Vertical Track Line Container */}
           <div style={{
             position: 'absolute',
-            left: '8px',
+            left: '50%',
+            transform: 'translateX(-50%)',
             top: 0,
             bottom: 0,
             width: '4px',
             background: 'rgba(20, 184, 166, 0.15)',
             borderRadius: '2px',
-          }}>
+          }} className="timeline-line-center">
             {/* Animated filling line */}
             <div
               ref={trackLineRef}
@@ -221,47 +222,175 @@ export default function CareerSection() {
             />
           </div>
 
-          {/* Timeline Nodes */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
+          {/* Timeline Nodes (Alternating Present -> Past) */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
             
-            {/* 1. MAJOR ENTRY: TREZIX */}
-            <div className="career-item-node" style={{ position: 'relative' }}>
-              <div style={{
-                position: 'absolute', left: '-2.5rem', top: '1.5rem', transform: 'translateX(-50%)',
-                width: '18px', height: '18px', borderRadius: '50%', background: '#14B8A6', border: '4px solid var(--bg)', zIndex: 3,
-              }} />
-              <MajorHeroCard data={trezixEntry} />
+            {/* 1. MAJOR ENTRY: TREZIX (Left Content, Right Image) */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              width: '100%',
+              position: 'relative',
+            }} className="career-item-node timeline-node-item">
+              <div style={{ width: '45%' }} className="timeline-side-left">
+                <MajorTextCard data={trezixEntry} />
+              </div>
+              <div style={{ width: '45%' }} className="timeline-side-right">
+                <MajorImageCard src={trezixEntry.logo!} alt={trezixEntry.company} />
+              </div>
             </div>
 
-            {/* MINOR ENTRIES CLUSTER 1 */}
-            <div className="career-item-node" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1rem' }}>
-              {minorEntries.slice(0, 3).map((item, idx) => (
-                <MinorCard key={idx} item={item} />
-              ))}
+            {/* MINOR ENTRY: telescope.nvim (Right Content) */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              width: '100%',
+              position: 'relative',
+            }} className="career-item-node timeline-node-item">
+              <div style={{ width: '45%' }} className="timeline-side-left" />
+              <div style={{ width: '45%' }} className="timeline-side-right">
+                <MinorTextCard item={minorEntries[0]} />
+              </div>
             </div>
 
-            {/* 2. MAJOR ENTRY: NOVELLA */}
-            <div className="career-item-node" style={{ position: 'relative' }}>
-              <div style={{
-                position: 'absolute', left: '-2.5rem', top: '1.5rem', transform: 'translateX(-50%)',
-                width: '18px', height: '18px', borderRadius: '50%', background: '#14B8A6', border: '4px solid var(--bg)', zIndex: 3,
-              }} />
-              <MajorHeroCard data={novellaEntry} />
+            {/* MINOR ENTRY: SRM Builds Hackathon (Left Content) */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              width: '100%',
+              position: 'relative',
+            }} className="career-item-node timeline-node-item">
+              <div style={{ width: '45%' }} className="timeline-side-left">
+                <MinorTextCard item={minorEntries[1]} />
+              </div>
+              <div style={{ width: '45%' }} className="timeline-side-right" />
             </div>
 
-            {/* MINOR ENTRIES CLUSTER 2 */}
-            <div className="career-item-node" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1rem' }}>
-              {minorEntries.slice(3).map((item, idx) => (
-                <MinorCard key={idx} item={item} />
-              ))}
+            {/* 2. MAJOR ENTRY: NOVELLA (Right Content, Left Image) */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              width: '100%',
+              position: 'relative',
+            }} className="career-item-node timeline-node-item">
+              <div style={{ width: '45%' }} className="timeline-side-left">
+                <MajorImageCard src={novellaEntry.logo!} alt={novellaEntry.company} />
+              </div>
+              <div style={{ width: '45%' }} className="timeline-side-right">
+                <MajorTextCard data={novellaEntry} />
+              </div>
             </div>
 
-            {/* 3. ANCHOR ENTRY: SRM UNIVERSITY */}
-            <div className="career-item-node" style={{ position: 'relative', paddingTop: '1rem' }}>
-              <div style={{
-                position: 'absolute', left: '-2.5rem', top: '1.75rem', transform: 'translateX(-50%)',
-                width: '12px', height: '12px', borderRadius: '50%', background: 'rgba(20, 184, 166, 0.5)', border: '2px solid var(--bg)', zIndex: 3,
-              }} />
+            {/* MINOR ENTRY: Splitzy (Left Content) */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              width: '100%',
+              position: 'relative',
+            }} className="career-item-node timeline-node-item">
+              <div style={{ width: '45%' }} className="timeline-side-left">
+                <MinorTextCard item={minorEntries[2]} />
+              </div>
+              <div style={{ width: '45%' }} className="timeline-side-right" />
+            </div>
+
+            {/* MINOR ENTRY: Verge (Right Content) */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              width: '100%',
+              position: 'relative',
+            }} className="career-item-node timeline-node-item">
+              <div style={{ width: '45%' }} className="timeline-side-left" />
+              <div style={{ width: '45%' }} className="timeline-side-right">
+                <MinorTextCard item={minorEntries[3]} />
+              </div>
+            </div>
+
+            {/* MINOR ENTRY: Samay Finance (Left Content) */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              width: '100%',
+              position: 'relative',
+            }} className="career-item-node timeline-node-item">
+              <div style={{ width: '45%' }} className="timeline-side-left">
+                <MinorTextCard item={minorEntries[4]} />
+              </div>
+              <div style={{ width: '45%' }} className="timeline-side-right" />
+            </div>
+
+            {/* MINOR ENTRY: AutoClicker (Right Content) */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              width: '100%',
+              position: 'relative',
+            }} className="career-item-node timeline-node-item">
+              <div style={{ width: '45%' }} className="timeline-side-left" />
+              <div style={{ width: '45%' }} className="timeline-side-right">
+                <MinorTextCard item={minorEntries[5]} />
+              </div>
+            </div>
+
+            {/* MINOR ENTRY: 3D Solar System (Left Content) */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              width: '100%',
+              position: 'relative',
+            }} className="career-item-node timeline-node-item">
+              <div style={{ width: '45%' }} className="timeline-side-left">
+                <MinorTextCard item={minorEntries[6]} />
+              </div>
+              <div style={{ width: '45%' }} className="timeline-side-right" />
+            </div>
+
+            {/* MINOR ENTRY: Python Knowledge Base (Right Content) */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              width: '100%',
+              position: 'relative',
+            }} className="career-item-node timeline-node-item">
+              <div style={{ width: '45%' }} className="timeline-side-left" />
+              <div style={{ width: '45%' }} className="timeline-side-right">
+                <MinorTextCard item={minorEntries[7]} />
+              </div>
+            </div>
+
+            {/* MINOR ENTRY: LeetCode Contest (Left Content) */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              width: '100%',
+              position: 'relative',
+            }} className="career-item-node timeline-node-item">
+              <div style={{ width: '45%' }} className="timeline-side-left">
+                <MinorTextCard item={minorEntries[8]} />
+              </div>
+              <div style={{ width: '45%' }} className="timeline-side-right" />
+            </div>
+
+            {/* 3. ANCHOR ENTRY: SRM UNIVERSITY (Centered/Aligned Node) */}
+            <div className="career-item-node" style={{
+              display: 'flex',
+              justifyContent: 'center',
+              width: '100%',
+              position: 'relative',
+              paddingTop: '1rem',
+            }}>
               <div style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -273,85 +402,79 @@ export default function CareerSection() {
                 color: 'var(--text)',
                 fontFamily: 'var(--font-body)',
                 fontSize: '13px',
+                zIndex: 2,
               }}>
                 <GraduationCap size={16} color="#14B8A6" />
-                <span><strong style={{ color: '#14B8A6' }}>SRM University</strong> — B.Tech Computer Science Engineering</span>
+                <span><strong style={{ color: '#14B8A6' }}>SRM University</strong> — B.Tech Computer Science Engineering, started 2023</span>
               </div>
             </div>
 
           </div>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .timeline-line-center {
+            left: 20px !important;
+            transform: none !important;
+          }
+          .timeline-node-item {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 1rem !important;
+            padding-left: 45px !important;
+          }
+          .timeline-side-left, .timeline-side-right {
+            width: 100% !important;
+          }
+        }
+      `}</style>
     </SectionWrapper>
   );
 }
 
-function MajorHeroCard({ data }: { data: MajorEntryData }) {
+function MajorTextCard({ data }: { data: MajorEntryData }) {
   return (
     <div
       style={{
-        padding: '2rem',
+        padding: '1.5rem',
         background: 'var(--card)',
         border: '1px solid var(--border)',
-        borderRadius: '24px',
+        borderRadius: '16px',
         borderLeft: '4px solid #14B8A6',
-        transition: 'border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease',
+        transition: 'border-color 0.3s ease, box-shadow 0.3s ease',
       }}
       onMouseEnter={e => {
         const el = e.currentTarget as HTMLDivElement;
-        el.style.borderColor = 'rgba(20,184,166,0.5)';
-        el.style.boxShadow = '0 16px 40px rgba(20,184,166,0.12)';
-        el.style.transform = 'translateY(-2px)';
+        el.style.borderColor = 'rgba(20,184,166,0.4)';
+        el.style.boxShadow = '0 8px 24px rgba(20,184,166,0.08)';
       }}
       onMouseLeave={e => {
         const el = e.currentTarget as HTMLDivElement;
         el.style.borderColor = 'var(--border)';
         el.style.boxShadow = 'none';
-        el.style.transform = 'translateY(0)';
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.25rem' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-          {data.logo ? (
-            <img
-              src={data.logo}
-              alt={data.company}
-              style={{ width: '44px', height: '44px', borderRadius: '12px', border: '1px solid rgba(20,184,166,0.3)' }}
-            />
-          ) : (
-            <div style={{
-              width: '44px', height: '44px', borderRadius: '12px',
-              background: 'rgba(20,184,166,0.15)', border: '1px solid rgba(20,184,166,0.3)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-            }}>
-              <Briefcase size={22} color="#14B8A6" />
-            </div>
-          )}
-          <div>
-            <h3 style={{ fontFamily: 'var(--font-hero)', fontSize: '22px', color: 'var(--text)', lineHeight: 1.2 }}>
-              {data.role}
-            </h3>
-            <span style={{ fontFamily: 'var(--font-label)', fontSize: '13px', letterSpacing: '0.15em', color: '#14B8A6' }}>
-              {data.company}
-            </span>
-          </div>
-        </div>
-
-        <div style={{
-          display: 'flex', alignItems: 'center', gap: '0.4rem',
-          padding: '0.4rem 0.85rem', borderRadius: '20px',
-          background: 'rgba(20,184,166,0.1)', border: '1px solid rgba(20,184,166,0.25)',
-          color: '#14B8A6', fontFamily: 'var(--font-label)', fontSize: '12px', letterSpacing: '0.1em',
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem', flexWrap: 'wrap', gap: '0.5rem' }}>
+        <h3 style={{ fontFamily: 'var(--font-hero)', fontSize: '18px', color: 'var(--text)', margin: 0 }}>
+          {data.role}
+        </h3>
+        <span style={{
+          fontFamily: 'var(--font-label)', fontSize: '11px', letterSpacing: '0.1em',
+          padding: '0.2rem 0.5rem', borderRadius: '10px',
+          background: 'rgba(20,184,166,0.1)', color: '#14B8A6',
         }}>
-          <Calendar size={12} color="#14B8A6" />
-          <span>{data.dateRange}</span>
-        </div>
+          {data.dateRange}
+        </span>
       </div>
-
-      <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+      <p style={{ fontFamily: 'var(--font-label)', fontSize: '12px', color: '#14B8A6', marginBottom: '0.75rem', marginTop: 0 }}>
+        {data.company}
+      </p>
+      <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
         {data.highlights.map((h, i) => (
-          <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem', fontFamily: 'var(--font-body)', fontSize: '14px', color: 'var(--text-muted)', lineHeight: 1.55 }}>
-            <Plus size={14} color="#14B8A6" style={{ flexShrink: 0, marginTop: '3px' }} />
+          <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--text-muted)', lineHeight: 1.5 }}>
+            <Plus size={12} color="#14B8A6" style={{ flexShrink: 0, marginTop: '3px' }} />
             <span>{h}</span>
           </li>
         ))}
@@ -360,18 +483,35 @@ function MajorHeroCard({ data }: { data: MajorEntryData }) {
   );
 }
 
-function MinorCard({ item }: { item: MinorEntryData }) {
+function MajorImageCard({ src, alt }: { src: string; alt: string }) {
+  return (
+    <div style={{
+      width: '100%',
+      aspectRatio: '16 / 10',
+      borderRadius: '16px',
+      overflow: 'hidden',
+      border: '1px solid var(--border)',
+      background: 'var(--card)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '2rem',
+    }}>
+      <img src={src} alt={alt} style={{ maxHeight: '100%', maxWidth: '100%', objectFit: 'contain', opacity: 0.8 }} />
+    </div>
+  );
+}
+
+function MinorTextCard({ item }: { item: MinorEntryData }) {
   return (
     <div
       style={{
-        padding: '0.85rem 1.1rem',
+        padding: '1rem 1.25rem',
         background: 'var(--card)',
         border: '1px solid var(--border)',
         borderRadius: '14px',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '0.75rem',
-        transition: 'border-color 0.25s ease, box-shadow 0.25s ease',
+        borderLeft: '2px solid rgba(20,184,166,0.4)',
+        transition: 'border-color 0.25s ease',
       }}
       onMouseEnter={e => {
         const el = e.currentTarget as HTMLDivElement;
@@ -382,19 +522,14 @@ function MinorCard({ item }: { item: MinorEntryData }) {
         el.style.borderColor = 'var(--border)';
       }}
     >
-      <div style={{
-        width: '6px', height: '6px', borderRadius: '50%', background: '#14B8A6', flexShrink: 0,
-      }} />
-      <div style={{ overflow: 'hidden' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '11px', fontFamily: 'var(--font-label)', color: '#14B8A6', letterSpacing: '0.05em' }}>
-          <span>{item.type}</span>
-          <span>•</span>
-          <span style={{ color: 'var(--text)' }}>{item.title}</span>
-        </div>
-        <p style={{ fontFamily: 'var(--font-body)', fontSize: '12px', color: 'var(--text-muted)', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-          {item.detail}
-        </p>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '11px', fontFamily: 'var(--font-label)', color: '#14B8A6', letterSpacing: '0.05em', marginBottom: '0.25rem' }}>
+        <span>{item.type}</span>
+        <span>•</span>
+        <span style={{ color: 'var(--text)' }}>{item.title}</span>
       </div>
+      <p style={{ fontFamily: 'var(--font-body)', fontSize: '12px', color: 'var(--text-muted)', margin: 0, lineHeight: 1.5 }}>
+        {item.detail}
+      </p>
     </div>
   );
 }
