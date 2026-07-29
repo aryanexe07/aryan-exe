@@ -1,6 +1,7 @@
 export const config = {
   name: 'Aryan',
   handle: 'ARYAN.EXE',
+  devtoUsername: 'aryan_exe',
   tagline: 'Crafting digital experiences that make an impact.',
   bio: 'Full-stack developer building web apps and AI/ML-driven tools, with clean code and purposeful design.',
   email: 'aryantailor.me@gmail.com',

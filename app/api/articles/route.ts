@@ -14,7 +14,7 @@ export interface DevToArticle {
 }
 
 export async function GET() {
-  const username = config.githubUsername || 'aryanexe07';
+  const username = config.devtoUsername || process.env.DEVTO_USERNAME || 'aryan_exe';
   try {
     const res = await fetch(`https://dev.to/api/articles?username=${username}`, {
       next: { revalidate: 3600 },
