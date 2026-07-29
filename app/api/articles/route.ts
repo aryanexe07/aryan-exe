@@ -11,13 +11,12 @@ export interface DevToArticle {
   reading_time_minutes: number;
   canonical_url: string;
   url: string;
+  tag_list?: string[];
 }
 
 export async function GET() {
   const username = config.devtoUsername || process.env.DEVTO_USERNAME || 'aryan_exe';
   try {
-    // Fetch up to 100 articles per page sorted by published date (descending)
-    // cache: 'no-store' ensures newly published articles show up immediately
     const res = await fetch(`https://dev.to/api/articles?username=${username}&per_page=100&state=all`, {
       cache: 'no-store',
     });
