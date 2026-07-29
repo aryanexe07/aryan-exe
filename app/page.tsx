@@ -6,8 +6,8 @@ import Navbar from '@/components/Navbar';
 import HomeSection from '@/components/sections/HomeSection';
 import AboutSection from '@/components/sections/AboutSection';
 import ProjectsSection from '@/components/sections/ProjectsSection';
-import GithubSection from '@/components/sections/GithubSection';
-import SkillsSection from '@/components/sections/SkillsSection';
+import CareerSection from '@/components/sections/CareerSection';
+import ArticlesSection from '@/components/sections/ArticlesSection';
 import ContactSection from '@/components/sections/ContactSection';
 import { AnimatePresence, motion } from 'framer-motion';
 import { NavSection } from '@/data/config';
@@ -87,10 +87,10 @@ export default function Page() {
                 </motion.div>
               )}
 
-              {/* GITHUB */}
-              {active === 'GITHUB' && (
+              {/* CAREER */}
+              {active === 'CAREER' && (
                 <motion.div
-                  key="GITHUB"
+                  key="CAREER"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
@@ -103,14 +103,14 @@ export default function Page() {
                     transform: 'translateZ(0)',
                   }}
                 >
-                  <GithubSection />
+                  <CareerSection />
                 </motion.div>
               )}
 
-              {/* SKILLS */}
-              {active === 'SKILLS' && (
+              {/* ARTICLES */}
+              {active === 'ARTICLES' && (
                 <motion.div
-                  key="SKILLS"
+                  key="ARTICLES"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
@@ -123,7 +123,7 @@ export default function Page() {
                     transform: 'translateZ(0)',
                   }}
                 >
-                  <SkillsSection />
+                  <ArticlesSection />
                 </motion.div>
               )}
 

@@ -5,7 +5,7 @@ import { GitBranch, Link2, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { NavSection, sectionColors, config } from '@/data/config';
 
-const navItems: NavSection[] = ['HOME', 'ABOUT', 'PROJECTS', 'GITHUB', 'SKILLS', 'CONTACT'];
+const navItems: NavSection[] = ['HOME', 'ABOUT', 'PROJECTS', 'CAREER', 'ARTICLES', 'CONTACT'];
 
 interface Props {
   active: NavSection;

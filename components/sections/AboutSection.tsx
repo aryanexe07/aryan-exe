@@ -3,10 +3,12 @@
 import { motion } from 'framer-motion';
 import SectionWrapper from '@/components/SectionWrapper';
 import ValorantVideoBanner from '@/components/ValorantVideoBanner';
-import { User, GraduationCap, Briefcase, Zap } from 'lucide-react';
+import { User, GraduationCap, Briefcase, Zap, Layers, Shield, BookOpen } from 'lucide-react';
+import { skills } from '@/data/skills';
 
 const cards = [
-  {icon: User,
+  {
+    icon: User,
     title: 'WHO I AM',
     content: 'A developer who treats code as a design material, at the intersection of software and machine learning. I care about the gap between how things work and how they feel — and spend most of my time closing it.',
   },
@@ -25,6 +27,12 @@ const cards = [
     title: 'INTERESTS',
     content: 'Competitive programming, AI/ML experimentation, developer tooling, open-source. When not coding: window shopping, movie/anime nights, and endlessly optimizing my workflow.',
   },
+];
+
+const skillCategories = [
+  { key: 'PRIMARY' as const, label: 'PRIMARY', icon: Layers, desc: 'Daily drivers. Production-proven.' },
+  { key: 'SECONDARY' as const, label: 'SECONDARY', icon: Shield, desc: 'Solid working knowledge.' },
+  { key: 'LEARNING' as const, label: 'LEARNING', icon: BookOpen, desc: 'Actively building depth.' },
 ];
 
 function DiagonalAccent() {
@@ -88,30 +96,30 @@ const cardItem = {
   animate: { opacity: 1, x: 0 },
 };
 
-const itemTransition = { duration: 0.45, ease: 'easeOut' as const };
-
 export default function AboutSection() {
   return (
-    <SectionWrapper section="ABOUT" scrollable={false}>
+    <SectionWrapper section="ABOUT" scrollable={true}>
       <DiagonalAccent />
 
       <div style={{
-        height: '100%',
+        minHeight: '100%',
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        alignItems: 'center',
+        alignItems: 'flex-start',
         position: 'relative',
         zIndex: 2,
-      }} className="md:flex-row flex-col md:justify-between justify-center">
-        {/* Left side content - original layout */}
+        padding: '2.5rem 0',
+      }} className="md:flex-row flex-col md:justify-between justify-start">
+        {/* Left side content */}
         <div style={{
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'center',
+          justifyContent: 'flex-start',
           padding: '0 8rem 0 4rem',
           maxWidth: '1100px',
           flex: '0 1 auto',
+          width: '100%',
         }} className="w-full md:w-auto md:max-w-none max-w-full px-4 md:px-0 md:pl-16 md:pr-32">
           <motion.div variants={container} initial="initial" animate="animate" style={{ willChange: 'transform', transform: 'translateZ(0)' }}>
             {/* Section label */}
@@ -152,7 +160,7 @@ export default function AboutSection() {
               I build products at the intersection of engineering and design.
             </motion.p>
 
-            {/* Cards */}
+            {/* Overview Cards */}
             <motion.div
               variants={container}
               style={{
@@ -162,6 +170,7 @@ export default function AboutSection() {
                 width: '100%',
                 willChange: 'transform',
                 transform: 'translateZ(0)',
+                marginBottom: '3.5rem',
               }}
               className="about-cards-grid"
             >
@@ -231,20 +240,123 @@ export default function AboutSection() {
                 );
               })}
             </motion.div>
+
+            {/* Integrated Skills Section (Restyled to Purple/About Theme) */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.5 }}
+              style={{ width: '100%', marginBottom: '2rem' }}
+            >
+              <div style={{ marginBottom: '1.5rem' }}>
+                <p style={{ fontFamily: 'var(--font-label)', fontSize: '13px', letterSpacing: '0.3em', color: '#8B5CF6', marginBottom: '0.25rem' }}>
+                  TECH LOADOUT
+                </p>
+                <h3 style={{ fontFamily: 'var(--font-hero)', fontSize: 'clamp(28px, 3.5vw, 44px)', color: 'var(--text)', lineHeight: 1 }}>
+                  Skills & <span style={{ color: '#8B5CF6' }}>Technologies</span>
+                </h3>
+              </div>
+
+              <div
+                style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}
+                className="about-skills-cards-grid"
+              >
+                {skillCategories.map((cat, index) => {
+                  const catSkills = skills.filter(s => s.category === cat.key);
+                  const Icon = cat.icon;
+                  const isPrimary = cat.key === 'PRIMARY';
+                  return (
+                    <motion.div
+                      key={cat.key}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.1, duration: 0.45, ease: 'easeOut' }}
+                      whileHover={{ y: -6, scale: 1.02, boxShadow: '0 18px 36px rgba(139,92,246,0.12)' }}
+                      style={{
+                        padding: isPrimary ? '2rem' : '1.25rem',
+                        background: isPrimary ? 'rgba(139,92,246,0.08)' : 'var(--card)',
+                        border: isPrimary ? '2px solid rgba(139,92,246,0.3)' : '1px solid rgba(139,92,246,0.15)',
+                        borderRadius: '20px',
+                        borderTop: isPrimary ? '4px solid #8B5CF6' : '2px solid #8B5CF6',
+                        transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                        gridColumn: isPrimary ? 'span 2' : 'span 1',
+                      }}
+                    >
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: isPrimary ? '1rem' : '0.75rem' }}>
+                        <div style={{
+                          width: isPrimary ? '40px' : '32px',
+                          height: isPrimary ? '40px' : '32px',
+                          display: 'grid', placeItems: 'center',
+                          background: 'rgba(139,92,246,0.15)',
+                          borderRadius: '8px',
+                          border: '1px solid rgba(139,92,246,0.3)',
+                        }}>
+                          <Icon size={isPrimary ? 20 : 16} color="#8B5CF6" />
+                        </div>
+                        <div style={{
+                          display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+                          padding: isPrimary ? '0.6rem 1rem' : '0.5rem 0.85rem',
+                          borderRadius: '8px',
+                          background: 'rgba(139,92,246,0.12)',
+                          border: '1px solid rgba(139,92,246,0.22)',
+                        }}>
+                          <span style={{ fontFamily: 'var(--font-label)', fontSize: isPrimary ? '13px' : '12px', letterSpacing: '0.2em', color: '#8B5CF6', textTransform: 'uppercase' }}>
+                            {cat.label}
+                          </span>
+                        </div>
+                      </div>
+                      <p style={{ fontFamily: 'var(--font-body)', fontSize: isPrimary ? '13px' : '12px', color: 'var(--text-muted)', marginBottom: isPrimary ? '1.5rem' : '1.25rem' }}>
+                        {cat.desc}
+                      </p>
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                        {catSkills.map((skill, i) => (
+                          <motion.span
+                            key={skill.name}
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: i * 0.03 + 0.1 }}
+                            whileHover={{ scale: 1.03, y: -1, backgroundColor: '#8B5CF6', color: '#fff', borderColor: '#8B5CF6' }}
+                            style={{
+                              fontFamily: 'var(--font-label)',
+                              fontSize: isPrimary ? '15px' : '14px',
+                              letterSpacing: '0.06em',
+                              padding: isPrimary ? '0.65rem 1rem' : '0.55rem 0.85rem',
+                              background: 'rgba(139,92,246,0.1)',
+                              border: '1px solid rgba(139,92,246,0.28)',
+                              borderRadius: '6px',
+                              color: 'var(--text)',
+                              cursor: 'pointer',
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              transition: 'all 200ms ease',
+                            }}
+                          >
+                            {skill.name}
+                          </motion.span>
+                        ))}
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </motion.div>
+
           </motion.div>
         </div>
 
-        {/* Right side video banner - flush with navbar */}
+        {/* Right side video banner - sticky/fixed position */}
         <div style={{
-          position: 'absolute',
-          top: 0,
+          position: 'sticky',
+          top: '2.5rem',
           right: 0,
-          bottom: 0,
           paddingRight: '3rem',
           display: 'flex',
           alignItems: 'flex-start',
           justifyContent: 'flex-end',
-          paddingTop: 0,
+          flexShrink: 0,
         }} className="about-banner">
           <ValorantVideoBanner />
         </div>
@@ -253,18 +365,16 @@ export default function AboutSection() {
       <style>{`
         @media (max-width: 1024px) {
           .about-cards-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .about-skills-cards-grid { grid-template-columns: 1fr !important; }
+          .about-skills-cards-grid > div { grid-column: span 1 !important; }
         }
         @media (max-width: 768px) {
           .about-cards-grid { grid-template-columns: 1fr !important; }
+          .about-skills-cards-grid { grid-template-columns: 1fr !important; }
+          .about-skills-cards-grid > div { grid-column: span 1 !important; }
           .about-banner { display: none !important; }
           .md\\:flex-row { flex-direction: column !important; }
           .md\\:justify-between { justify-content: center !important; }
-        }
-        @media (max-width: 768px) {
-          .about-cards-grid {
-            max-height: 60vh !important;
-            overflow-y: auto !important;
-          }
         }
       `}</style>
     </SectionWrapper>

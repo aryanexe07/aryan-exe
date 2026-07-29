@@ -16,13 +16,13 @@ export const config = {
   },
 };
 
-export type NavSection = 'HOME' | 'ABOUT' | 'PROJECTS' | 'GITHUB' | 'SKILLS' | 'CONTACT';
+export type NavSection = 'HOME' | 'ABOUT' | 'PROJECTS' | 'CAREER' | 'ARTICLES' | 'CONTACT';
 
 export const sectionColors: Record<NavSection, string> = {
   HOME: '#4F7DF3',
   ABOUT: '#8B5CF6',
   PROJECTS: '#F97316',
-  GITHUB: '#14B8A6',
-  SKILLS: '#22C55E',
+  CAREER: '#14B8A6',
+  ARTICLES: '#22C55E',
   CONTACT: '#EC4899',
 };
