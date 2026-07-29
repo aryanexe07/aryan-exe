@@ -55,7 +55,13 @@ function FloatingGeometry() {
   }, []);
 
   return (
-    <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
+    <div style={{ 
+      position: 'absolute', 
+      inset: 0, 
+      overflow: 'hidden', 
+      pointerEvents: 'none',
+      clipPath: 'polygon(10% 0, 100% 0, 100% 100%, 0 100%)',
+    }}>
       {/* Full-page background video */}
       <video
         ref={videoRef}
@@ -122,7 +128,7 @@ export default function HomeSection({ onNavigate }: Props) {
           <motion.div variants={fadeUp} style={{ marginBottom: '1.5rem' }}>
             <span style={{
               fontFamily: 'var(--font-label)',
-              fontSize: '13px',
+              fontSize: '16px',
               letterSpacing: '0.25em',
               color: '#4F7DF3',
               display: 'inline-flex',
@@ -142,7 +148,7 @@ export default function HomeSection({ onNavigate }: Props) {
           {/* Hero headline */}
           <motion.h1 variants={fadeUp} style={{
             fontFamily: 'var(--font-hero)',
-            fontSize: 'clamp(52px, 7vw, 96px)',
+            fontSize: 'clamp(54px, 8.5vw, 120px)',
             lineHeight: 1,
             color: 'var(--text)',
             marginBottom: '1.25rem',
@@ -154,8 +160,8 @@ export default function HomeSection({ onNavigate }: Props) {
 
           {/* Tagline */}
           <motion.p variants={fadeUp} style={{
-            fontFamily: 'var(--font-label)',
-            fontSize: 'clamp(18px, 2.5vw, 26px)',
+            fontFamily: 'var(--font-body)',
+            fontSize: '18px',
             letterSpacing: '0.02em',
             color: 'var(--text-muted)',
             marginBottom: '1rem',
@@ -242,7 +248,7 @@ export default function HomeSection({ onNavigate }: Props) {
                 </div>
                 <div style={{
                   fontFamily: 'var(--font-label)',
-                  fontSize: '12px',
+                  fontSize: '16px',
                   letterSpacing: '0.2em',
                   color: 'var(--text-muted)',
                   marginTop: '4px',

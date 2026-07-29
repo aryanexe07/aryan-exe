@@ -35,8 +35,8 @@ export default function Navbar({ active, onNavigate }: Props) {
           <button
             onClick={() => { onNavigate('HOME'); setMobileOpen(false); }}
             style={{
-              fontFamily: 'var(--font-hero)',
-              fontSize: '18px',
+              fontFamily: 'var(--font-label)',
+              fontSize: '16px',
               letterSpacing: '0.05em',
               color: 'var(--text)',
               background: 'none',
@@ -83,7 +83,7 @@ export default function Navbar({ active, onNavigate }: Props) {
                 style={{
                   flex: 1,
                   fontFamily: 'var(--font-label)',
-                  fontSize: '12px',
+                  fontSize: '13px',
                   fontWeight: 700,
                   letterSpacing: '0.15em',
                   background: isActive ? itemColor : 'transparent',
@@ -165,9 +165,9 @@ export default function Navbar({ active, onNavigate }: Props) {
                   display: 'block',
                   width: '100%',
                   textAlign: 'left',
-                  padding: '0.75rem 1rem',
+                   padding: '0.75rem 1rem',
                   fontFamily: 'var(--font-label)',
-                  fontSize: '18px',
+                  fontSize: '15px',
                   letterSpacing: '0.1em',
                   background: 'none',
                   border: 'none',

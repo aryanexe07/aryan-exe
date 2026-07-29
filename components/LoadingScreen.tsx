@@ -69,7 +69,7 @@ export default function LoadingScreen({ onDone }: Props) {
         animate={{ opacity: 1, y: 0 }}
         style={{
           fontFamily: 'var(--font-label)',
-          fontSize: '14px',
+          fontSize: '16px',
           letterSpacing: '0.3em',
           color: 'rgba(255,255,255,0.4)',
         }}
@@ -99,7 +99,7 @@ export default function LoadingScreen({ onDone }: Props) {
         transition={{ duration: 0.5 }}
         style={{
           fontFamily: 'var(--font-hero)',
-          fontSize: 'clamp(40px, 8vw, 80px)',
+          fontSize: 'clamp(54px, 8.5vw, 120px)',
           color: '#FFFFFF',
           letterSpacing: '0.05em',
         }}
@@ -113,7 +113,7 @@ export default function LoadingScreen({ onDone }: Props) {
           animate={{ opacity: 1 }}
           style={{
             fontFamily: 'var(--font-label)',
-            fontSize: '13px',
+            fontSize: '16px',
             letterSpacing: '0.4em',
             color: '#4F7DF3',
           }}

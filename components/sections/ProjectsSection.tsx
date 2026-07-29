@@ -57,12 +57,11 @@ export default function ProjectsSection() {
           transition={{ duration: 0.4 }}
           style={{ marginBottom: '1.5rem' }}
         >
-          <p style={{ fontFamily: 'var(--font-label)', fontSize: '13px', letterSpacing: '0.3em', color: '#F97316', marginBottom: '0.25rem' }}>
+          <p style={{ fontFamily: 'var(--font-label)', fontSize: '14px', letterSpacing: '0.3em', color: '#F97316', marginBottom: '0.25rem' }}>
             PROJECT ARCHIVE
           </p>
-          <h2 style={{ fontFamily: 'var(--font-hero)', fontSize: 'clamp(32px, 4.5vw, 56px)', color: 'var(--text)', lineHeight: 1 }}>
+          <h2 style={{ fontFamily: 'var(--font-hero)', fontSize: 'clamp(38px, 4.5vw, 48px)', color: 'var(--text)', lineHeight: 1 }}>
             Things I&apos;ve <span style={{ color: '#F97316' }}>built.</span>
-
           </h2>
         </motion.div>
 
@@ -79,7 +78,7 @@ export default function ProjectsSection() {
               onClick={() => setFilter(cat)}
               style={{
                 fontFamily: 'var(--font-label)',
-                fontSize: '13px',
+                fontSize: '12px',
                 letterSpacing: '0.15em',
                 padding: '0.4rem 1rem',
                 background: filter === cat ? '#F97316' : 'transparent',
@@ -132,7 +131,7 @@ export default function ProjectsSection() {
               >
                 {/* ID / category */}
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem', alignItems: 'center' }}>
-                  <span style={{ fontFamily: 'var(--font-hero)', fontSize: '12px', color: 'rgba(249,115,22,0.4)' }}>
+                  <span style={{ fontFamily: 'var(--font-label)', fontSize: '12px', color: 'rgba(249,115,22,0.4)', fontWeight: 'bold' }}>
                     {project.id}
                   </span>
                   <span style={{
@@ -148,7 +147,7 @@ export default function ProjectsSection() {
                   </span>
                 </div>
 
-                <h3 style={{ fontFamily: 'var(--font-label)', fontSize: '20px', letterSpacing: '0.05em', color: 'var(--text)', marginBottom: '0.5rem' }}>
+                <h3 style={{ fontFamily: 'var(--font-hero)', fontSize: '18px', letterSpacing: '0.05em', color: 'var(--text)', marginBottom: '0.5rem' }}>
                   {project.name}
                 </h3>
                 <p style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--text-muted)', lineHeight: 1.6, marginBottom: '1.25rem' }}>
@@ -159,7 +158,7 @@ export default function ProjectsSection() {
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem', marginBottom: '1.25rem' }}>
                   {project.techStack.map(tech => (
                     <span key={tech} style={{
-                      fontFamily: 'var(--font-body)',
+                      fontFamily: 'var(--font-label)',
                       fontSize: '11px',
                       padding: '2px 8px',
                       background: 'rgba(17,17,17,0.05)',
@@ -179,10 +178,10 @@ export default function ProjectsSection() {
                     { icon: Zap, label: 'PERF', value: project.performance },
                   ].map(m => (
                     <div key={m.label} style={{ flex: 1 }}>
-                      <div style={{ fontFamily: 'var(--font-label)', fontSize: '10px', letterSpacing: '0.15em', color: 'var(--text-muted)', marginBottom: '2px' }}>
+                      <div style={{ fontFamily: 'var(--font-body)', fontSize: '10px', letterSpacing: '0.15em', color: 'var(--text-muted)', marginBottom: '2px' }}>
                         {m.label}
                       </div>
-                      <div style={{ fontFamily: 'var(--font-label)', fontSize: '14px', color: 'var(--text)' }}>
+                      <div style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--text)' }}>
                         {m.value}
                       </div>
                     </div>

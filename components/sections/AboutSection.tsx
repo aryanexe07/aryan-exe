@@ -7,6 +7,7 @@ import { Layers, Shield, BookOpen } from 'lucide-react';
 import { skills } from '@/data/skills';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import ValorantVideoBanner from '@/components/ValorantVideoBanner';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -61,31 +62,24 @@ export default function AboutSection() {
 
     // Find the enclosing scrollable div
     const scrollContainer = bioLeftRef.current.closest('.scroll-area') || window;
-    const words = bioLeftRef.current.querySelectorAll('.bio-word');
 
     const ctx = gsap.context(() => {
-      // Continuous word-by-word reveal across the left column text
-      gsap.fromTo(
-        words,
-        { color: 'rgba(255, 255, 255, 0.25)' },
-        {
-          color: '#FFFFFF',
-          stagger: 0.05,
-          scrollTrigger: {
-            trigger: bioContainerRef.current,
-            scroller: scrollContainer,
-            start: 'top 55%',
-            end: 'bottom 45%',
-            scrub: true,
-          },
-        }
-      );
+      // Smooth diagonal gradient sweep reveal synced to scrub
+      gsap.to(bioLeftRef.current, {
+        backgroundPosition: '0% 0%',
+        ease: 'none',
+        scrollTrigger: {
+          trigger: bioContainerRef.current,
+          scroller: scrollContainer,
+          start: 'top 55%',
+          end: 'bottom 45%',
+          scrub: true,
+        },
+      });
     }, bioContainerRef);
 
     return () => ctx.revert();
   }, []);
-
-  const leftWords = leftText.split(' ');
 
   return (
     <SectionWrapper section="ABOUT" scrollable={true}>
@@ -104,10 +98,10 @@ export default function AboutSection() {
         }} className="flex-col md:flex-row px-4 md:px-16 gap-12">
           
           {/* Static Heading Badge Group */}
-          <div style={{ flex: '1 1 auto', maxWidth: '650px' }}>
+          <div style={{ flex: '1 1 auto', maxWidth: '650px' }} className="pr-0 lg:pr-[360px]">
             <p style={{
               fontFamily: 'var(--font-label)',
-              fontSize: '13px',
+              fontSize: '16px',
               letterSpacing: '0.3em',
               color: '#8B5CF6',
               marginBottom: '0.75rem',
@@ -117,9 +111,9 @@ export default function AboutSection() {
             </p>
             <h2 style={{
               fontFamily: 'var(--font-hero)',
-              fontSize: 'clamp(36px, 5vw, 64px)',
+              fontSize: 'clamp(54px, 8.5vw, 120px)',
               color: 'var(--text)',
-              lineHeight: 1.1,
+              lineHeight: 1,
               margin: 0,
             }}>
               The person behind <br />
@@ -134,51 +128,6 @@ export default function AboutSection() {
             }}>
               Developing at the intersection of robust backend systems, performant frontend user experiences, and applied machine learning.
             </p>
-          </div>
-
-          {/* Right Static Badge/Photo Card */}
-          <div style={{
-            width: '280px',
-            height: '380px',
-            background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(10, 13, 20, 0.8) 100%)',
-            border: '1px solid rgba(139, 92, 246, 0.3)',
-            borderRadius: '24px',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'flex-end',
-            padding: '2rem',
-            position: 'relative',
-            overflow: 'hidden',
-            boxShadow: '0 20px 40px rgba(10, 13, 20, 0.5), inset 0 0 20px rgba(139, 92, 246, 0.1)',
-          }} className="flex-shrink-0">
-            {/* Cyberpunk grid overlay lines inside card */}
-            <div style={{
-              position: 'absolute',
-              inset: 0,
-              backgroundImage: 'linear-gradient(rgba(139, 92, 246, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(139, 92, 246, 0.05) 1px, transparent 1px)',
-              backgroundSize: '20px 20px',
-              pointerEvents: 'none',
-            }} />
-            <div style={{ position: 'relative', zIndex: 2 }}>
-              <div style={{
-                fontFamily: 'var(--font-hero)',
-                fontSize: '28px',
-                color: '#FFFFFF',
-                lineHeight: 1.1,
-                marginBottom: '0.5rem',
-              }}>
-                ARYAN
-              </div>
-              <div style={{
-                fontFamily: 'var(--font-label)',
-                fontSize: '11px',
-                color: '#8B5CF6',
-                letterSpacing: '0.15em',
-                fontWeight: 700,
-              }}>
-                SOFTWARE ENGINEER // SYSTEMS
-              </div>
-            </div>
           </div>
         </div>
 
@@ -199,31 +148,29 @@ export default function AboutSection() {
           className="flex-col md:flex-row px-4 md:px-16"
         >
           {/* Left Column: Animating Scroll-Scrubbed Text Reveal */}
-          <div style={{ flex: 1.2 }}>
+          <div style={{ flex: 1.2 }} className="pr-0 lg:pr-[300px]">
             <p
               ref={bioLeftRef}
               style={{
                 fontFamily: 'var(--font-hero)',
-                fontSize: 'clamp(24px, 3.5vw, 42px)',
-                lineHeight: 1.4,
+                fontSize: 'clamp(32px, 4.5vw, 60px)',
+                lineHeight: 1.15,
                 margin: 0,
-                color: 'rgba(255, 255, 255, 0.25)',
                 fontWeight: 'bold',
+                textTransform: 'uppercase',
+                backgroundImage: 'linear-gradient(135deg, #ffffff 50%, rgba(255, 255, 255, 0.05) 50%)',
+                backgroundSize: '250% 250%',
+                backgroundPosition: '100% 100%',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
               }}
             >
-              {leftWords.map((word, wIdx) => (
-                <span
-                  key={wIdx}
-                  className="bio-word"
-                  style={{
-                    display: 'inline-block',
-                    marginRight: '0.5rem',
-                    transition: 'color 0.1s ease',
-                  }}
-                >
-                  {word}
-                </span>
-              ))}
+              SINCE 2023,<br />
+              MY WORK HAS CHANGED RADICALLY.<br />
+              I REALIZED WHAT BUILDING REAL SOFTWARE ACTUALLY TAKES.<br />
+              MOVING FAST,<br />
+              BREAKING PARADIGMS,<br />
+              AND TREATING CODE AS A DESIGN MATERIAL.
             </p>
           </div>
 
@@ -231,7 +178,7 @@ export default function AboutSection() {
           <div style={{ flex: 1 }}>
             <div style={{
               fontFamily: 'var(--font-label)',
-              fontSize: '12px',
+              fontSize: '16px',
               color: '#8B5CF6',
               letterSpacing: '0.2em',
               fontWeight: 700,
@@ -259,10 +206,10 @@ export default function AboutSection() {
           borderTop: '1px solid rgba(139, 92, 246, 0.1)',
         }} className="px-4 md:px-16">
           <div style={{ marginBottom: '3rem' }}>
-            <p style={{ fontFamily: 'var(--font-label)', fontSize: '13px', letterSpacing: '0.3em', color: '#8B5CF6', marginBottom: '0.5rem' }}>
+            <p style={{ fontFamily: 'var(--font-label)', fontSize: '16px', letterSpacing: '0.3em', color: '#8B5CF6', marginBottom: '0.5rem' }}>
               TECH LOADOUT
             </p>
-            <h3 style={{ fontFamily: 'var(--font-hero)', fontSize: 'clamp(28px, 3.5vw, 44px)', color: 'var(--text)', lineHeight: 1 }}>
+            <h3 style={{ fontFamily: 'var(--font-hero)', fontSize: 'clamp(36px, 4.5vw, 48px)', color: 'var(--text)', lineHeight: 1 }}>
               Skills & <span style={{ color: '#8B5CF6' }}>Technologies</span>
             </h3>
           </div>
@@ -310,7 +257,7 @@ export default function AboutSection() {
                     }}>
                       <Icon size={18} color="#8B5CF6" />
                     </div>
-                    <span style={{ fontFamily: 'var(--font-label)', fontSize: '13px', letterSpacing: '0.15em', color: '#8B5CF6', fontWeight: 700 }}>
+                    <span style={{ fontFamily: 'var(--font-label)', fontSize: '14px', letterSpacing: '0.15em', color: '#8B5CF6', fontWeight: 700 }}>
                       {cat.label}
                     </span>
                   </div>
@@ -345,6 +292,17 @@ export default function AboutSection() {
           </div>
         </div>
 
+      </div>
+
+      {/* Fixed/static banner aligned to the top right of the section */}
+      <div style={{
+        position: 'absolute',
+        right: 0,
+        top: 0,
+        zIndex: 10,
+        pointerEvents: 'none',
+      }} className="hidden lg:block">
+        <ValorantVideoBanner />
       </div>
     </SectionWrapper>
   );

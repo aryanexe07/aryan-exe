@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Teko:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 
@@ -16,10 +15,6 @@
   --github: #14B8A6;
   --skills: #22C55E;
   --contact: #EC4899;
-
-  --font-hero: 'Anton', sans-serif;
-  --font-label: 'Teko', sans-serif;
-  --font-body: 'Inter', sans-serif;
 }
 
 

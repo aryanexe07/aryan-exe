@@ -171,10 +171,10 @@ export default function CareerSection() {
       >
         {/* Header */}
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} style={{ marginBottom: '3.5rem' }}>
-          <p style={{ fontFamily: 'var(--font-label)', fontSize: '13px', letterSpacing: '0.3em', color: '#14B8A6' }}>
+          <p style={{ fontFamily: 'var(--font-label)', fontSize: '16px', letterSpacing: '0.3em', color: '#14B8A6' }}>
             CAREER JOURNEY
           </p>
-          <h2 style={{ fontFamily: 'var(--font-hero)', fontSize: 'clamp(28px, 4vw, 48px)', color: 'var(--text)', lineHeight: 1 }}>
+          <h2 style={{ fontFamily: 'var(--font-hero)', fontSize: 'clamp(48px, 5.5vw, 64px)', color: 'var(--text)', lineHeight: 1 }}>
             Timeline & <span style={{ color: '#14B8A6' }}>Milestones</span>
           </h2>
         </motion.div>
@@ -400,8 +400,8 @@ export default function CareerSection() {
                 background: 'rgba(20, 184, 166, 0.08)',
                 border: '1px solid rgba(20, 184, 166, 0.2)',
                 color: 'var(--text)',
-                fontFamily: 'var(--font-body)',
-                fontSize: '13px',
+                fontFamily: 'var(--font-label)',
+                fontSize: '14px',
                 zIndex: 2,
               }}>
                 <GraduationCap size={16} color="#14B8A6" />
@@ -457,23 +457,23 @@ function MajorTextCard({ data }: { data: MajorEntryData }) {
       }}
     >
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem', flexWrap: 'wrap', gap: '0.5rem' }}>
-        <h3 style={{ fontFamily: 'var(--font-hero)', fontSize: '18px', color: 'var(--text)', margin: 0 }}>
+        <h3 style={{ fontFamily: 'var(--font-hero)', fontSize: '20px', color: 'var(--text)', margin: 0 }}>
           {data.role}
         </h3>
         <span style={{
-          fontFamily: 'var(--font-label)', fontSize: '11px', letterSpacing: '0.1em',
+          fontFamily: 'var(--font-label)', fontSize: '14px', letterSpacing: '0.1em',
           padding: '0.2rem 0.5rem', borderRadius: '10px',
           background: 'rgba(20,184,166,0.1)', color: '#14B8A6',
         }}>
           {data.dateRange}
         </span>
       </div>
-      <p style={{ fontFamily: 'var(--font-label)', fontSize: '12px', color: '#14B8A6', marginBottom: '0.75rem', marginTop: 0 }}>
+      <p style={{ fontFamily: 'var(--font-label)', fontSize: '14px', color: '#14B8A6', marginBottom: '0.75rem', marginTop: 0 }}>
         {data.company}
       </p>
       <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
         {data.highlights.map((h, i) => (
-          <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--text-muted)', lineHeight: 1.5 }}>
+          <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontFamily: 'var(--font-body)', fontSize: '14px', color: 'var(--text-muted)', lineHeight: 1.5 }}>
             <Plus size={12} color="#14B8A6" style={{ flexShrink: 0, marginTop: '3px' }} />
             <span>{h}</span>
           </li>
@@ -522,12 +522,12 @@ function MinorTextCard({ item }: { item: MinorEntryData }) {
         el.style.borderColor = 'var(--border)';
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '11px', fontFamily: 'var(--font-label)', color: '#14B8A6', letterSpacing: '0.05em', marginBottom: '0.25rem' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '14px', fontFamily: 'var(--font-label)', color: '#14B8A6', letterSpacing: '0.05em', marginBottom: '0.25rem' }}>
         <span>{item.type}</span>
         <span>•</span>
         <span style={{ color: 'var(--text)' }}>{item.title}</span>
       </div>
-      <p style={{ fontFamily: 'var(--font-body)', fontSize: '12px', color: 'var(--text-muted)', margin: 0, lineHeight: 1.5 }}>
+      <p style={{ fontFamily: 'var(--font-body)', fontSize: '14px', color: 'var(--text-muted)', margin: 0, lineHeight: 1.5 }}>
         {item.detail}
       </p>
     </div>

@@ -122,11 +122,11 @@ export default function ContactSection() {
         >
           {/* Left */}
           <div>
-            <motion.p variants={item} style={{ fontFamily: 'var(--font-label)', fontSize: '13px', letterSpacing: '0.3em', color: '#EC4899', marginBottom: '0.25rem' }}>
+            <motion.p variants={item} style={{ fontFamily: 'var(--font-label)', fontSize: '16px', letterSpacing: '0.3em', color: '#EC4899', marginBottom: '0.25rem' }}>
               COMMS TERMINAL
             </motion.p>
-            <motion.h2 variants={item} style={{ fontFamily: 'var(--font-hero)', fontSize: 'clamp(32px, 4.5vw, 56px)', color: 'var(--text)', lineHeight: 1, marginBottom: '1rem' }}>
-              Let's <span style={{ color: '#EC4899' }}>build</span><br />something.
+            <motion.h2 variants={item} style={{ fontFamily: 'var(--font-hero)', fontSize: 'clamp(48px, 5.5vw, 64px)', color: 'var(--text)', lineHeight: 1, marginBottom: '1rem' }}>
+              Let&apos;s <span style={{ color: '#EC4899' }}>build</span><br />something.
             </motion.h2>
             <motion.p variants={item} style={{ fontFamily: 'var(--font-body)', fontSize: '15px', color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: '2rem' }}>
               Open to full-time roles, freelance projects, and interesting collaborations. If you have something worth building, let's talk.
@@ -149,7 +149,7 @@ export default function ContactSection() {
                 >
                   <Icon size={16} color="#EC4899" />
                   <div>
-                    <div style={{ fontFamily: 'var(--font-label)', fontSize: '11px', letterSpacing: '0.2em', color: 'var(--text-muted)' }}>{label}</div>
+                    <div style={{ fontFamily: 'var(--font-body)', fontSize: '14px', letterSpacing: '0.2em', color: 'var(--text-muted)' }}>{label}</div>
                     <div style={{ fontFamily: 'var(--font-body)', fontSize: '14px', color: 'var(--text)' }}>{value}</div>
                   </div>
                 </a>
@@ -164,7 +164,7 @@ export default function ContactSection() {
             style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
           >
             <div>
-              <label style={{ fontFamily: 'var(--font-label)', fontSize: '12px', letterSpacing: '0.2em', color: 'var(--text-muted)', display: 'block', marginBottom: '0.35rem' }}>
+              <label style={{ fontFamily: 'var(--font-body)', fontSize: '14px', letterSpacing: '0.2em', color: 'var(--text-muted)', display: 'block', marginBottom: '0.35rem' }}>
                 NAME
               </label>
               <input
@@ -179,7 +179,7 @@ export default function ContactSection() {
               />
             </div>
             <div>
-              <label style={{ fontFamily: 'var(--font-label)', fontSize: '12px', letterSpacing: '0.2em', color: 'var(--text-muted)', display: 'block', marginBottom: '0.35rem' }}>
+              <label style={{ fontFamily: 'var(--font-body)', fontSize: '14px', letterSpacing: '0.2em', color: 'var(--text-muted)', display: 'block', marginBottom: '0.35rem' }}>
                 EMAIL
               </label>
               <input
@@ -194,7 +194,7 @@ export default function ContactSection() {
               />
             </div>
             <div>
-              <label style={{ fontFamily: 'var(--font-label)', fontSize: '12px', letterSpacing: '0.2em', color: 'var(--text-muted)', display: 'block', marginBottom: '0.35rem' }}>
+              <label style={{ fontFamily: 'var(--font-body)', fontSize: '14px', letterSpacing: '0.2em', color: 'var(--text-muted)', display: 'block', marginBottom: '0.35rem' }}>
                 MESSAGE
               </label>
               <textarea
@@ -211,11 +211,11 @@ export default function ContactSection() {
             </div>
 
             {status === 'success' ? (
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#22C55E', fontFamily: 'var(--font-label)', letterSpacing: '0.1em', fontSize: '14px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#22C55E', fontFamily: 'var(--font-body)', letterSpacing: '0.1em', fontSize: '14px' }}>
                 <CheckCircle size={16} /> MESSAGE SENT — I&apos;ll be in touch.
               </div>
             ) : status === 'error' ? (
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#F97316', fontFamily: 'var(--font-label)', letterSpacing: '0.1em', fontSize: '14px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#F97316', fontFamily: 'var(--font-body)', letterSpacing: '0.1em', fontSize: '14px' }}>
                 <AlertCircle size={16} /> Something went wrong. Try emailing me directly.
               </div>
             ) : (
@@ -224,7 +224,7 @@ export default function ContactSection() {
                 type="submit"
                 disabled={status === 'sending'}
                 style={{
-                  fontFamily: 'var(--font-label)',
+                  fontFamily: 'var(--font-body)',
                   fontSize: '14px',
                   letterSpacing: '0.2em',
                   padding: '0.75rem 1.5rem',

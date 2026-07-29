@@ -87,10 +87,10 @@ export default function ArticlesSection() {
       }} className="px-4 md:pl-16 md:pr-32">
         {/* Header */}
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} style={{ marginBottom: '2rem' }}>
-          <p style={{ fontFamily: 'var(--font-label)', fontSize: '13px', letterSpacing: '0.3em', color: '#22C55E' }}>
+          <p style={{ fontFamily: 'var(--font-label)', fontSize: '16px', letterSpacing: '0.3em', color: '#22C55E' }}>
             PUBLICATIONS
           </p>
-          <h2 style={{ fontFamily: 'var(--font-hero)', fontSize: 'clamp(28px, 4vw, 48px)', color: 'var(--text)', lineHeight: 1 }}>
+          <h2 style={{ fontFamily: 'var(--font-hero)', fontSize: 'clamp(48px, 5.5vw, 64px)', color: 'var(--text)', lineHeight: 1 }}>
             Articles & <span style={{ color: '#22C55E' }}>Writing</span>
           </h2>
         </motion.div>
@@ -188,7 +188,7 @@ export default function ArticlesSection() {
                   </div>
 
                   <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', flex: 1, gap: '0.75rem' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', color: 'var(--text-muted)', fontSize: '12px', fontFamily: 'var(--font-body)' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', color: 'var(--text-muted)', fontSize: '14px', fontFamily: 'var(--font-body)' }}>
                       <span style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
                         <Calendar size={13} color="#22C55E" />
                         {formattedDate}
@@ -207,7 +207,7 @@ export default function ArticlesSection() {
                             key={t}
                             style={{
                               fontFamily: 'var(--font-label)',
-                              fontSize: '11px',
+                              fontSize: '14px',
                               letterSpacing: '0.05em',
                               padding: '0.25rem 0.6rem',
                               borderRadius: '6px',
@@ -229,7 +229,7 @@ export default function ArticlesSection() {
 
                     <h3 style={{
                       fontFamily: 'var(--font-hero)',
-                      fontSize: '18px',
+                      fontSize: '20px',
                       color: 'var(--text)',
                       lineHeight: 1.3,
                       display: 'flex',
@@ -244,7 +244,7 @@ export default function ArticlesSection() {
                     {/* Clamped Excerpt (2 lines max) */}
                     <p style={{
                       fontFamily: 'var(--font-body)',
-                      fontSize: '13px',
+                      fontSize: '14px',
                       color: 'var(--text-muted)',
                       lineHeight: 1.6,
                       display: '-webkit-box',

@@ -70,8 +70,8 @@ export default function ValorantVideoBanner() {
           }}
         >
           <div style={{
-            fontFamily: 'var(--font-label)',
-            fontSize: '24px',
+            fontFamily: 'var(--font-hero)',
+            fontSize: '20px',
             fontWeight: 700,
             letterSpacing: '0.1em',
             color: '#FFFFFF',
@@ -81,8 +81,8 @@ export default function ValorantVideoBanner() {
             ARYAN
           </div>
           <div style={{
-            fontFamily: 'var(--font-label)',
-            fontSize: '11px',
+            fontFamily: 'var(--font-body)',
+            fontSize: '14px',
             letterSpacing: '0.15em',
             color: '#8B5CF6',
             lineHeight: 1,
