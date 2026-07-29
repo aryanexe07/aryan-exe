@@ -15,7 +15,7 @@ Edit **`data/config.ts`** first:
 
 ```ts
 export const config = {
-  name: 'Aryan',
+  name: 'NAME',
   githubUsername: 'YOUR_GITHUB_USERNAME',  // ← GitHub API uses this
   email: 'your@email.com',
   githubUrl: 'https://github.com/YOUR_USERNAME',

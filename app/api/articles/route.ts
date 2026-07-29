@@ -16,8 +16,10 @@ export interface DevToArticle {
 export async function GET() {
   const username = config.devtoUsername || process.env.DEVTO_USERNAME || 'aryan_exe';
   try {
-    const res = await fetch(`https://dev.to/api/articles?username=${username}`, {
-      next: { revalidate: 3600 },
+    // Fetch up to 100 articles per page sorted by published date (descending)
+    // cache: 'no-store' ensures newly published articles show up immediately
+    const res = await fetch(`https://dev.to/api/articles?username=${username}&per_page=100&state=all`, {
+      cache: 'no-store',
     });
 
     if (!res.ok) {
