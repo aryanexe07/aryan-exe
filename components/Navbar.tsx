@@ -21,9 +21,8 @@ export default function Navbar({ active, onNavigate }: Props) {
         height: '60px',
         borderBottom: '1px solid var(--border)',
         display: 'flex',
-        alignItems: 'center',
-        padding: '0 2rem',
-        gap: '1.5rem',
+        alignItems: 'stretch',
+        padding: 0,
         background: 'var(--bg)',
         position: 'relative',
         zIndex: 100,
@@ -31,18 +30,32 @@ export default function Navbar({ active, onNavigate }: Props) {
         transition: 'background-color 300ms ease, border-color 300ms ease',
       }}>
         {/* Left — Brand */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flex: '0 0 auto' }}>
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          height: '100%',
+          padding: '0 1.75rem',
+          background: 'none',
+          flex: '0 0 auto',
+        }}>
           <button
             onClick={() => { onNavigate('HOME'); setMobileOpen(false); }}
             style={{
-              fontFamily: 'var(--font-label)',
-              fontSize: '16px',
-              letterSpacing: '0.05em',
-              color: 'var(--text)',
+              fontFamily: 'var(--font-hero)',
+              fontSize: '20px',
+              fontWeight: 400,
+              letterSpacing: '0.04em',
+              color: '#FFFFFF',
               background: 'none',
               border: 'none',
               cursor: 'pointer',
-              transition: 'color 300ms ease',
+              lineHeight: 1,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              transition: 'opacity 200ms ease',
+              textTransform: 'uppercase',
             }}
           >
             ARYAN.EXE
@@ -64,6 +77,7 @@ export default function Navbar({ active, onNavigate }: Props) {
               justifyContent: 'center',
               cursor: 'pointer',
               color: 'var(--text-muted)',
+              marginLeft: '1rem',
             }}
             aria-label="Toggle navigation menu"
           >
@@ -119,8 +133,15 @@ export default function Navbar({ active, onNavigate }: Props) {
           })}
         </div>
 
-        {/* Right — Social Icons + Theme Toggle */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flex: '0 0 auto', minWidth: 'fit-content' }}>
+        {/* Right — Social Icons */}
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '1rem',
+          padding: '0 1.5rem',
+          height: '100%',
+          flex: '0 0 auto',
+        }}>
           <a href={config.githubUrl} target="_blank" rel="noopener noreferrer"
             style={{ color: 'var(--text-muted)', display: 'flex', transition: 'color 300ms ease' }}
             onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
@@ -165,7 +186,7 @@ export default function Navbar({ active, onNavigate }: Props) {
                   display: 'block',
                   width: '100%',
                   textAlign: 'left',
-                   padding: '0.75rem 1rem',
+                  padding: '0.75rem 1rem',
                   fontFamily: 'var(--font-label)',
                   fontSize: '15px',
                   letterSpacing: '0.1em',

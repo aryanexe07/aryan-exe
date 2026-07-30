@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Anton, Teko, Inter } from 'next/font/google';
+import { Anton, Teko, Inter, Lora } from 'next/font/google';
 import './globals.css';
 
 const anton = Anton({
@@ -19,6 +19,12 @@ const inter = Inter({
   variable: '--font-body',
 });
 
+const lora = Lora({
+  subsets: ['latin'],
+  variable: '--font-serif',
+  style: ['normal', 'italic'],
+});
+
 export const metadata: Metadata = {
   title: 'ARYAN.EXE — Developer Portfolio',
   description: 'Aryan — Full-stack developer building fast, accessible, and delightful web experiences.',
@@ -26,11 +32,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${anton.variable} ${teko.variable} ${inter.variable}`}>
+    <html lang="en" className={`${anton.variable} ${teko.variable} ${inter.variable} ${lora.variable}`}>
       <body>
         {children}
       </body>
     </html>
   );
 }
-

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import SectionWrapper from '@/components/SectionWrapper';
 import { Calendar, Plus, Briefcase, GraduationCap } from 'lucide-react';
 import gsap from 'gsap';
@@ -224,7 +225,7 @@ export default function CareerSection() {
 
           {/* Timeline Nodes (Alternating Present -> Past) */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
-            
+
             {/* 1. MAJOR ENTRY: TREZIX (Left Content, Right Image) */}
             <div style={{
               display: 'flex',
@@ -486,6 +487,7 @@ function MajorTextCard({ data }: { data: MajorEntryData }) {
 function MajorImageCard({ src, alt }: { src: string; alt: string }) {
   return (
     <div style={{
+      position: 'relative',
       width: '100%',
       aspectRatio: '16 / 10',
       borderRadius: '16px',
@@ -497,7 +499,7 @@ function MajorImageCard({ src, alt }: { src: string; alt: string }) {
       justifyContent: 'center',
       padding: '2rem',
     }}>
-      <img src={src} alt={alt} style={{ maxHeight: '100%', maxWidth: '100%', objectFit: 'contain', opacity: 0.8 }} />
+      <Image src={src} alt={alt} width={320} height={200} unoptimized style={{ maxHeight: '100%', maxWidth: '100%', objectFit: 'contain', opacity: 0.8 }} />
     </div>
   );
 }

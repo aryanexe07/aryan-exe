@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import SectionWrapper from '@/components/SectionWrapper';
 import { Clock, Calendar, ExternalLink, BookOpen, Tag } from 'lucide-react';
 import { DevToArticle } from '@/app/api/articles/route';
@@ -175,10 +176,13 @@ export default function ArticlesSection() {
                   {/* Fixed 16:9 Aspect Ratio Container */}
                   <div style={{ width: '100%', aspectRatio: '16 / 9', overflow: 'hidden', background: '#0a0d14', position: 'relative' }}>
                     {image ? (
-                      <img
+                      <Image
                         src={image}
                         alt={article.title}
-                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                        fill
+                        unoptimized
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        style={{ objectFit: 'cover' }}
                       />
                     ) : (
                       <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(34, 197, 94, 0.05)' }}>

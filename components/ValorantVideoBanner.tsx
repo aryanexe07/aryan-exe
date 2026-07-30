@@ -1,4 +1,4 @@
-'use client';
+import Image from 'next/image';
 
 export default function ValorantVideoBanner() {
   // Valorant-style asymmetrical triangular clip-path polygon
@@ -27,18 +27,15 @@ export default function ValorantVideoBanner() {
         }}
       >
         {/* Static image */}
-        <img
+        <Image
           src="/about-bg.jpg"
-          alt=""
+          alt="About background"
+          fill
+          priority
+          sizes="(max-width: 1200px) 20vw, 340px"
           style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
             objectFit: 'cover',
             objectPosition: 'center',
-            display: 'block',
           }}
         />
 
@@ -72,7 +69,7 @@ export default function ValorantVideoBanner() {
           <div style={{
             fontFamily: 'var(--font-hero)',
             fontSize: '20px',
-            fontWeight: 700,
+            fontWeight: 400,
             letterSpacing: '0.1em',
             color: '#FFFFFF',
             lineHeight: 1,
@@ -81,8 +78,8 @@ export default function ValorantVideoBanner() {
             ARYAN
           </div>
           <div style={{
-            fontFamily: 'var(--font-body)',
-            fontSize: '14px',
+            fontFamily: 'var(--font-label)',
+            fontSize: '15px',
             letterSpacing: '0.15em',
             color: '#8B5CF6',
             lineHeight: 1,

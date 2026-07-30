@@ -6,18 +6,18 @@ import SectionWrapper from '@/components/SectionWrapper';
 import { config } from '@/data/config';
 import { Mail, GitBranch, Link2, FileText, Send, CheckCircle, AlertCircle } from 'lucide-react';
 
+import Image from 'next/image';
+
 function PinkPanel() {
   return (
     <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
       {/* Background image */}
-      <img
+      <Image
         src="/contact.jpg"
-        alt=""
+        alt="Contact background"
+        fill
+        sizes="100vw"
         style={{
-          position: 'absolute',
-          inset: 0,
-          width: '100%',
-          height: '100%',
           objectFit: 'cover',
           opacity: 0.35,
           pointerEvents: 'none',

@@ -57,7 +57,7 @@ export default function ProjectsSection() {
           transition={{ duration: 0.4 }}
           style={{ marginBottom: '1.5rem' }}
         >
-          <p style={{ fontFamily: 'var(--font-label)', fontSize: '14px', letterSpacing: '0.3em', color: '#F97316', marginBottom: '0.25rem' }}>
+          <p style={{ fontFamily: 'var(--font-label)', fontSize: '16px', letterSpacing: '0.25em', color: '#F97316', marginBottom: '0.25rem' }}>
             PROJECT ARCHIVE
           </p>
           <h2 style={{ fontFamily: 'var(--font-hero)', fontSize: 'clamp(38px, 4.5vw, 48px)', color: 'var(--text)', lineHeight: 1 }}>
@@ -159,11 +159,13 @@ export default function ProjectsSection() {
                   {project.techStack.map(tech => (
                     <span key={tech} style={{
                       fontFamily: 'var(--font-label)',
-                      fontSize: '11px',
-                      padding: '2px 8px',
-                      background: 'rgba(17,17,17,0.05)',
-                      borderRadius: '2px',
-                      color: 'var(--text-muted)',
+                      fontSize: '13px',
+                      letterSpacing: '0.05em',
+                      padding: '3px 9px',
+                      background: 'rgba(249,115,22,0.08)',
+                      border: '1px solid rgba(249,115,22,0.15)',
+                      borderRadius: '4px',
+                      color: 'rgba(255,255,255,0.9)',
                     }}>
                       {tech}
                     </span>
@@ -178,10 +180,10 @@ export default function ProjectsSection() {
                     { icon: Zap, label: 'PERF', value: project.performance },
                   ].map(m => (
                     <div key={m.label} style={{ flex: 1 }}>
-                      <div style={{ fontFamily: 'var(--font-body)', fontSize: '10px', letterSpacing: '0.15em', color: 'var(--text-muted)', marginBottom: '2px' }}>
+                      <div style={{ fontFamily: 'var(--font-label)', fontSize: '12px', letterSpacing: '0.15em', color: '#F97316', marginBottom: '2px' }}>
                         {m.label}
                       </div>
-                      <div style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--text)' }}>
+                      <div style={{ fontFamily: 'var(--font-label)', fontSize: '15px', letterSpacing: '0.05em', color: 'var(--text)' }}>
                         {m.value}
                       </div>
                     </div>
