@@ -40,21 +40,22 @@ const trezixEntry: MajorEntryData = {
 };
 
 const clubLeadershipEntry: MajorEntryData = {
-  company: 'FOSS Club & Techspace',
-  logo: 'https://ui-avatars.com/api/?name=Campus+Clubs&background=14B8A6&color=fff&size=80',
-  role: 'Docs Lead & Mentor Lead',
+  company: 'Techspace & FOSS Club',
+  logo: 'https://ui-avatars.com/api/?name=Techspace+FOSS&background=14B8A6&color=fff&size=80',
+  role: 'Mentor & Lead (Techspace) · Docs Lead (FOSS)',
   dateRange: '2024 – Present',
   highlights: [
-    'Docs Lead @ FOSS Club: Leading open-source documentation standards, repo maintenance, and contributor onboarding',
-    'Mentor Lead @ Techspace: Mentoring student developers in full-stack engineering, system design, and hackathon execution',
-    'Organizing interactive workshops and hands-on coding sessions for community members',
+    'Mentor & Lead @ Techspace: Mentoring student developers in full-stack engineering, system design, and competitive development',
+    'Docs Lead @ FOSS Club: Overseeing open-source documentation standards, repo governance, and contributor workflows',
+    'Hackprix Organizing: Co-organizing and leading execution for Hackprix, the upcoming college-level hackathon with the FOSS team',
   ],
 };
 
 const minorEntries: MinorEntryData[] = [
+  { type: 'Hackathon Organizing', title: 'Hackprix', detail: 'Leading and organizing the upcoming college-level hackathon with the FOSS Club team' },
+  { type: 'Project', title: 'unio', detail: 'Full-stack unified workflows and collaborative data platform built post-Trezix internship' },
   { type: 'Hackathon', title: 'Smart India Hackathon (SIH)', detail: 'Engineered apix API orchestration & ULPF logistics data framework' },
   { type: 'Hackathon', title: 'Semicon Hackathon', detail: 'Built AI-SEM Image Restoration deep learning denoising pipeline' },
-  { type: 'Hackathon', title: 'Hackprix', detail: 'Rapid prototype build with interactive Next.js full-stack architecture' },
   { type: 'Hackathon', title: 'SRM Builds', detail: 'Participant & finalist with Verge memory organization tool' },
   { type: 'Project', title: 'Splitzy', detail: 'Offline-first, UPI-native expense-splitting app for Indian groups' },
   { type: 'Open-Source PR', title: 'telescope.nvim', detail: 'Merged documentation fix in layout_strategies.lua' },
@@ -241,7 +242,7 @@ export default function CareerSection() {
               </div>
             </div>
 
-            {/* MINOR ENTRY: Smart India Hackathon (SIH) (Right Content) */}
+            {/* MINOR ENTRY: Hackprix Organizing (Right Content) */}
             <div style={{
               display: 'flex',
               alignItems: 'center',
@@ -255,7 +256,7 @@ export default function CareerSection() {
               </div>
             </div>
 
-            {/* MINOR ENTRY: Semicon Hackathon (Left Content) */}
+            {/* MINOR ENTRY: unio Project (Left Content) */}
             <div style={{
               display: 'flex',
               alignItems: 'center',
@@ -285,7 +286,7 @@ export default function CareerSection() {
               </div>
             </div>
 
-            {/* MINOR ENTRY: Hackprix (Left Content) */}
+            {/* MINOR ENTRY: Smart India Hackathon (Left Content) */}
             <div style={{
               display: 'flex',
               alignItems: 'center',
@@ -299,7 +300,7 @@ export default function CareerSection() {
               <div style={{ width: '45%' }} className="timeline-side-right" />
             </div>
 
-            {/* MINOR ENTRY: SRM Builds (Right Content) */}
+            {/* MINOR ENTRY: Semicon Hackathon (Right Content) */}
             <div style={{
               display: 'flex',
               alignItems: 'center',
@@ -313,7 +314,7 @@ export default function CareerSection() {
               </div>
             </div>
 
-            {/* MINOR ENTRY: Splitzy (Left Content) */}
+            {/* MINOR ENTRY: SRM Builds (Left Content) */}
             <div style={{
               display: 'flex',
               alignItems: 'center',
@@ -327,7 +328,7 @@ export default function CareerSection() {
               <div style={{ width: '45%' }} className="timeline-side-right" />
             </div>
 
-            {/* MINOR ENTRY: telescope.nvim Open-Source PR (Right Content) */}
+            {/* MINOR ENTRY: Splitzy (Right Content) */}
             <div style={{
               display: 'flex',
               alignItems: 'center',
@@ -341,7 +342,7 @@ export default function CareerSection() {
               </div>
             </div>
 
-            {/* MINOR ENTRY: Movzee (Left Content) */}
+            {/* MINOR ENTRY: telescope.nvim Open-Source PR (Left Content) */}
             <div style={{
               display: 'flex',
               alignItems: 'center',
@@ -355,7 +356,7 @@ export default function CareerSection() {
               <div style={{ width: '45%' }} className="timeline-side-right" />
             </div>
 
-            {/* MINOR ENTRY: LeetCode Contest (Right Content) */}
+            {/* MINOR ENTRY: Movzee (Right Content) */}
             <div style={{
               display: 'flex',
               alignItems: 'center',
@@ -367,6 +368,20 @@ export default function CareerSection() {
               <div style={{ width: '45%' }} className="timeline-side-right">
                 <MinorTextCard item={minorEntries[7]} />
               </div>
+            </div>
+
+            {/* MINOR ENTRY: LeetCode Contest (Left Content) */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              width: '100%',
+              position: 'relative',
+            }} className="career-item-node timeline-node-item">
+              <div style={{ width: '45%' }} className="timeline-side-left">
+                <MinorTextCard item={minorEntries[8]} />
+              </div>
+              <div style={{ width: '45%' }} className="timeline-side-right" />
             </div>
 
             {/* 3. ANCHOR ENTRY: SRM UNIVERSITY (Centered/Aligned Node) */}
