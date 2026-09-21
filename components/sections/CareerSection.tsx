@@ -30,36 +30,35 @@ const trezixEntry: MajorEntryData = {
   company: 'Trezix',
   logo: 'https://ui-avatars.com/api/?name=Trezix&background=14B8A6&color=fff&size=80',
   role: 'AI/ML Intern',
-  dateRange: 'Present',
+  dateRange: 'Jun 2024 – Aug 2024 · 3 mos',
   highlights: [
-    'Built and maintained data extraction pipelines for document processing workflows',
+    'Built and maintained data extraction pipelines for complex document processing workflows',
     'Developed a modular PDF-to-JSON extraction engine using pdfplumber across layout, profile, extraction, and validation stages',
-    'Worked across the ML/data layer to improve extraction accuracy and pipeline reliability',
-    'Collaborated with the engineering team on production data workflows',
+    'Engineered custom parsing logic to normalize structured table and key-value pairs with high accuracy',
+    'Collaborated with the engineering team to optimize extraction reliability and production throughput',
   ],
 };
 
-const novellaEntry: MajorEntryData = {
-  company: 'Novella',
-  logo: 'https://ui-avatars.com/api/?name=Novella&background=14B8A6&color=fff&size=80',
-  role: 'Lead Developer & Architect',
-  dateRange: 'Present',
+const clubLeadershipEntry: MajorEntryData = {
+  company: 'FOSS Club & Techspace',
+  logo: 'https://ui-avatars.com/api/?name=Campus+Clubs&background=14B8A6&color=fff&size=80',
+  role: 'Docs Lead & Mentor Lead',
+  dateRange: '2024 – Present',
   highlights: [
-    'Built a neo-brutalist manuscript/notes workspace from scratch using Next.js 14, Prisma, Clerk, and TipTap',
-    'Resolved TipTap autosave debouncing issues and Prisma N+1 query problems for performance',
-    'Architected client/server component boundaries for a responsive editing experience',
+    'Docs Lead @ FOSS Club: Leading open-source documentation standards, repo maintenance, and contributor onboarding',
+    'Mentor Lead @ Techspace: Mentoring student developers in full-stack engineering, system design, and hackathon execution',
+    'Organizing interactive workshops and hands-on coding sessions for community members',
   ],
 };
 
 const minorEntries: MinorEntryData[] = [
-  { type: 'Open-Source PR', title: 'telescope.nvim', detail: 'Merged documentation fix in layout_strategies.lua' },
-  { type: 'Hackathon', title: 'SRM Builds', detail: 'Participant & finalist in high-intensity prototype hackathon' },
+  { type: 'Hackathon', title: 'Smart India Hackathon (SIH)', detail: 'Engineered apix API orchestration & ULPF logistics data framework' },
+  { type: 'Hackathon', title: 'Semicon Hackathon', detail: 'Built AI-SEM Image Restoration deep learning denoising pipeline' },
+  { type: 'Hackathon', title: 'Hackprix', detail: 'Rapid prototype build with interactive Next.js full-stack architecture' },
+  { type: 'Hackathon', title: 'SRM Builds', detail: 'Participant & finalist with Verge memory organization tool' },
   { type: 'Project', title: 'Splitzy', detail: 'Offline-first, UPI-native expense-splitting app for Indian groups' },
-  { type: 'Project', title: 'Verge', detail: 'Your external brain — personal memory organization tool' },
-  { type: 'Project', title: 'Samay Finance', detail: 'Dark editorial finance website with scroll-jacked GSAP design' },
-  { type: 'Project', title: 'AutoClicker', detail: 'PyQt6 Windows desktop automation app (v1.0.0 released on GitHub)' },
-  { type: 'Project', title: '3D Solar System', detail: '60fps interactive space simulation built with Three.js' },
-  { type: 'Repository', title: 'Python Knowledge Base', detail: 'Structured knowledge base with Pylint CI via GitHub Actions' },
+  { type: 'Open-Source PR', title: 'telescope.nvim', detail: 'Merged documentation fix in layout_strategies.lua' },
+  { type: 'Campus Ambassador', title: 'Movzee', detail: 'Campus outreach, student community engagement, and event facilitation' },
   { type: 'Competitive Programming', title: 'LeetCode', detail: 'Weekly Contest 500 — 4/4 problems solved' },
 ];
 
@@ -226,7 +225,7 @@ export default function CareerSection() {
           {/* Timeline Nodes (Alternating Present -> Past) */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
 
-            {/* 1. MAJOR ENTRY: TREZIX (Left Content, Right Image) */}
+            {/* 1. MAJOR ENTRY: FOSS CLUB & TECHSPACE LEADERSHIP (Left Content, Right Image) */}
             <div style={{
               display: 'flex',
               alignItems: 'center',
@@ -235,14 +234,14 @@ export default function CareerSection() {
               position: 'relative',
             }} className="career-item-node timeline-node-item">
               <div style={{ width: '45%' }} className="timeline-side-left">
-                <MajorTextCard data={trezixEntry} />
+                <MajorTextCard data={clubLeadershipEntry} />
               </div>
               <div style={{ width: '45%' }} className="timeline-side-right">
-                <MajorImageCard src={trezixEntry.logo!} alt={trezixEntry.company} />
+                <MajorImageCard src={clubLeadershipEntry.logo!} alt={clubLeadershipEntry.company} />
               </div>
             </div>
 
-            {/* MINOR ENTRY: telescope.nvim (Right Content) */}
+            {/* MINOR ENTRY: Smart India Hackathon (SIH) (Right Content) */}
             <div style={{
               display: 'flex',
               alignItems: 'center',
@@ -256,7 +255,7 @@ export default function CareerSection() {
               </div>
             </div>
 
-            {/* MINOR ENTRY: SRM Builds Hackathon (Left Content) */}
+            {/* MINOR ENTRY: Semicon Hackathon (Left Content) */}
             <div style={{
               display: 'flex',
               alignItems: 'center',
@@ -270,7 +269,7 @@ export default function CareerSection() {
               <div style={{ width: '45%' }} className="timeline-side-right" />
             </div>
 
-            {/* 2. MAJOR ENTRY: NOVELLA (Right Content, Left Image) */}
+            {/* 2. MAJOR ENTRY: TREZIX INTERNSHIP (Right Content, Left Image) */}
             <div style={{
               display: 'flex',
               alignItems: 'center',
@@ -279,14 +278,14 @@ export default function CareerSection() {
               position: 'relative',
             }} className="career-item-node timeline-node-item">
               <div style={{ width: '45%' }} className="timeline-side-left">
-                <MajorImageCard src={novellaEntry.logo!} alt={novellaEntry.company} />
+                <MajorImageCard src={trezixEntry.logo!} alt={trezixEntry.company} />
               </div>
               <div style={{ width: '45%' }} className="timeline-side-right">
-                <MajorTextCard data={novellaEntry} />
+                <MajorTextCard data={trezixEntry} />
               </div>
             </div>
 
-            {/* MINOR ENTRY: Splitzy (Left Content) */}
+            {/* MINOR ENTRY: Hackprix (Left Content) */}
             <div style={{
               display: 'flex',
               alignItems: 'center',
@@ -300,7 +299,7 @@ export default function CareerSection() {
               <div style={{ width: '45%' }} className="timeline-side-right" />
             </div>
 
-            {/* MINOR ENTRY: Verge (Right Content) */}
+            {/* MINOR ENTRY: SRM Builds (Right Content) */}
             <div style={{
               display: 'flex',
               alignItems: 'center',
@@ -314,7 +313,7 @@ export default function CareerSection() {
               </div>
             </div>
 
-            {/* MINOR ENTRY: Samay Finance (Left Content) */}
+            {/* MINOR ENTRY: Splitzy (Left Content) */}
             <div style={{
               display: 'flex',
               alignItems: 'center',
@@ -328,7 +327,7 @@ export default function CareerSection() {
               <div style={{ width: '45%' }} className="timeline-side-right" />
             </div>
 
-            {/* MINOR ENTRY: AutoClicker (Right Content) */}
+            {/* MINOR ENTRY: telescope.nvim Open-Source PR (Right Content) */}
             <div style={{
               display: 'flex',
               alignItems: 'center',
@@ -342,7 +341,7 @@ export default function CareerSection() {
               </div>
             </div>
 
-            {/* MINOR ENTRY: 3D Solar System (Left Content) */}
+            {/* MINOR ENTRY: Movzee (Left Content) */}
             <div style={{
               display: 'flex',
               alignItems: 'center',
@@ -356,7 +355,7 @@ export default function CareerSection() {
               <div style={{ width: '45%' }} className="timeline-side-right" />
             </div>
 
-            {/* MINOR ENTRY: Python Knowledge Base (Right Content) */}
+            {/* MINOR ENTRY: LeetCode Contest (Right Content) */}
             <div style={{
               display: 'flex',
               alignItems: 'center',
@@ -368,20 +367,6 @@ export default function CareerSection() {
               <div style={{ width: '45%' }} className="timeline-side-right">
                 <MinorTextCard item={minorEntries[7]} />
               </div>
-            </div>
-
-            {/* MINOR ENTRY: LeetCode Contest (Left Content) */}
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              width: '100%',
-              position: 'relative',
-            }} className="career-item-node timeline-node-item">
-              <div style={{ width: '45%' }} className="timeline-side-left">
-                <MinorTextCard item={minorEntries[8]} />
-              </div>
-              <div style={{ width: '45%' }} className="timeline-side-right" />
             </div>
 
             {/* 3. ANCHOR ENTRY: SRM UNIVERSITY (Centered/Aligned Node) */}

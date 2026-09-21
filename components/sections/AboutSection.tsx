@@ -311,9 +311,9 @@ export default function AboutSection() {
                 color: '#FFFFFF',
                 fontWeight: 700,
               }}>
-                T
+                D
               </span>
-              oday, I work as an AI/ML Intern at{' '}
+              uring my AI/ML internship at{' '}
               <span style={{
                 color: '#FFFFFF',
                 textDecoration: 'underline',
@@ -323,7 +323,7 @@ export default function AboutSection() {
               }}>
                 Trezix
               </span>
-              , where I build data extraction pipelines — including a modular PDF-to-JSON engine for processing customs documents, built with pdfplumber across five distinct stages: layout detection, profiling, extraction, engine logic, and validation. Outside of work, I lead development on{' '}
+              , I built and maintained data extraction pipelines — including a modular PDF-to-JSON engine for processing complex customs documents, engineered with pdfplumber across layout detection, profiling, extraction, engine logic, and validation. On campus, I serve as the Docs Lead for the{' '}
               <span style={{
                 color: '#FFFFFF',
                 textDecoration: 'underline',
@@ -331,9 +331,19 @@ export default function AboutSection() {
                 textDecorationColor: '#8B5CF6',
                 fontWeight: 600,
               }}>
-                Novella
+                FOSS Club
               </span>
-              , a neo-brutalist manuscript and notes workspace built with Next.js, Prisma, Clerk, and TipTap — solving real problems like autosave debouncing and database query performance along the way.
+              {' '}and Mentor Lead at{' '}
+              <span style={{
+                color: '#FFFFFF',
+                textDecoration: 'underline',
+                textUnderlineOffset: '4px',
+                textDecorationColor: '#8B5CF6',
+                fontWeight: 600,
+              }}>
+                Techspace
+              </span>
+              , driving open-source contributor standards and mentoring junior developers.
             </p>
 
             {/* Paragraph 4 */}
@@ -357,7 +367,7 @@ export default function AboutSection() {
               }}>
                 M
               </span>
-              y project list keeps growing: Splitzy for splitting expenses, Verge as a personal memory tool, Samay Finance as a dark editorial finance site, even smaller builds like a PyQt6 desktop AutoClicker and a dependency-free 3D solar system in Three.js. I made my first open-source contribution fixing documentation in{' '}
+              y focus is built on shipping real systems and competing in top hackathons: from building Splitzy (an offline-first, UPI-native expense ledger) and Verge (a multi-modal memory visualization tool), to engineering solutions for Smart India Hackathon (apix &amp; ULPF), the Semicon Hackathon (deep learning SEM image restoration), and Hackprix. I also actively contribute to open source, including merged work in{' '}
               <span style={{
                 color: '#FFFFFF',
                 textDecoration: 'underline',
@@ -367,7 +377,7 @@ export default function AboutSection() {
               }}>
                 telescope.nvim
               </span>
-              , and I compete regularly on LeetCode, sharpening the fundamentals that everything else builds on.
+              , while consistently solving algorithmic challenges on LeetCode.
             </p>
 
             {/* Paragraph 5 */}
