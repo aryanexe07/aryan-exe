@@ -26,6 +26,30 @@ interface MinorEntryData {
   detail: string;
 }
 
+const techspaceEntry: MajorEntryData = {
+  company: 'Techspace',
+  logo: 'https://ui-avatars.com/api/?name=Techspace&background=14B8A6&color=fff&size=80',
+  role: 'Mentor & Lead',
+  dateRange: '2024 – Present',
+  highlights: [
+    'Mentoring student developers in full-stack engineering, system design, and competitive coding',
+    'Leading hands-on technical tracks, architecture reviews, and structured problem-solving sessions',
+    'Preparing and mentoring teams for national hackathons and technical competitions',
+  ],
+};
+
+const fossClubEntry: MajorEntryData = {
+  company: 'FOSS Club',
+  logo: 'https://ui-avatars.com/api/?name=FOSS+Club&background=14B8A6&color=fff&size=80',
+  role: 'Docs Lead',
+  dateRange: '2024 – Present',
+  highlights: [
+    'Leading open-source documentation standards, repo architecture, and contributor governance',
+    'Co-organizing and leading execution for Hackprix, the upcoming college-level hackathon with the FOSS team',
+    'Streamlining onboarding workflows and git best practices for new open-source contributors',
+  ],
+};
+
 const trezixEntry: MajorEntryData = {
   company: 'Trezix',
   logo: 'https://ui-avatars.com/api/?name=Trezix&background=14B8A6&color=fff&size=80',
@@ -36,18 +60,6 @@ const trezixEntry: MajorEntryData = {
     'Developed a modular PDF-to-JSON extraction engine using pdfplumber across layout, profile, extraction, and validation stages',
     'Engineered custom parsing logic to normalize structured table and key-value pairs with high accuracy',
     'Collaborated with the engineering team to optimize extraction reliability and production throughput',
-  ],
-};
-
-const clubLeadershipEntry: MajorEntryData = {
-  company: 'Techspace & FOSS Club',
-  logo: 'https://ui-avatars.com/api/?name=Techspace+FOSS&background=14B8A6&color=fff&size=80',
-  role: 'Mentor & Lead (Techspace) · Docs Lead (FOSS)',
-  dateRange: '2024 – Present',
-  highlights: [
-    'Mentor & Lead @ Techspace: Mentoring student developers in full-stack engineering, system design, and competitive development',
-    'Docs Lead @ FOSS Club: Overseeing open-source documentation standards, repo governance, and contributor workflows',
-    'Hackprix Organizing: Co-organizing and leading execution for Hackprix, the upcoming college-level hackathon with the FOSS team',
   ],
 };
 
@@ -226,7 +238,7 @@ export default function CareerSection() {
           {/* Timeline Nodes (Alternating Present -> Past) */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
 
-            {/* 1. MAJOR ENTRY: FOSS CLUB & TECHSPACE LEADERSHIP (Left Content, Right Image) */}
+            {/* 1. MAJOR ENTRY: TECHSPACE (Left Content, Right Image) */}
             <div style={{
               display: 'flex',
               alignItems: 'center',
@@ -235,10 +247,10 @@ export default function CareerSection() {
               position: 'relative',
             }} className="career-item-node timeline-node-item">
               <div style={{ width: '45%' }} className="timeline-side-left">
-                <MajorTextCard data={clubLeadershipEntry} />
+                <MajorTextCard data={techspaceEntry} />
               </div>
               <div style={{ width: '45%' }} className="timeline-side-right">
-                <MajorImageCard src={clubLeadershipEntry.logo!} alt={clubLeadershipEntry.company} />
+                <MajorImageCard src={techspaceEntry.logo!} alt={techspaceEntry.company} />
               </div>
             </div>
 
@@ -256,6 +268,22 @@ export default function CareerSection() {
               </div>
             </div>
 
+            {/* 2. MAJOR ENTRY: FOSS CLUB (Right Content, Left Image) */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              width: '100%',
+              position: 'relative',
+            }} className="career-item-node timeline-node-item">
+              <div style={{ width: '45%' }} className="timeline-side-left">
+                <MajorImageCard src={fossClubEntry.logo!} alt={fossClubEntry.company} />
+              </div>
+              <div style={{ width: '45%' }} className="timeline-side-right">
+                <MajorTextCard data={fossClubEntry} />
+              </div>
+            </div>
+
             {/* MINOR ENTRY: unio Project (Left Content) */}
             <div style={{
               display: 'flex',
@@ -270,7 +298,7 @@ export default function CareerSection() {
               <div style={{ width: '45%' }} className="timeline-side-right" />
             </div>
 
-            {/* 2. MAJOR ENTRY: TREZIX INTERNSHIP (Right Content, Left Image) */}
+            {/* 3. MAJOR ENTRY: TREZIX INTERNSHIP (Left Content, Right Image) */}
             <div style={{
               display: 'flex',
               alignItems: 'center',
@@ -279,14 +307,14 @@ export default function CareerSection() {
               position: 'relative',
             }} className="career-item-node timeline-node-item">
               <div style={{ width: '45%' }} className="timeline-side-left">
-                <MajorImageCard src={trezixEntry.logo!} alt={trezixEntry.company} />
-              </div>
-              <div style={{ width: '45%' }} className="timeline-side-right">
                 <MajorTextCard data={trezixEntry} />
               </div>
+              <div style={{ width: '45%' }} className="timeline-side-right">
+                <MajorImageCard src={trezixEntry.logo!} alt={trezixEntry.company} />
+              </div>
             </div>
 
-            {/* MINOR ENTRY: Smart India Hackathon (Left Content) */}
+            {/* MINOR ENTRY: Smart India Hackathon (Right Content) */}
             <div style={{
               display: 'flex',
               alignItems: 'center',
@@ -294,13 +322,13 @@ export default function CareerSection() {
               width: '100%',
               position: 'relative',
             }} className="career-item-node timeline-node-item">
-              <div style={{ width: '45%' }} className="timeline-side-left">
+              <div style={{ width: '45%' }} className="timeline-side-left" />
+              <div style={{ width: '45%' }} className="timeline-side-right">
                 <MinorTextCard item={minorEntries[2]} />
               </div>
-              <div style={{ width: '45%' }} className="timeline-side-right" />
             </div>
 
-            {/* MINOR ENTRY: Semicon Hackathon (Right Content) */}
+            {/* MINOR ENTRY: Semicon Hackathon (Left Content) */}
             <div style={{
               display: 'flex',
               alignItems: 'center',
@@ -308,13 +336,13 @@ export default function CareerSection() {
               width: '100%',
               position: 'relative',
             }} className="career-item-node timeline-node-item">
-              <div style={{ width: '45%' }} className="timeline-side-left" />
-              <div style={{ width: '45%' }} className="timeline-side-right">
+              <div style={{ width: '45%' }} className="timeline-side-left">
                 <MinorTextCard item={minorEntries[3]} />
               </div>
+              <div style={{ width: '45%' }} className="timeline-side-right" />
             </div>
 
-            {/* MINOR ENTRY: SRM Builds (Left Content) */}
+            {/* MINOR ENTRY: SRM Builds (Right Content) */}
             <div style={{
               display: 'flex',
               alignItems: 'center',
@@ -322,13 +350,13 @@ export default function CareerSection() {
               width: '100%',
               position: 'relative',
             }} className="career-item-node timeline-node-item">
-              <div style={{ width: '45%' }} className="timeline-side-left">
+              <div style={{ width: '45%' }} className="timeline-side-left" />
+              <div style={{ width: '45%' }} className="timeline-side-right">
                 <MinorTextCard item={minorEntries[4]} />
               </div>
-              <div style={{ width: '45%' }} className="timeline-side-right" />
             </div>
 
-            {/* MINOR ENTRY: Splitzy (Right Content) */}
+            {/* MINOR ENTRY: Splitzy (Left Content) */}
             <div style={{
               display: 'flex',
               alignItems: 'center',
@@ -336,27 +364,13 @@ export default function CareerSection() {
               width: '100%',
               position: 'relative',
             }} className="career-item-node timeline-node-item">
-              <div style={{ width: '45%' }} className="timeline-side-left" />
-              <div style={{ width: '45%' }} className="timeline-side-right">
+              <div style={{ width: '45%' }} className="timeline-side-left">
                 <MinorTextCard item={minorEntries[5]} />
               </div>
-            </div>
-
-            {/* MINOR ENTRY: telescope.nvim Open-Source PR (Left Content) */}
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              width: '100%',
-              position: 'relative',
-            }} className="career-item-node timeline-node-item">
-              <div style={{ width: '45%' }} className="timeline-side-left">
-                <MinorTextCard item={minorEntries[6]} />
-              </div>
               <div style={{ width: '45%' }} className="timeline-side-right" />
             </div>
 
-            {/* MINOR ENTRY: Movzee (Right Content) */}
+            {/* MINOR ENTRY: telescope.nvim Open-Source PR (Right Content) */}
             <div style={{
               display: 'flex',
               alignItems: 'center',
@@ -366,11 +380,11 @@ export default function CareerSection() {
             }} className="career-item-node timeline-node-item">
               <div style={{ width: '45%' }} className="timeline-side-left" />
               <div style={{ width: '45%' }} className="timeline-side-right">
-                <MinorTextCard item={minorEntries[7]} />
+                <MinorTextCard item={minorEntries[6]} />
               </div>
             </div>
 
-            {/* MINOR ENTRY: LeetCode Contest (Left Content) */}
+            {/* MINOR ENTRY: Movzee (Left Content) */}
             <div style={{
               display: 'flex',
               alignItems: 'center',
@@ -379,9 +393,23 @@ export default function CareerSection() {
               position: 'relative',
             }} className="career-item-node timeline-node-item">
               <div style={{ width: '45%' }} className="timeline-side-left">
-                <MinorTextCard item={minorEntries[8]} />
+                <MinorTextCard item={minorEntries[7]} />
               </div>
               <div style={{ width: '45%' }} className="timeline-side-right" />
+            </div>
+
+            {/* MINOR ENTRY: LeetCode Contest (Right Content) */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              width: '100%',
+              position: 'relative',
+            }} className="career-item-node timeline-node-item">
+              <div style={{ width: '45%' }} className="timeline-side-left" />
+              <div style={{ width: '45%' }} className="timeline-side-right">
+                <MinorTextCard item={minorEntries[8]} />
+              </div>
             </div>
 
             {/* 3. ANCHOR ENTRY: SRM UNIVERSITY (Centered/Aligned Node) */}
