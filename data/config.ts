@@ -11,7 +11,7 @@ export const config = {
   resumeUrl: 'https://drive.google.com/file/d/1zpLKtOpqPo8VzJ7l3AVG4KFd736EJ5XZ/view?usp=sharing',
   formspreeId: 'xbdvloea',
   stats: {
-    projects: '10+',
+    projects: '20+',
     experience: '1+ YRS',
     topStack: 'PYTHON',
   },

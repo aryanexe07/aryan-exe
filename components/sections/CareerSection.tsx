@@ -28,9 +28,9 @@ interface MinorEntryData {
 
 const techspaceEntry: MajorEntryData = {
   company: 'Techspace',
-  logo: 'https://ui-avatars.com/api/?name=Techspace&background=14B8A6&color=fff&size=80',
+  logo: '/techspace.jpeg',
   role: 'Mentor & Lead',
-  dateRange: '2024 – Present',
+  dateRange: '2026 – Present',
   highlights: [
     'Mentoring student developers in full-stack engineering, system design, and competitive coding',
     'Leading hands-on technical tracks, architecture reviews, and structured problem-solving sessions',
@@ -40,9 +40,9 @@ const techspaceEntry: MajorEntryData = {
 
 const fossClubEntry: MajorEntryData = {
   company: 'FOSS Club',
-  logo: 'https://ui-avatars.com/api/?name=FOSS+Club&background=14B8A6&color=fff&size=80',
+  logo: '/foss.jpeg',
   role: 'Docs Lead',
-  dateRange: '2024 – Present',
+  dateRange: '2026 – Present',
   highlights: [
     'Leading open-source documentation standards, repo architecture, and contributor governance',
     'Co-organizing and leading execution for Hackprix, the upcoming college-level hackathon with the FOSS team',
@@ -52,9 +52,9 @@ const fossClubEntry: MajorEntryData = {
 
 const trezixEntry: MajorEntryData = {
   company: 'Trezix',
-  logo: 'https://ui-avatars.com/api/?name=Trezix&background=14B8A6&color=fff&size=80',
+  logo: '/trezix.png',
   role: 'AI/ML Intern',
-  dateRange: 'Jun 2024 – Aug 2024 · 3 mos',
+  dateRange: 'Jun 2026 – Aug 2026 · 3 mos',
   highlights: [
     'Built and maintained data extraction pipelines for complex document processing workflows',
     'Developed a modular PDF-to-JSON extraction engine using pdfplumber across layout, profile, extraction, and validation stages',
@@ -434,7 +434,7 @@ export default function CareerSection() {
                 zIndex: 2,
               }}>
                 <GraduationCap size={16} color="#14B8A6" />
-                <span><strong style={{ color: '#14B8A6' }}>SRM University</strong> — B.Tech Computer Science Engineering, started 2023</span>
+                <span><strong style={{ color: '#14B8A6' }}>SRM University</strong> — B.Tech Computer Science Engineering, started 2025</span>
               </div>
             </div>
 
@@ -525,9 +525,21 @@ function MajorImageCard({ src, alt }: { src: string; alt: string }) {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      padding: '2rem',
+      padding: '1.5rem',
     }}>
-      <Image src={src} alt={alt} width={320} height={200} unoptimized style={{ maxHeight: '100%', maxWidth: '100%', objectFit: 'contain', opacity: 0.8 }} />
+      <Image
+        src={src}
+        alt={alt}
+        width={320}
+        height={200}
+        unoptimized
+        style={{
+          maxHeight: '100%',
+          maxWidth: '100%',
+          objectFit: 'contain',
+          borderRadius: '10px',
+        }}
+      />
     </div>
   );
 }
