@@ -56,15 +56,15 @@ type Status = 'idle' | 'sending' | 'success' | 'error';
 
 const inputStyle = {
   width: '100%',
-  padding: '0.625rem 0.875rem',
+  padding: '0.75rem 1rem',
   background: 'var(--card)',
   border: '1px solid var(--border)',
-  borderRadius: '3px',
+  borderRadius: '6px',
   fontFamily: 'var(--font-body)',
-  fontSize: '14px',
+  fontSize: '16px', // 16px prevents iOS Safari from automatically zooming on focus
   color: 'var(--text)',
   outline: 'none',
-  transition: 'border-color 0.2s',
+  transition: 'border-color 0.2s, box-shadow 0.2s',
 };
 
 const container = {
@@ -74,8 +74,6 @@ const item = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
 };
-
-const itemTransition = { duration: 0.4, ease: 'easeOut' as const };
 
 export default function ContactSection() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
@@ -104,32 +102,40 @@ export default function ContactSection() {
   const links = [
     { icon: Mail, label: 'EMAIL', value: config.email, href: `mailto:${config.email}` },
     { icon: GitBranch, label: 'GITHUB', value: `@${config.githubUsername}`, href: config.githubUrl },
-    { icon: Link2, label: 'LINKEDIN', value: '/in/aryan', href: config.linkedinUrl },
+    { icon: Link2, label: 'LINKEDIN', value: '/in/aryan-tailor', href: config.linkedinUrl },
     { icon: FileText, label: 'RESUME', value: 'Download PDF', href: config.resumeUrl },
   ];
 
   return (
-    <SectionWrapper section="CONTACT" scrollable={false}>
+    <SectionWrapper section="CONTACT" scrollable={true}>
       <PinkPanel />
 
-      <div style={{
-        height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center',
-        padding: '0 8rem 0 4rem', position: 'relative', zIndex: 2,
-      }} className="contact-container">
+      <div
+        className="contact-main-container"
+        style={{
+          minHeight: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          padding: '2.5rem 4rem 4rem 4rem',
+          position: 'relative',
+          zIndex: 2,
+        }}
+      >
         <motion.div variants={container} initial="initial" animate="animate"
-          style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', maxWidth: '900px' }}
+          style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3.5rem', maxWidth: '960px', width: '100%' }}
           className="contact-grid"
         >
           {/* Left */}
           <div>
-            <motion.p variants={item} style={{ fontFamily: 'var(--font-label)', fontSize: '16px', letterSpacing: '0.3em', color: '#EC4899', marginBottom: '0.25rem' }}>
+            <motion.p variants={item} style={{ fontFamily: 'var(--font-label)', fontSize: '15px', letterSpacing: '0.25em', color: '#EC4899', marginBottom: '0.35rem' }}>
               COMMS TERMINAL
             </motion.p>
-            <motion.h2 variants={item} style={{ fontFamily: 'var(--font-hero)', fontSize: 'clamp(48px, 5.5vw, 64px)', color: 'var(--text)', lineHeight: 1, marginBottom: '1rem' }}>
+            <motion.h2 variants={item} style={{ fontFamily: 'var(--font-hero)', fontSize: 'clamp(36px, 6vw, 64px)', color: 'var(--text)', lineHeight: 1, marginBottom: '1rem' }}>
               Let&apos;s <span style={{ color: '#EC4899' }}>build</span><br />something.
             </motion.h2>
-            <motion.p variants={item} style={{ fontFamily: 'var(--font-body)', fontSize: '15px', color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: '2rem' }}>
-              Open to full-time roles, freelance projects, and interesting collaborations. If you have something worth building, let's talk.
+            <motion.p variants={item} style={{ fontFamily: 'var(--font-body)', fontSize: '15px', color: 'var(--text-muted)', lineHeight: 1.65, marginBottom: '2rem' }}>
+              Open to full-time roles, freelance projects, and interesting collaborations. If you have something worth building, let&apos;s talk.
             </motion.p>
 
             <motion.div variants={item} style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
@@ -140,17 +146,25 @@ export default function ContactSection() {
                     padding: '0.75rem 1rem',
                     background: 'var(--card)',
                     border: '1px solid var(--border)',
-                    borderRadius: '3px',
+                    borderRadius: '8px',
                     textDecoration: 'none',
-                    transition: 'border-color 0.2s, transform 0.15s',
+                    transition: 'border-color 0.2s, transform 0.15s, background-color 0.2s',
                   }}
-                  onMouseEnter={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.borderColor = 'rgba(236,72,153,0.3)'; el.style.transform = 'translateX(4px)'; }}
-                  onMouseLeave={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.borderColor = 'var(--border)'; el.style.transform = 'translateX(0)'; }}
+                  onMouseEnter={e => {
+                    const el = e.currentTarget as HTMLAnchorElement;
+                    el.style.borderColor = 'rgba(236,72,153,0.4)';
+                    el.style.transform = 'translateX(4px)';
+                  }}
+                  onMouseLeave={e => {
+                    const el = e.currentTarget as HTMLAnchorElement;
+                    el.style.borderColor = 'var(--border)';
+                    el.style.transform = 'translateX(0)';
+                  }}
                 >
-                  <Icon size={16} color="#EC4899" />
+                  <Icon size={18} color="#EC4899" />
                   <div>
-                    <div style={{ fontFamily: 'var(--font-body)', fontSize: '14px', letterSpacing: '0.2em', color: 'var(--text-muted)' }}>{label}</div>
-                    <div style={{ fontFamily: 'var(--font-body)', fontSize: '14px', color: 'var(--text)' }}>{value}</div>
+                    <div style={{ fontFamily: 'var(--font-label)', fontSize: '12px', letterSpacing: '0.15em', color: 'var(--text-muted)' }}>{label}</div>
+                    <div style={{ fontFamily: 'var(--font-body)', fontSize: '14px', color: 'var(--text)', wordBreak: 'break-all' }}>{value}</div>
                   </div>
                 </a>
               ))}
@@ -164,7 +178,7 @@ export default function ContactSection() {
             style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
           >
             <div>
-              <label style={{ fontFamily: 'var(--font-body)', fontSize: '14px', letterSpacing: '0.2em', color: 'var(--text-muted)', display: 'block', marginBottom: '0.35rem' }}>
+              <label style={{ fontFamily: 'var(--font-label)', fontSize: '13px', letterSpacing: '0.15em', color: 'var(--text-muted)', display: 'block', marginBottom: '0.35rem' }}>
                 NAME
               </label>
               <input
@@ -179,7 +193,7 @@ export default function ContactSection() {
               />
             </div>
             <div>
-              <label style={{ fontFamily: 'var(--font-body)', fontSize: '14px', letterSpacing: '0.2em', color: 'var(--text-muted)', display: 'block', marginBottom: '0.35rem' }}>
+              <label style={{ fontFamily: 'var(--font-label)', fontSize: '13px', letterSpacing: '0.15em', color: 'var(--text-muted)', display: 'block', marginBottom: '0.35rem' }}>
                 EMAIL
               </label>
               <input
@@ -194,16 +208,15 @@ export default function ContactSection() {
               />
             </div>
             <div>
-              <label style={{ fontFamily: 'var(--font-body)', fontSize: '14px', letterSpacing: '0.2em', color: 'var(--text-muted)', display: 'block', marginBottom: '0.35rem' }}>
+              <label style={{ fontFamily: 'var(--font-label)', fontSize: '13px', letterSpacing: '0.15em', color: 'var(--text-muted)', display: 'block', marginBottom: '0.35rem' }}>
                 MESSAGE
               </label>
               <textarea
                 required
-                rows={5}
+                rows={4}
                 value={form.message}
                 onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
-                placeholder="Tell me about what you&apos;re building..."
-
+                placeholder="Tell me about what you're building..."
                 style={{ ...inputStyle, resize: 'none' }}
                 onFocus={e => (e.target.style.borderColor = '#EC4899')}
                 onBlur={e => (e.target.style.borderColor = 'var(--border)')}
@@ -211,40 +224,40 @@ export default function ContactSection() {
             </div>
 
             {status === 'success' ? (
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#22C55E', fontFamily: 'var(--font-body)', letterSpacing: '0.1em', fontSize: '14px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#22C55E', fontFamily: 'var(--font-label)', letterSpacing: '0.1em', fontSize: '14px', padding: '0.75rem', background: 'rgba(34, 197, 94, 0.1)', borderRadius: '6px', border: '1px solid rgba(34, 197, 94, 0.3)' }}>
                 <CheckCircle size={16} /> MESSAGE SENT — I&apos;ll be in touch.
               </div>
             ) : status === 'error' ? (
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#F97316', fontFamily: 'var(--font-body)', letterSpacing: '0.1em', fontSize: '14px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#F97316', fontFamily: 'var(--font-label)', letterSpacing: '0.1em', fontSize: '14px', padding: '0.75rem', background: 'rgba(249, 115, 22, 0.1)', borderRadius: '6px', border: '1px solid rgba(249, 115, 22, 0.3)' }}>
                 <AlertCircle size={16} /> Something went wrong. Try emailing me directly.
               </div>
             ) : (
-
               <button
                 type="submit"
                 disabled={status === 'sending'}
                 style={{
-                  fontFamily: 'var(--font-body)',
-                  fontSize: '14px',
-                  letterSpacing: '0.2em',
-                  padding: '0.75rem 1.5rem',
+                  fontFamily: 'var(--font-label)',
+                  fontSize: '15px',
+                  letterSpacing: '0.15em',
+                  padding: '0.85rem 1.5rem',
                   background: '#EC4899',
                   color: '#fff',
                   border: 'none',
-                  borderRadius: '3px',
+                  borderRadius: '6px',
                   cursor: status === 'sending' ? 'wait' : 'pointer',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '0.5rem',
                   justifyContent: 'center',
                   opacity: status === 'sending' ? 0.7 : 1,
-                  transition: 'opacity 0.2s, transform 0.15s',
+                  transition: 'opacity 0.2s, transform 0.15s, box-shadow 0.2s',
+                  boxShadow: '0 4px 16px rgba(236,72,153,0.3)',
                   width: '100%',
                 }}
                 onMouseEnter={e => { if (status !== 'sending') (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(-1px)'; }}
                 onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(0)'; }}
               >
-                <Send size={14} />
+                <Send size={15} />
                 {status === 'sending' ? 'SENDING...' : 'SEND MESSAGE'}
               </button>
             )}
@@ -253,15 +266,23 @@ export default function ContactSection() {
       </div>
       
       <style>{`
+        @media (max-width: 1024px) {
+          .contact-main-container {
+            padding: 2rem 2.5rem !important;
+          }
+          .contact-grid {
+            gap: 2.5rem !important;
+          }
+        }
         @media (max-width: 768px) {
           .contact-grid {
             grid-template-columns: 1fr !important;
-            gap: 2rem !important;
+            gap: 2.5rem !important;
           }
-          .contact-container {
-            max-height: 70vh !important;
-            overflow-y: auto !important;
-            padding: 0 1.5rem !important;
+          .contact-main-container {
+            padding: 1.5rem 1.25rem 4rem 1.25rem !important;
+            justify-content: flex-start !important;
+            padding-top: 2rem !important;
           }
         }
       `}</style>

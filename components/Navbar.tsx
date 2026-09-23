@@ -22,6 +22,7 @@ export default function Navbar({ active, onNavigate }: Props) {
         borderBottom: '1px solid var(--border)',
         display: 'flex',
         alignItems: 'stretch',
+        justifyContent: 'space-between',
         padding: 0,
         background: 'var(--bg)',
         position: 'relative',
@@ -33,10 +34,8 @@ export default function Navbar({ active, onNavigate }: Props) {
         <div style={{
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center',
           height: '100%',
-          padding: '0 1.75rem',
-          background: 'none',
+          padding: '0 1.25rem',
           flex: '0 0 auto',
         }}>
           <button
@@ -60,29 +59,6 @@ export default function Navbar({ active, onNavigate }: Props) {
           >
             ARYAN.EXE
           </button>
-
-          <motion.button
-            className="mobile-only"
-            onClick={() => setMobileOpen((open) => !open)}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            style={{
-              display: 'none',
-              background: 'transparent',
-              border: '1px solid var(--border)',
-              borderRadius: '8px',
-              width: '40px',
-              height: '40px',
-              alignItems: 'center',
-              justifyContent: 'center',
-              cursor: 'pointer',
-              color: 'var(--text-muted)',
-              marginLeft: '1rem',
-            }}
-            aria-label="Toggle navigation menu"
-          >
-            {mobileOpen ? <X size={18} /> : <Menu size={18} />}
-          </motion.button>
         </div>
 
         {/* Center — Desktop Nav (Tab Strip) */}
@@ -133,74 +109,143 @@ export default function Navbar({ active, onNavigate }: Props) {
           })}
         </div>
 
-        {/* Right — Social Icons */}
+        {/* Right — Social Icons & Mobile Toggle */}
         <div style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '1rem',
-          padding: '0 1.5rem',
+          gap: '0.85rem',
+          padding: '0 1.25rem',
           height: '100%',
           flex: '0 0 auto',
         }}>
           <a href={config.githubUrl} target="_blank" rel="noopener noreferrer"
-            style={{ color: 'var(--text-muted)', display: 'flex', transition: 'color 300ms ease' }}
+            aria-label="GitHub Profile"
+            style={{ color: 'var(--text-muted)', display: 'flex', alignItems: 'center', padding: '6px', transition: 'color 300ms ease' }}
             onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
             onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-muted)')}
           >
             <GitBranch size={18} />
           </a>
           <a href={config.linkedinUrl} target="_blank" rel="noopener noreferrer"
-            style={{ color: 'var(--text-muted)', display: 'flex', transition: 'color 300ms ease' }}
+            aria-label="LinkedIn Profile"
+            style={{ color: 'var(--text-muted)', display: 'flex', alignItems: 'center', padding: '6px', transition: 'color 300ms ease' }}
             onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
             onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-muted)')}
           >
             <Link2 size={18} />
           </a>
+
+          {/* Mobile Hamburger Button */}
+          <motion.button
+            className="mobile-only"
+            onClick={() => setMobileOpen((open) => !open)}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.92 }}
+            style={{
+              display: 'none',
+              background: 'rgba(255, 255, 255, 0.05)',
+              border: '1px solid var(--border)',
+              borderRadius: '8px',
+              width: '38px',
+              height: '38px',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              color: mobileOpen ? '#FFFFFF' : 'var(--text-muted)',
+              marginLeft: '0.25rem',
+            }}
+            aria-label="Toggle navigation menu"
+          >
+            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+          </motion.button>
         </div>
       </nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay Drawer */}
       <AnimatePresence>
         {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2 }}
-            style={{
-              position: 'absolute',
-              top: '60px',
-              left: 0,
-              right: 0,
-              background: 'var(--bg)',
-              borderBottom: '1px solid var(--border)',
-              zIndex: 99,
-              padding: '1rem',
-            }}
-          >
-            {navItems.map((item) => (
-              <button
-                key={item}
-                onClick={() => { onNavigate(item); setMobileOpen(false); }}
-                style={{
-                  display: 'block',
-                  width: '100%',
-                  textAlign: 'left',
-                  padding: '0.75rem 1rem',
-                  fontFamily: 'var(--font-label)',
-                  fontSize: '15px',
-                  letterSpacing: '0.1em',
-                  background: 'none',
-                  border: 'none',
-                  cursor: 'pointer',
-                  color: active === item ? sectionColors[item] : 'var(--text)',
-                  borderLeft: active === item ? `3px solid ${sectionColors[item]}` : '3px solid transparent',
-                }}
-              >
-                {item}
-              </button>
-            ))}
-          </motion.div>
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              onClick={() => setMobileOpen(false)}
+              style={{
+                position: 'fixed',
+                inset: 0,
+                top: '60px',
+                background: 'rgba(0, 0, 0, 0.65)',
+                backdropFilter: 'blur(4px)',
+                zIndex: 150,
+              }}
+            />
+
+            {/* Menu Dropdown Container */}
+            <motion.div
+              initial={{ opacity: 0, y: -12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.22, ease: 'easeOut' }}
+              style={{
+                position: 'fixed',
+                top: '60px',
+                left: 0,
+                right: 0,
+                background: '#0e1422',
+                borderBottom: '1px solid var(--border)',
+                zIndex: 160,
+                padding: '0.75rem 1rem 1.25rem 1rem',
+                boxShadow: '0 16px 32px rgba(0, 0, 0, 0.4)',
+                maxHeight: 'calc(100dvh - 60px)',
+                overflowY: 'auto',
+              }}
+            >
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
+                {navItems.map((item) => {
+                  const isActive = active === item;
+                  const itemColor = sectionColors[item];
+                  return (
+                    <button
+                      key={item}
+                      onClick={() => { onNavigate(item); setMobileOpen(false); }}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        width: '100%',
+                        textAlign: 'left',
+                        padding: '0.85rem 1rem',
+                        fontFamily: 'var(--font-label)',
+                        fontSize: '16px',
+                        fontWeight: 600,
+                        letterSpacing: '0.12em',
+                        background: isActive ? `${itemColor}18` : 'rgba(255, 255, 255, 0.02)',
+                        border: `1px solid ${isActive ? `${itemColor}40` : 'rgba(255, 255, 255, 0.04)'}`,
+                        borderRadius: '8px',
+                        cursor: 'pointer',
+                        color: isActive ? '#FFFFFF' : 'var(--text)',
+                        borderLeft: `4px solid ${isActive ? itemColor : 'transparent'}`,
+                        transition: 'all 0.15s ease',
+                      }}
+                    >
+                      <span>{item}</span>
+                      {isActive && (
+                        <span style={{
+                          width: '8px',
+                          height: '8px',
+                          borderRadius: '50%',
+                          background: itemColor,
+                          boxShadow: `0 0 8px ${itemColor}`,
+                        }} />
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
 

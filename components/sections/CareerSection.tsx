@@ -175,19 +175,24 @@ export default function CareerSection() {
 
       <div
         ref={sectionRef}
+        className="career-main-container"
         style={{
-          minHeight: '100%', display: 'flex', flexDirection: 'column',
-          padding: '2rem 4rem 6rem 4rem', position: 'relative', zIndex: 2,
-          maxWidth: '1200px', margin: '0 auto',
+          minHeight: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          padding: '2.5rem 4rem 6rem 4rem',
+          position: 'relative',
+          zIndex: 2,
+          maxWidth: '1200px',
+          margin: '0 auto',
         }}
-        className="px-4 md:px-16"
       >
         {/* Header */}
-        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} style={{ marginBottom: '3.5rem' }}>
-          <p style={{ fontFamily: 'var(--font-label)', fontSize: '16px', letterSpacing: '0.3em', color: '#14B8A6' }}>
+        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} className="career-header" style={{ marginBottom: '3rem' }}>
+          <p style={{ fontFamily: 'var(--font-label)', fontSize: '15px', letterSpacing: '0.25em', color: '#14B8A6', marginBottom: '0.35rem' }}>
             CAREER JOURNEY
           </p>
-          <h2 style={{ fontFamily: 'var(--font-hero)', fontSize: 'clamp(48px, 5.5vw, 64px)', color: 'var(--text)', lineHeight: 1 }}>
+          <h2 style={{ fontFamily: 'var(--font-hero)', fontSize: 'clamp(36px, 6vw, 64px)', color: 'var(--text)', lineHeight: 1 }}>
             Timeline & <span style={{ color: '#14B8A6' }}>Milestones</span>
           </h2>
         </motion.div>
@@ -199,8 +204,8 @@ export default function CareerSection() {
             position: 'absolute',
             left: '50%',
             transform: 'translateX(-50%)',
-            top: 0,
-            bottom: 0,
+            top: '1.5rem',
+            bottom: '3.5rem',
             width: '4px',
             background: 'rgba(20, 184, 166, 0.15)',
             borderRadius: '2px',
@@ -413,28 +418,30 @@ export default function CareerSection() {
             </div>
 
             {/* 3. ANCHOR ENTRY: SRM UNIVERSITY (Centered/Aligned Node) */}
-            <div className="career-item-node" style={{
+            <div className="career-item-node timeline-anchor-node" style={{
               display: 'flex',
               justifyContent: 'center',
               width: '100%',
               position: 'relative',
-              paddingTop: '1rem',
+              paddingTop: '1.5rem',
+              zIndex: 3,
             }}>
               <div style={{
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '0.75rem',
-                padding: '0.75rem 1.25rem',
-                borderRadius: '12px',
-                background: 'rgba(20, 184, 166, 0.08)',
-                border: '1px solid rgba(20, 184, 166, 0.2)',
+                padding: '0.85rem 1.4rem',
+                borderRadius: '9999px',
+                background: 'var(--card)',
+                border: '1.5px solid rgba(20, 184, 166, 0.4)',
+                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.25), 0 0 15px rgba(20, 184, 166, 0.12)',
                 color: 'var(--text)',
                 fontFamily: 'var(--font-label)',
                 fontSize: '14px',
-                zIndex: 2,
+                zIndex: 4,
               }}>
-                <GraduationCap size={16} color="#14B8A6" />
-                <span><strong style={{ color: '#14B8A6' }}>SRM University</strong> — B.Tech Computer Science Engineering, started 2025</span>
+                <GraduationCap size={18} color="#14B8A6" style={{ flexShrink: 0 }} />
+                <span><strong style={{ color: '#14B8A6', fontWeight: 600 }}>SRM University</strong> — B.Tech Computer Science Engineering, started 2025</span>
               </div>
             </div>
 
@@ -443,16 +450,32 @@ export default function CareerSection() {
       </div>
 
       <style>{`
+        @media (max-width: 1024px) {
+          .career-main-container {
+            padding: 2rem 2.5rem 5rem 2.5rem !important;
+          }
+        }
         @media (max-width: 768px) {
+          .career-main-container {
+            padding: 1.5rem 1.25rem 4.5rem 1.25rem !important;
+          }
+          .career-header {
+            margin-bottom: 2rem !important;
+          }
           .timeline-line-center {
-            left: 20px !important;
+            left: 18px !important;
             transform: none !important;
+            bottom: 3.5rem !important;
           }
           .timeline-node-item {
             flex-direction: column !important;
             align-items: flex-start !important;
             gap: 1rem !important;
-            padding-left: 45px !important;
+            padding-left: 40px !important;
+          }
+          .timeline-anchor-node {
+            justify-content: flex-start !important;
+            padding-left: 40px !important;
           }
           .timeline-side-left, .timeline-side-right {
             width: 100% !important;

@@ -78,7 +78,7 @@ export default function LoadingScreen({ onDone }: Props) {
       </motion.p>
 
       {/* Progress bar */}
-      <div style={{ width: '280px', height: '1px', background: 'rgba(255,255,255,0.1)', position: 'relative' }}>
+      <div style={{ maxWidth: '80vw', width: '280px', height: '1px', background: 'rgba(255,255,255,0.1)', position: 'relative' }}>
         <motion.div
           style={{
             position: 'absolute',
@@ -99,9 +99,11 @@ export default function LoadingScreen({ onDone }: Props) {
         transition={{ duration: 0.5 }}
         style={{
           fontFamily: 'var(--font-hero)',
-          fontSize: 'clamp(54px, 8.5vw, 120px)',
+          fontSize: 'clamp(38px, 9vw, 120px)',
           color: '#FFFFFF',
           letterSpacing: '0.05em',
+          textAlign: 'center',
+          padding: '0 1rem',
         }}
       >
         ARYAN.EXE

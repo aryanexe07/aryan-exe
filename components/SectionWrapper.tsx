@@ -53,13 +53,24 @@ export default function SectionWrapper({ children, scrollable = true, section = 
       style={{
         position: 'absolute',
         inset: 0,
-        overflowY: scrollable ? 'auto' : 'hidden',
         willChange: 'transform, opacity',
         transform: 'translateZ(0)',
       }}
-      className={scrollable ? 'scroll-area' : ''}
+      className={`section-wrapper-root ${scrollable ? 'scroll-area' : 'scroll-area-mobile'}`}
     >
       {children}
+      <style jsx>{`
+        .section-wrapper-root {
+          overflow-x: hidden;
+          overflow-y: ${scrollable ? 'auto' : 'hidden'};
+        }
+        @media (max-width: 768px) {
+          .section-wrapper-root {
+            overflow-y: auto !important;
+            -webkit-overflow-scrolling: touch;
+          }
+        }
+      `}</style>
     </motion.div>
   );
 }

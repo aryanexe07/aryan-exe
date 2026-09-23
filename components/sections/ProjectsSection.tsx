@@ -49,18 +49,26 @@ export default function ProjectsSection() {
     <SectionWrapper section="PROJECTS" scrollable>
       <OrangeGrid />
 
-      <div style={{ padding: '2rem 8rem 2rem 4rem', position: 'relative', zIndex: 2, minHeight: '100%' }}>
+      <div
+        className="projects-main-container"
+        style={{
+          padding: '2.5rem 4rem 4rem 4rem',
+          position: 'relative',
+          zIndex: 2,
+          minHeight: '100%',
+        }}
+      >
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
           style={{ marginBottom: '1.5rem' }}
         >
-          <p style={{ fontFamily: 'var(--font-label)', fontSize: '16px', letterSpacing: '0.25em', color: '#F97316', marginBottom: '0.25rem' }}>
+          <p style={{ fontFamily: 'var(--font-label)', fontSize: '15px', letterSpacing: '0.25em', color: '#F97316', marginBottom: '0.35rem' }}>
             PROJECT ARCHIVE
           </p>
-          <h2 style={{ fontFamily: 'var(--font-hero)', fontSize: 'clamp(38px, 4.5vw, 48px)', color: 'var(--text)', lineHeight: 1 }}>
+          <h2 style={{ fontFamily: 'var(--font-hero)', fontSize: 'clamp(36px, 5vw, 54px)', color: 'var(--text)', lineHeight: 1 }}>
             Things I&apos;ve <span style={{ color: '#F97316' }}>built.</span>
           </h2>
         </motion.div>
@@ -70,7 +78,14 @@ export default function ProjectsSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.15 }}
-          style={{ display: 'flex', gap: '0.5rem', marginBottom: '2rem', flexWrap: 'wrap' }}
+          className="projects-filter-bar no-scrollbar"
+          style={{
+            display: 'flex',
+            gap: '0.5rem',
+            marginBottom: '2rem',
+            overflowX: 'auto',
+            paddingBottom: '0.25rem',
+          }}
         >
           {CATEGORIES.map(cat => (
             <button
@@ -78,14 +93,16 @@ export default function ProjectsSection() {
               onClick={() => setFilter(cat)}
               style={{
                 fontFamily: 'var(--font-label)',
-                fontSize: '12px',
-                letterSpacing: '0.15em',
-                padding: '0.4rem 1rem',
-                background: filter === cat ? '#F97316' : 'transparent',
+                fontSize: '13px',
+                letterSpacing: '0.12em',
+                padding: '0.45rem 1rem',
+                background: filter === cat ? '#F97316' : 'rgba(255, 255, 255, 0.04)',
                 color: filter === cat ? '#fff' : 'var(--text-muted)',
                 border: `1px solid ${filter === cat ? '#F97316' : 'var(--border)'}`,
-                borderRadius: '2px',
+                borderRadius: '6px',
                 cursor: 'pointer',
+                whiteSpace: 'nowrap',
+                flexShrink: 0,
                 transition: 'all 0.2s',
               }}
             >
@@ -104,7 +121,7 @@ export default function ProjectsSection() {
             transition={{ duration: 0.2 }}
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 320px), 1fr))',
               gap: '1.25rem',
               paddingBottom: '2rem',
             }}
@@ -119,101 +136,163 @@ export default function ProjectsSection() {
                 style={{
                   background: 'var(--card)',
                   border: '1px solid var(--border)',
-                  borderRadius: '20px',
+                  borderRadius: '16px',
                   padding: '1.5rem',
                   position: 'relative',
                   overflow: 'hidden',
                   cursor: 'default',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
                   transition: 'border-color 0.2s, box-shadow 0.3s',
                 }}
                 onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(249,115,22,0.3)'; }}
                 onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.borderColor = 'var(--border)'; }}
               >
-                {/* ID / category */}
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem', alignItems: 'center' }}>
-                  <span style={{ fontFamily: 'var(--font-label)', fontSize: '12px', color: 'rgba(249,115,22,0.4)', fontWeight: 'bold' }}>
-                    {project.id}
-                  </span>
-                  <span style={{
-                    fontFamily: 'var(--font-label)',
-                    fontSize: '11px',
-                    letterSpacing: '0.15em',
-                    color: '#F97316',
-                    background: 'rgba(249,115,22,0.08)',
-                    padding: '2px 8px',
-                    borderRadius: '2px',
-                  }}>
-                    {project.category}
-                  </span>
-                </div>
-
-                <h3 style={{ fontFamily: 'var(--font-hero)', fontSize: '18px', letterSpacing: '0.05em', color: 'var(--text)', marginBottom: '0.5rem' }}>
-                  {project.name}
-                </h3>
-                <p style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--text-muted)', lineHeight: 1.6, marginBottom: '1.25rem' }}>
-                  {project.description}
-                </p>
-
-                {/* Tech stack */}
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem', marginBottom: '1.25rem' }}>
-                  {project.techStack.map(tech => (
-                    <span key={tech} style={{
-                      fontFamily: 'var(--font-label)',
-                      fontSize: '13px',
-                      letterSpacing: '0.05em',
-                      padding: '3px 9px',
-                      background: 'rgba(249,115,22,0.08)',
-                      border: '1px solid rgba(249,115,22,0.15)',
-                      borderRadius: '4px',
-                      color: 'rgba(255,255,255,0.9)',
-                    }}>
-                      {tech}
+                <div>
+                  {/* ID / category */}
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.85rem', alignItems: 'center' }}>
+                    <span style={{ fontFamily: 'var(--font-label)', fontSize: '13px', color: 'rgba(249,115,22,0.6)', fontWeight: 'bold' }}>
+                      {project.id}
                     </span>
-                  ))}
+                    <span style={{
+                      fontFamily: 'var(--font-label)',
+                      fontSize: '12px',
+                      letterSpacing: '0.12em',
+                      color: '#F97316',
+                      background: 'rgba(249,115,22,0.1)',
+                      border: '1px solid rgba(249,115,22,0.25)',
+                      padding: '2px 8px',
+                      borderRadius: '4px',
+                    }}>
+                      {project.category}
+                    </span>
+                  </div>
+
+                  <h3 style={{ fontFamily: 'var(--font-hero)', fontSize: '20px', letterSpacing: '0.04em', color: 'var(--text)', marginBottom: '0.5rem' }}>
+                    {project.name}
+                  </h3>
+                  <p style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--text-muted)', lineHeight: 1.6, marginBottom: '1.25rem' }}>
+                    {project.description}
+                  </p>
+
+                  {/* Tech stack */}
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem', marginBottom: '1.25rem' }}>
+                    {project.techStack.map(tech => (
+                      <span key={tech} style={{
+                        fontFamily: 'var(--font-label)',
+                        fontSize: '12px',
+                        letterSpacing: '0.05em',
+                        padding: '3px 8px',
+                        background: 'rgba(249,115,22,0.08)',
+                        border: '1px solid rgba(249,115,22,0.15)',
+                        borderRadius: '4px',
+                        color: 'rgba(255,255,255,0.9)',
+                      }}>
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
 
-                {/* Metrics */}
-                <div style={{ display: 'flex', gap: '1rem', marginBottom: '1.25rem', borderTop: '1px solid var(--border)', paddingTop: '1rem' }}>
-                  {[
-                    { icon: Cpu, label: 'ARCH', value: project.architecture },
-                    { icon: Database, label: 'SCALE', value: project.scale },
-                    { icon: Zap, label: 'PERF', value: project.performance },
-                  ].map(m => (
-                    <div key={m.label} style={{ flex: 1 }}>
-                      <div style={{ fontFamily: 'var(--font-label)', fontSize: '12px', letterSpacing: '0.15em', color: '#F97316', marginBottom: '2px' }}>
-                        {m.label}
+                <div>
+                  {/* Metrics */}
+                  <div style={{ display: 'flex', gap: '0.75rem', marginBottom: '1.25rem', borderTop: '1px solid var(--border)', paddingTop: '1rem' }}>
+                    {[
+                      { icon: Cpu, label: 'ARCH', value: project.architecture },
+                      { icon: Database, label: 'SCALE', value: project.scale },
+                      { icon: Zap, label: 'PERF', value: project.performance },
+                    ].map(m => (
+                      <div key={m.label} style={{ flex: 1 }}>
+                        <div style={{ fontFamily: 'var(--font-label)', fontSize: '11px', letterSpacing: '0.15em', color: '#F97316', marginBottom: '2px' }}>
+                          {m.label}
+                        </div>
+                        <div style={{ fontFamily: 'var(--font-label)', fontSize: '14px', letterSpacing: '0.05em', color: 'var(--text)' }}>
+                          {m.value}
+                        </div>
                       </div>
-                      <div style={{ fontFamily: 'var(--font-label)', fontSize: '15px', letterSpacing: '0.05em', color: 'var(--text)' }}>
-                        {m.value}
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                    ))}
+                  </div>
 
-                {/* Links */}
-                <div style={{ display: 'flex', gap: '0.75rem' }}>
-                  <a href={project.githubUrl} target="_blank" rel="noopener noreferrer"
-                    style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', fontFamily: 'var(--font-label)', fontSize: '12px', letterSpacing: '0.1em', color: 'var(--text-muted)', textDecoration: 'none', transition: 'color 0.15s' }}
-                    onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
-                    onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-muted)')}
-                  >
-                    <GitBranch size={13} /> CODE
-                  </a>
-                  {project.demoUrl && (
-                    <a href={project.demoUrl} target="_blank" rel="noopener noreferrer"
-                      style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', fontFamily: 'var(--font-label)', fontSize: '12px', letterSpacing: '0.1em', color: '#F97316', textDecoration: 'none', transition: 'opacity 0.15s' }}
-                      onMouseEnter={e => (e.currentTarget.style.opacity = '0.7')}
-                      onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
+                  {/* Links */}
+                  <div style={{ display: 'flex', gap: '0.75rem' }}>
+                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer"
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.35rem',
+                        fontFamily: 'var(--font-label)',
+                        fontSize: '13px',
+                        letterSpacing: '0.1em',
+                        color: 'var(--text)',
+                        background: 'rgba(255, 255, 255, 0.04)',
+                        border: '1px solid var(--border)',
+                        padding: '0.4rem 0.75rem',
+                        borderRadius: '6px',
+                        textDecoration: 'none',
+                        transition: 'all 0.15s ease',
+                      }}
+                      onMouseEnter={e => {
+                        (e.currentTarget as HTMLAnchorElement).style.borderColor = '#F97316';
+                        (e.currentTarget as HTMLAnchorElement).style.color = '#F97316';
+                      }}
+                      onMouseLeave={e => {
+                        (e.currentTarget as HTMLAnchorElement).style.borderColor = 'var(--border)';
+                        (e.currentTarget as HTMLAnchorElement).style.color = 'var(--text)';
+                      }}
                     >
-                      <ExternalLink size={13} /> LIVE
+                      <GitBranch size={13} /> CODE
                     </a>
-                  )}
+                    {project.demoUrl && (
+                      <a href={project.demoUrl} target="_blank" rel="noopener noreferrer"
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '0.35rem',
+                          fontFamily: 'var(--font-label)',
+                          fontSize: '13px',
+                          letterSpacing: '0.1em',
+                          color: '#F97316',
+                          background: 'rgba(249, 115, 22, 0.1)',
+                          border: '1px solid rgba(249, 115, 22, 0.3)',
+                          padding: '0.4rem 0.75rem',
+                          borderRadius: '6px',
+                          textDecoration: 'none',
+                          transition: 'all 0.15s ease',
+                        }}
+                        onMouseEnter={e => {
+                          (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(249, 115, 22, 0.2)';
+                        }}
+                        onMouseLeave={e => {
+                          (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(249, 115, 22, 0.1)';
+                        }}
+                      >
+                        <ExternalLink size={13} /> LIVE
+                      </a>
+                    )}
+                  </div>
                 </div>
               </motion.div>
             ))}
           </motion.div>
         </AnimatePresence>
       </div>
+
+      <style>{`
+        @media (max-width: 1024px) {
+          .projects-main-container {
+            padding: 2rem 2.5rem !important;
+          }
+        }
+        @media (max-width: 768px) {
+          .projects-main-container {
+            padding: 1.5rem 1.25rem 4rem 1.25rem !important;
+          }
+          .projects-filter-bar {
+            flex-wrap: nowrap !important;
+          }
+        }
+      `}</style>
     </SectionWrapper>
   );
 }

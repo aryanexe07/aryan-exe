@@ -82,16 +82,23 @@ export default function ArticlesSection() {
     <SectionWrapper section="ARTICLES" scrollable={true}>
       <GreenBlocks />
 
-      <div style={{
-        height: '100%', display: 'flex', flexDirection: 'column',
-        padding: '1.75rem 8rem 1.75rem 4rem', position: 'relative', zIndex: 2,
-      }} className="px-4 md:pl-16 md:pr-32">
+      <div
+        className="articles-main-container"
+        style={{
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          padding: '2.5rem 4rem',
+          position: 'relative',
+          zIndex: 2,
+        }}
+      >
         {/* Header */}
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} style={{ marginBottom: '2rem' }}>
-          <p style={{ fontFamily: 'var(--font-label)', fontSize: '16px', letterSpacing: '0.3em', color: '#22C55E' }}>
+          <p style={{ fontFamily: 'var(--font-label)', fontSize: '15px', letterSpacing: '0.25em', color: '#22C55E', marginBottom: '0.35rem' }}>
             PUBLICATIONS
           </p>
-          <h2 style={{ fontFamily: 'var(--font-hero)', fontSize: 'clamp(48px, 5.5vw, 64px)', color: 'var(--text)', lineHeight: 1 }}>
+          <h2 style={{ fontFamily: 'var(--font-hero)', fontSize: 'clamp(36px, 6vw, 64px)', color: 'var(--text)', lineHeight: 1 }}>
             Articles & <span style={{ color: '#22C55E' }}>Writing</span>
           </h2>
         </motion.div>
@@ -100,7 +107,7 @@ export default function ArticlesSection() {
         {loading ? (
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 320px), 1fr))',
             gap: '1.5rem',
             paddingBottom: '3rem',
           }}>
@@ -129,7 +136,7 @@ export default function ArticlesSection() {
         ) : (
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 320px), 1fr))',
             gap: '1.5rem',
             paddingBottom: '3rem',
           }}>
@@ -203,29 +210,29 @@ export default function ArticlesSection() {
                       </span>
                     </div>
 
-                    {/* Tag Pills (up to 2) */}
+                    {/* Tag Badges */}
                     {tags.length > 0 && (
                       <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
-                        {tags.map(t => (
+                        {tags.map((tag) => (
                           <span
-                            key={t}
+                            key={tag}
                             style={{
                               fontFamily: 'var(--font-label)',
-                              fontSize: '14px',
+                              fontSize: '12px',
                               letterSpacing: '0.05em',
-                              padding: '0.25rem 0.6rem',
-                              borderRadius: '6px',
-                              background: 'rgba(34, 197, 94, 0.1)',
-                              border: '1px solid rgba(34, 197, 94, 0.25)',
+                              padding: '2px 8px',
+                              borderRadius: '4px',
+                              background: 'rgba(34, 197, 94, 0.08)',
+                              border: '1px solid rgba(34, 197, 94, 0.2)',
                               color: '#22C55E',
-                              textTransform: 'lowercase',
+                              textTransform: 'uppercase',
                               display: 'inline-flex',
                               alignItems: 'center',
-                              gap: '0.2rem',
+                              gap: '0.25rem',
                             }}
                           >
                             <Tag size={10} color="#22C55E" />
-                            #{t}
+                            {tag}
                           </span>
                         ))}
                       </div>
@@ -233,9 +240,10 @@ export default function ArticlesSection() {
 
                     <h3 style={{
                       fontFamily: 'var(--font-hero)',
-                      fontSize: '20px',
+                      fontSize: '18px',
                       color: 'var(--text)',
                       lineHeight: 1.3,
+                      margin: 0,
                       display: 'flex',
                       alignItems: 'flex-start',
                       justifyContent: 'space-between',
@@ -272,6 +280,16 @@ export default function ArticlesSection() {
           0% { opacity: 0.6; }
           50% { opacity: 0.2; }
           100% { opacity: 0.6; }
+        }
+        @media (max-width: 1024px) {
+          .articles-main-container {
+            padding: 2rem 2.5rem !important;
+          }
+        }
+        @media (max-width: 768px) {
+          .articles-main-container {
+            padding: 1.5rem 1.25rem 4rem 1.25rem !important;
+          }
         }
       `}</style>
     </SectionWrapper>

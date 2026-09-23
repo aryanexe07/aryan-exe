@@ -99,36 +99,37 @@ export default function HomeSection({ onNavigate }: Props) {
     <SectionWrapper section="HOME" scrollable={false}>
       <FloatingGeometry />
 
-      <div style={{
-        height: '100%',
-        display: 'flex',
-        alignItems: 'center',
-        padding: '0 8rem 0 4rem',
-        position: 'relative',
-        zIndex: 2,
-      }}>
+      <div
+        className="home-main-container"
+        style={{
+          minHeight: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          position: 'relative',
+          zIndex: 2,
+          padding: '2.5rem 4rem',
+        }}
+      >
         {/* Gradient scrim overlay for text contrast */}
         <div style={{
           position: 'absolute',
-          left: 0,
-          top: 0,
-          bottom: 0,
-          width: '60%',
-          background: 'linear-gradient(to right, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.4) 40%, transparent 100%)',
+          inset: 0,
+          background: 'radial-gradient(ellipse at left center, rgba(11,15,25,0.92) 0%, rgba(11,15,25,0.7) 45%, transparent 100%)',
           pointerEvents: 'none',
           zIndex: -1,
         }} />
+
         <motion.div
           variants={staggerChildren}
           initial="initial"
           animate="animate"
-          style={{ maxWidth: '640px' }}
+          style={{ maxWidth: '680px', width: '100%' }}
         >
           {/* Status badge */}
-          <motion.div variants={fadeUp} style={{ marginBottom: '1.5rem' }}>
+          <motion.div variants={fadeUp} style={{ marginBottom: '1.25rem' }}>
             <span style={{
               fontFamily: 'var(--font-label)',
-              fontSize: '16px',
+              fontSize: '15px',
               letterSpacing: '0.25em',
               color: '#4F7DF3',
               display: 'inline-flex',
@@ -136,9 +137,10 @@ export default function HomeSection({ onNavigate }: Props) {
               gap: '0.5rem',
             }}>
               <span style={{
-                width: '6px', height: '6px', borderRadius: '50%',
+                width: '7px', height: '7px', borderRadius: '50%',
                 background: '#4F7DF3',
                 display: 'inline-block',
+                boxShadow: '0 0 8px #4F7DF3',
                 animation: 'pulse 3s infinite',
               }} />
               AVAILABLE FOR WORK
@@ -148,24 +150,23 @@ export default function HomeSection({ onNavigate }: Props) {
           {/* Hero headline */}
           <motion.h1 variants={fadeUp} style={{
             fontFamily: 'var(--font-hero)',
-            fontSize: 'clamp(54px, 8.5vw, 120px)',
-            lineHeight: 1,
+            fontSize: 'clamp(44px, 9vw, 110px)',
+            lineHeight: 0.96,
             color: 'var(--text)',
-            marginBottom: '1.25rem',
+            marginBottom: '1rem',
           }}>
             Hello,<br />
             I&apos;m <span style={{ color: '#4F7DF3' }}>Aryan</span>
-
           </motion.h1>
 
           {/* Tagline */}
           <motion.p variants={fadeUp} style={{
             fontFamily: 'var(--font-body)',
-            fontSize: '18px',
-            letterSpacing: '0.02em',
+            fontSize: 'clamp(16px, 2.2vw, 20px)',
+            letterSpacing: '0.01em',
             color: 'var(--text-muted)',
-            marginBottom: '1rem',
-            lineHeight: 1.3,
+            marginBottom: '0.85rem',
+            lineHeight: 1.35,
           }}>
             {config.tagline}
           </motion.p>
@@ -173,74 +174,79 @@ export default function HomeSection({ onNavigate }: Props) {
           {/* Bio */}
           <motion.p variants={fadeUp} style={{
             fontFamily: 'var(--font-body)',
-            fontSize: '16px',
+            fontSize: 'clamp(14px, 1.6vw, 16px)',
             color: 'var(--text-muted)',
-            lineHeight: 1.7,
-            maxWidth: '480px',
-            marginBottom: '2.5rem',
+            lineHeight: 1.65,
+            maxWidth: '520px',
+            marginBottom: '2rem',
           }}>
             {config.bio}
           </motion.p>
 
           {/* CTAs */}
-          <motion.div variants={fadeUp} style={{ display: 'flex', gap: '1rem', marginBottom: '3rem', flexWrap: 'wrap' }}>
+          <motion.div variants={fadeUp} className="home-cta-group" style={{ display: 'flex', gap: '1rem', marginBottom: '2.5rem', flexWrap: 'wrap' }}>
             <button
               onClick={() => onNavigate('PROJECTS')}
+              className="home-cta-btn"
               style={{
                 fontFamily: 'var(--font-label)',
                 fontSize: '15px',
                 letterSpacing: '0.15em',
-                padding: '0.75rem 1.75rem',
+                padding: '0.85rem 1.75rem',
                 background: '#4F7DF3',
                 color: '#fff',
                 border: 'none',
-                borderRadius: '3px',
+                borderRadius: '6px',
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
+                justifyContent: 'center',
                 gap: '0.5rem',
-                transition: 'background 0.2s, transform 0.15s',
+                transition: 'background 0.2s, transform 0.15s, box-shadow 0.2s',
+                boxShadow: '0 4px 16px rgba(79,125,243,0.3)',
               }}
               onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = '#3a6ae0'; (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(-1px)'; }}
               onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = '#4F7DF3'; (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(0)'; }}
             >
-              VIEW PROJECTS <ArrowRight size={14} />
+              VIEW PROJECTS <ArrowRight size={15} />
             </button>
             <button
               onClick={() => onNavigate('CONTACT')}
+              className="home-cta-btn"
               style={{
                 fontFamily: 'var(--font-label)',
                 fontSize: '15px',
                 letterSpacing: '0.15em',
-                padding: '0.75rem 1.75rem',
-                background: 'transparent',
+                padding: '0.85rem 1.75rem',
+                background: 'rgba(255, 255, 255, 0.04)',
                 color: 'var(--text)',
                 border: '1px solid var(--border)',
-                borderRadius: '3px',
+                borderRadius: '6px',
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
+                justifyContent: 'center',
                 gap: '0.5rem',
                 transition: 'border-color 0.2s, transform 0.15s',
               }}
               onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.borderColor = '#4F7DF3'; (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(-1px)'; }}
               onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.borderColor = 'var(--border)'; (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(0)'; }}
             >
-              CONTACT ME <Mail size={14} />
+              CONTACT ME <Mail size={15} />
             </button>
           </motion.div>
 
           {/* Stats */}
-          <motion.div variants={fadeUp} style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
+          <motion.div variants={fadeUp} className="home-stats-group" style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
             {[
               { value: config.stats.projects, label: 'PROJECTS' },
               { value: config.stats.experience, label: 'EXPERIENCE' },
               { value: config.stats.topStack, label: 'TOP STACK' },
             ].map((stat) => (
-              <div key={stat.label} style={{ borderLeft: '2px solid #4F7DF3', paddingLeft: '1rem' }}>
+              <div key={stat.label} style={{ borderLeft: '3px solid #4F7DF3', paddingLeft: '0.85rem' }}>
                 <div style={{
                   fontFamily: 'var(--font-hero)',
-                  fontSize: '28px',
+                  fontSize: 'clamp(24px, 4vw, 32px)',
                   color: 'var(--text)',
                   lineHeight: 1,
                 }}>
@@ -248,8 +254,8 @@ export default function HomeSection({ onNavigate }: Props) {
                 </div>
                 <div style={{
                   fontFamily: 'var(--font-label)',
-                  fontSize: '16px',
-                  letterSpacing: '0.2em',
+                  fontSize: '14px',
+                  letterSpacing: '0.18em',
                   color: 'var(--text-muted)',
                   marginTop: '4px',
                 }}>
@@ -266,8 +272,36 @@ export default function HomeSection({ onNavigate }: Props) {
           0%, 100% { opacity: 1; }
           50% { opacity: 0.4; }
         }
+        @media (max-width: 1024px) {
+          .home-main-container {
+            padding: 2rem 2.5rem !important;
+          }
+        }
         @media (max-width: 768px) {
-          .home-content { padding: 0 1.5rem !important; }
+          .home-main-container {
+            padding: 1.5rem 1.25rem 4rem 1.25rem !important;
+            align-items: flex-start !important;
+            padding-top: 2rem !important;
+          }
+          .home-cta-group {
+            gap: 0.75rem !important;
+            margin-bottom: 2rem !important;
+          }
+          .home-cta-btn {
+            flex: 1 1 calc(50% - 0.5rem) !important;
+            min-width: 140px !important;
+            padding: 0.75rem 1rem !important;
+            font-size: 14px !important;
+          }
+          .home-stats-group {
+            gap: 1.5rem !important;
+          }
+        }
+        @media (max-width: 420px) {
+          .home-cta-btn {
+            flex: 1 1 100% !important;
+            width: 100% !important;
+          }
         }
       `}</style>
     </SectionWrapper>

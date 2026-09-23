@@ -98,32 +98,34 @@ export default function AboutSection() {
         <DiagonalAccent />
 
         {/* 1. HERO/LANDING SECTION */}
-        <div style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          padding: '4rem 8rem 4rem 4rem',
-          minHeight: '80vh',
-          position: 'relative',
-          width: '100%',
-        }} className="flex-col md:flex-row px-4 md:px-16 gap-12">
-
+        <div
+          className="about-hero-container"
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            minHeight: '75vh',
+            position: 'relative',
+            width: '100%',
+            padding: '3rem 4rem',
+          }}
+        >
           {/* Static Heading Badge Group */}
-          <div style={{ flex: '1 1 auto', maxWidth: '650px' }}>
+          <div style={{ flex: '1 1 auto', maxWidth: '680px', width: '100%' }}>
             <p style={{
               fontFamily: 'var(--font-label)',
-              fontSize: '16px',
+              fontSize: '15px',
               letterSpacing: '0.3em',
               color: '#8B5CF6',
-              marginBottom: '0.25rem',
+              marginBottom: '0.35rem',
             }}>
               MISSION BRIEF
             </p>
             <h2 style={{
               fontFamily: 'var(--font-hero)',
-              fontSize: 'clamp(54px, 8.5vw, 120px)',
+              fontSize: 'clamp(44px, 8vw, 110px)',
               color: 'var(--text)',
-              lineHeight: 1,
+              lineHeight: 0.98,
               margin: 0,
             }}>
               The person behind <br />
@@ -131,10 +133,11 @@ export default function AboutSection() {
             </h2>
             <p style={{
               fontFamily: 'var(--font-body)',
-              fontSize: '16px',
+              fontSize: 'clamp(14px, 1.8vw, 16px)',
               color: 'var(--text-muted)',
-              marginTop: '1.5rem',
-              lineHeight: 1.6,
+              marginTop: '1.25rem',
+              lineHeight: 1.65,
+              maxWidth: '560px',
             }}>
               Developing at the intersection of robust backend systems, performant frontend user experiences, and applied machine learning.
             </p>
@@ -144,10 +147,11 @@ export default function AboutSection() {
         {/* 2. SCROLL-DRIVEN TEXT SECTION */}
         <div
           ref={bioContainerRef}
+          className="about-bio-container"
           style={{
             display: 'flex',
-            gap: '4rem',
-            padding: '6rem 8rem 6rem 4rem',
+            gap: '3.5rem',
+            padding: '4.5rem 4rem',
             minHeight: '70vh',
             position: 'relative',
             width: '100%',
@@ -155,7 +159,6 @@ export default function AboutSection() {
             borderTop: '1px solid rgba(139, 92, 246, 0.1)',
             background: 'rgba(10, 13, 20, 0.4)',
           }}
-          className="flex-col md:flex-row px-4 md:px-16"
         >
           {/* Left Column: Text Reveal */}
           <div style={{ flex: 1.2, position: 'relative', alignSelf: 'flex-start' }}>
@@ -407,34 +410,37 @@ export default function AboutSection() {
         </div>
 
         {/* 3. SKILLS SECTION */}
-        <div style={{
-          padding: '6rem 8rem 6rem 4rem',
-          position: 'relative',
-          width: '100%',
-          borderTop: '1px solid rgba(139, 92, 246, 0.1)',
-        }} className="px-4 md:px-16">
+        <div
+          className="about-skills-container"
+          style={{
+            padding: '4.5rem 4rem',
+            position: 'relative',
+            width: '100%',
+            borderTop: '1px solid rgba(139, 92, 246, 0.1)',
+          }}
+        >
           {/* Header Row */}
           <div style={{
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'flex-start',
-            marginBottom: '3rem',
+            marginBottom: '2.5rem',
             flexWrap: 'wrap',
             gap: '1.5rem',
           }}>
             <div>
               <p style={{
                 fontFamily: 'var(--font-label)',
-                fontSize: '16px',
+                fontSize: '15px',
                 letterSpacing: '0.25em',
                 color: '#8B5CF6',
-                marginBottom: '0.5rem',
+                marginBottom: '0.35rem',
               }}>
                 TECH LOADOUT
               </p>
               <h3 style={{
                 fontFamily: 'var(--font-hero)',
-                fontSize: 'clamp(36px, 4.5vw, 54px)',
+                fontSize: 'clamp(32px, 5vw, 54px)',
                 color: 'var(--text)',
                 lineHeight: 1,
                 margin: 0,
@@ -444,10 +450,10 @@ export default function AboutSection() {
             </div>
 
             {/* Top-Right Meta Text */}
-            <div style={{ textAlign: 'right' }}>
+            <div className="about-meta-text" style={{ textAlign: 'right' }}>
               <p style={{
                 fontFamily: 'var(--font-label)',
-                fontSize: '16px',
+                fontSize: '15px',
                 letterSpacing: '0.15em',
                 color: '#8B5CF6',
                 margin: 0,
@@ -461,7 +467,7 @@ export default function AboutSection() {
                 color: 'var(--text-muted)',
                 margin: '0.25rem 0 0 0',
               }}>
-                SINCE 2023
+                SINCE 2025
               </p>
             </div>
           </div>
@@ -483,7 +489,7 @@ export default function AboutSection() {
                   gridTemplateColumns: 'repeat(12, 1fr)',
                   gap: '1.5rem',
                   width: '100%',
-                }}>
+                }} className="about-skills-grid">
                   {/* Top-Left: Primary Card (Spans 8 columns on lg) */}
                   <div style={{ gridColumn: 'span 12 / span 12' }} className="lg:!col-span-8">
                     <div
@@ -498,6 +504,7 @@ export default function AboutSection() {
                         flexDirection: 'column',
                         justifyContent: 'space-between',
                       }}
+                      className="about-skill-card"
                     >
                       <div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
@@ -574,6 +581,7 @@ export default function AboutSection() {
                         flexDirection: 'column',
                         justifyContent: 'space-between',
                       }}
+                      className="about-skill-card"
                     >
                       <div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
@@ -650,6 +658,7 @@ export default function AboutSection() {
                         flexDirection: 'column',
                         justifyContent: 'space-between',
                       }}
+                      className="about-skill-card"
                     >
                       <div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
@@ -741,6 +750,41 @@ export default function AboutSection() {
       }} className="hidden lg:block">
         <ValorantVideoBanner />
       </div>
+
+      <style>{`
+        @media (max-width: 1024px) {
+          .about-hero-container {
+            padding: 2.5rem 2.5rem !important;
+          }
+          .about-bio-container {
+            padding: 3.5rem 2.5rem !important;
+            gap: 2.5rem !important;
+          }
+          .about-skills-container {
+            padding: 3.5rem 2.5rem !important;
+          }
+        }
+        @media (max-width: 768px) {
+          .about-hero-container {
+            padding: 1.5rem 1.25rem 2.5rem 1.25rem !important;
+            min-height: auto !important;
+          }
+          .about-bio-container {
+            flex-direction: column !important;
+            padding: 2.5rem 1.25rem !important;
+            gap: 2rem !important;
+          }
+          .about-skills-container {
+            padding: 2.5rem 1.25rem 4rem 1.25rem !important;
+          }
+          .about-skill-card {
+            padding: 1.25rem !important;
+          }
+          .about-meta-text {
+            text-align: left !important;
+          }
+        }
+      `}</style>
     </SectionWrapper>
   );
 }
