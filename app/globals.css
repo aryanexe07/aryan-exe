@@ -101,3 +101,110 @@ html, body {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Skills Showcase Styles */
+.skills-showcase-section {
+  width: 100%;
+  position: relative;
+  padding: 5rem 2rem 6rem 2rem;
+  border-top: 1px solid rgba(139, 92, 246, 0.1);
+  background: transparent;
+}
+
+.skills-showcase-inner {
+  max-width: 1040px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.skills-header-label {
+  font-family: var(--font-label, sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #8E95A5;
+  text-align: center;
+  margin: 0 0 3.5rem 0;
+}
+
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2.75rem 3.5rem;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.skill-item {
+  display: inline-flex !important;
+  align-items: center !important;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.skill-icon-wrapper {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  margin-right: 0.65rem !important;
+  filter: grayscale(100%) opacity(0.55);
+  transition: filter 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.22s ease !important;
+}
+
+.skill-name {
+  font-family: var(--font-body, sans-serif);
+  font-size: 15.5px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: #8E95A5;
+  white-space: nowrap;
+  transition: color 0.22s ease !important;
+}
+
+/* Hover State */
+.skill-item:hover {
+  transform: translateY(-2px) scale(1.05) !important;
+}
+
+.skill-item:hover .skill-icon-wrapper {
+  filter: grayscale(0%) opacity(1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.25)) !important;
+}
+
+.skill-item:hover .skill-name {
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
+}
+
+@media (max-width: 1024px) {
+  .skills-showcase-section {
+    padding: 4rem 2rem 5rem 2rem;
+  }
+  .skills-grid {
+    gap: 2rem 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .skills-showcase-section {
+    padding: 3rem 1.25rem 4rem 1.25rem;
+  }
+  .skills-header-label {
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    margin-bottom: 2.25rem;
+  }
+  .skills-grid {
+    gap: 1.5rem 1.75rem;
+  }
+  .skill-name {
+    font-size: 14px;
+  }
+}
+

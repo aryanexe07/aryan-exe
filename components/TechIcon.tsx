@@ -8,7 +8,6 @@ interface TechIconProps {
   size?: number;
 }
 
-// Pixel-perfect, square standalone SVG icons with authentic brand colors
 export const TechIcons: Record<string, React.FC<{ size?: number; className?: string }>> = {
   python: ({ size = 22, className }) => (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
@@ -25,21 +24,19 @@ export const TechIcons: Record<string, React.FC<{ size?: number; className?: str
 
   typescript: ({ size = 22, className }) => (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
-      <rect width="24" height="24" rx="4.5" fill="#3178C6" />
+      <rect width="24" height="24" rx="4" fill="#3178C6" />
       <path
-        d="M6.5 10.5h4.5M8.75 10.5v7.5M13.2 16.2c.7.5 1.6.8 2.5.8 1.5 0 2.2-.7 2.2-1.6 0-2.2-4.2-1.4-4.2-3.8 0-1.2.9-2.1 2.4-2.1 1 0 1.8.3 2.4.7l-.6 1.4c-.6-.4-1.2-.6-1.8-.6-.8 0-1.2.4-1.2 1 0 2 4.2 1.3 4.2 3.8 0 1.3-1 2.2-2.6 2.2-1.1 0-2.2-.4-2.9-1l.6-1.4z"
-        stroke="#FFFFFF"
-        strokeWidth="1.3"
-        strokeLinecap="round"
+        d="M6 10h5M8.5 10v8M13 16c.8.6 1.7.9 2.6.9 1.6 0 2.3-.7 2.3-1.6 0-2.3-4.4-1.4-4.4-3.9 0-1.3 1-2.2 2.6-2.2 1.1 0 2 .3 2.6.8l-.6 1.4c-.6-.4-1.3-.6-2-.6-.9 0-1.3.4-1.3 1 0 2.1 4.4 1.4 4.4 3.9 0 1.4-1.1 2.3-2.8 2.3-1.2 0-2.4-.4-3.1-1.1L13 16z"
+        fill="#FFFFFF"
       />
     </svg>
   ),
 
   javascript: ({ size = 22, className }) => (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
-      <rect width="24" height="24" rx="4.5" fill="#F7DF1E" />
+      <rect width="24" height="24" rx="4" fill="#F7DF1E" />
       <path
-        d="M8.5 12.5v3.5c0 1.5-.7 2-2 2-.5 0-1-.1-1.5-.3v-1.5c.3.1.6.2 1 .2.5 0 .8-.2.8-.8v-3.1h1.7zm5 3.7c.7.5 1.6.8 2.5.8 1.5 0 2.2-.7 2.2-1.6 0-2.2-4.2-1.4-4.2-3.8 0-1.2.9-2.1 2.4-2.1 1 0 1.8.3 2.4.7l-.6 1.4c-.6-.4-1.2-.6-1.8-.6-.8 0-1.2.4-1.2 1 0 2 4.2 1.3 4.2 3.8 0 1.3-1 2.2-2.6 2.2-1.1 0-2.2-.4-2.9-1l.6-1.4z"
+        d="M8.5 12v4c0 1.6-.8 2.2-2.2 2.2-.6 0-1.2-.1-1.7-.3v-1.6c.4.2.8.3 1.2.3.6 0 .9-.3.9-.9V12h1.8zm5.2 4.1c.8.6 1.7.9 2.6.9 1.6 0 2.3-.7 2.3-1.6 0-2.3-4.4-1.4-4.4-3.9 0-1.3 1-2.2 2.6-2.2 1.1 0 2 .3 2.6.8l-.6 1.4c-.6-.4-1.3-.6-2-.6-.9 0-1.3.4-1.3 1 0 2.1 4.4 1.4 4.4 3.9 0 1.4-1.1 2.3-2.8 2.3-1.2 0-2.4-.4-3.1-1.1l.7-1.4z"
         fill="#000000"
       />
     </svg>
@@ -85,7 +82,7 @@ export const TechIcons: Record<string, React.FC<{ size?: number; className?: str
 
   nextjs: ({ size = 22, className }) => (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
-      <circle cx="12" cy="12" r="10.5" fill="#000000" stroke="rgba(255,255,255,0.3)" strokeWidth="1.2" />
+      <circle cx="12" cy="12" r="10.5" fill="#000000" stroke="rgba(255,255,255,0.4)" strokeWidth="1.2" />
       <path
         d="M8.5 7.5v9M15.5 7.5v4.5M8.5 7.5l7 9"
         stroke="#FFFFFF"
@@ -253,7 +250,7 @@ export const TechIcons: Record<string, React.FC<{ size?: number; className?: str
 
   aws: ({ size = 22, className }) => (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
-      <rect width="24" height="24" rx="4.5" fill="#232F3E" />
+      <rect width="24" height="24" rx="4" fill="#232F3E" />
       <path
         d="M5 14.5c4.5 2.5 9.5 2.5 14 0"
         stroke="#FF9900"
@@ -283,7 +280,7 @@ export const TechIcons: Record<string, React.FC<{ size?: number; className?: str
     </svg>
   ),
 
-  vitejs: ({ size = 22, className }) => (
+  vite: ({ size = 22, className }) => (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
       <path
         d="M20.5 4.5L12.5 22.5L3.5 4.5L11.5 2.5L20.5 4.5Z"
@@ -306,32 +303,53 @@ export const TechIcons: Record<string, React.FC<{ size?: number; className?: str
   ),
 };
 
+const aliases: Record<string, string> = {
+  python: 'python',
+  typescript: 'typescript',
+  ts: 'typescript',
+  javascript: 'javascript',
+  js: 'javascript',
+  cpp: 'cpp',
+  'c++': 'cpp',
+  cplusplus: 'cpp',
+  c: 'cpp',
+  java: 'java',
+  react: 'react',
+  reactjs: 'react',
+  nextjs: 'nextjs',
+  next: 'nextjs',
+  nodejs: 'nodejs',
+  node: 'nodejs',
+  fastapi: 'fastapi',
+  tailwindcss: 'tailwindcss',
+  tailwind: 'tailwindcss',
+  pytorch: 'pytorch',
+  tensorflow: 'tensorflow',
+  tf: 'tensorflow',
+  pandas: 'pandas',
+  scikitlearn: 'scikitlearn',
+  sklearn: 'scikitlearn',
+  jupyter: 'jupyter',
+  postgresql: 'postgresql',
+  postgres: 'postgresql',
+  mongodb: 'mongodb',
+  mongo: 'mongodb',
+  prisma: 'prisma',
+  redis: 'redis',
+  git: 'git',
+  docker: 'docker',
+  linux: 'linux',
+  aws: 'aws',
+  figma: 'figma',
+  vite: 'vite',
+  vitejs: 'vite',
+};
+
 export default function TechIcon({ name, className = '', size = 22 }: TechIconProps) {
-  const iconKey = name.toLowerCase().replace(/[^a-z0-9]/g, '');
-  const IconComponent = TechIcons[iconKey];
+  const normalized = name.toLowerCase().trim();
+  const iconKey = aliases[normalized] || aliases[normalized.replace(/[^a-z0-9]/g, '')] || 'python';
+  const IconComponent = TechIcons[iconKey] || TechIcons.python;
 
-  if (IconComponent) {
-    return (
-      <span
-        className={className}
-        style={{
-          width: size,
-          height: size,
-          minWidth: size,
-          maxWidth: size,
-          display: 'inline-flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          flexShrink: 0,
-          lineHeight: 0,
-        }}
-      >
-        <IconComponent size={size} />
-      </span>
-    );
-  }
-
-  // Fallback
   return (
     <span
       className={className}
@@ -339,18 +357,15 @@ export default function TechIcon({ name, className = '', size = 22 }: TechIconPr
         width: size,
         height: size,
         minWidth: size,
-        borderRadius: '4px',
-        background: 'rgba(255,255,255,0.1)',
+        maxWidth: size,
         display: 'inline-flex',
         alignItems: 'center',
         justifyContent: 'center',
-        fontSize: '10px',
-        color: '#FFFFFF',
-        fontWeight: 700,
         flexShrink: 0,
+        lineHeight: 0,
       }}
     >
-      {name.slice(0, 2).toUpperCase()}
+      <IconComponent size={size} />
     </span>
   );
 }

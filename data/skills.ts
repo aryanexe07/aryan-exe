@@ -1,15 +1,14 @@
 export interface Skill {
   name: string;
   icon: string;
-  category?: string;
 }
 
 export const skills: Skill[] = [
   // Row 1
   { name: 'Python', icon: 'python' },
   { name: 'TypeScript', icon: 'typescript' },
-  { name: 'JavaScript', icon: 'js' },
-  { name: 'C++', icon: 'c++' },
+  { name: 'JavaScript', icon: 'javascript' },
+  { name: 'C++', icon: 'cpp' },
   { name: 'Java', icon: 'java' },
 
   // Row 2
@@ -38,5 +37,5 @@ export const skills: Skill[] = [
   { name: 'Linux', icon: 'linux' },
   { name: 'AWS', icon: 'aws' },
   { name: 'Figma', icon: 'figma' },
-  { name: 'Vite', icon: 'vitejs' },
+  { name: 'Vite', icon: 'vite' },
 ];
