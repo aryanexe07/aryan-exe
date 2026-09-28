@@ -24,13 +24,13 @@ export default function SkillsShowcase() {
               transition={{ duration: 0.3, delay: index * 0.02 }}
               className="skill-item"
             >
-              <div className="skill-icon-wrapper">
+              <span className="skill-icon-wrapper">
                 <TechIcon
                   name={skill.icon || skill.name}
-                  size={24}
+                  size={22}
                   className="skill-tech-icon"
                 />
-              </div>
+              </span>
               <span className="skill-name">{skill.name}</span>
             </motion.div>
           ))}
@@ -47,7 +47,7 @@ export default function SkillsShowcase() {
         }
 
         .skills-showcase-inner {
-          max-width: 1080px;
+          max-width: 1040px;
           margin: 0 auto;
           display: flex;
           flex-direction: column;
@@ -72,9 +72,9 @@ export default function SkillsShowcase() {
           flex-wrap: wrap;
           justify-content: center;
           align-items: center;
-          gap: 2.75rem 3.5rem;
+          gap: 2.5rem 3.5rem;
           width: 100%;
-          max-width: 1000px;
+          max-width: 980px;
         }
 
         /* Skill Item: Default is Muted Grey */
@@ -92,32 +92,34 @@ export default function SkillsShowcase() {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          filter: grayscale(100%) opacity(0.65) brightness(1.1);
-          transition: filter 0.25s ease, transform 0.25s ease;
+          flex-shrink: 0;
+          filter: grayscale(100%) opacity(0.55);
+          transition: filter 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.22s ease;
         }
 
         /* Default Text: Muted Gray Matching Screenshot */
         .skill-name {
           font-family: var(--font-body, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
-          font-size: 16px;
-          font-weight: 600;
+          font-size: 15.5px;
+          font-weight: 500;
           letter-spacing: -0.01em;
           color: #8E95A5;
           white-space: nowrap;
-          transition: color 0.25s ease;
+          transition: color 0.22s ease;
         }
 
-        /* Hover Effect: Vibrant Color & Bright White Text */
+        /* Hover Effect: Full Vibrant Brand Colors & Bright White Text */
         .skill-item:hover {
-          transform: translateY(-2px) scale(1.05);
+          transform: translateY(-2px);
         }
 
         .skill-item:hover .skill-icon-wrapper {
-          filter: grayscale(0%) opacity(1) brightness(1) drop-shadow(0 0 10px rgba(139, 92, 246, 0.35));
+          filter: grayscale(0%) opacity(1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.25));
         }
 
         .skill-item:hover .skill-name {
           color: #FFFFFF;
+          font-weight: 600;
         }
 
         @media (max-width: 1024px) {
@@ -125,7 +127,7 @@ export default function SkillsShowcase() {
             padding: 4rem 2rem 5rem 2rem;
           }
           .skills-grid {
-            gap: 2.25rem 2.75rem;
+            gap: 2rem 2.5rem;
           }
         }
 
@@ -136,13 +138,13 @@ export default function SkillsShowcase() {
           .skills-header-label {
             font-size: 12px;
             letter-spacing: 0.22em;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2.25rem;
           }
           .skills-grid {
-            gap: 1.75rem 2rem;
+            gap: 1.5rem 1.75rem;
           }
           .skill-name {
-            font-size: 14.5px;
+            font-size: 14px;
           }
         }
       `}</style>
