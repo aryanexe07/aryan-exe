@@ -1,0 +1,135 @@
+{
+  "Python": {
+    "partials": []
+  },
+  "TypeScript": {
+    "partials": []
+  },
+  "JavaScript": {
+    "partials": []
+  },
+  "React": {
+    "partials": []
+  },
+  "Next.js": {
+    "partials": []
+  },
+  "Node.js": {
+    "partials": []
+  },
+  "TensorFlow": {
+    "partials": []
+  },
+  "PyTorch": {
+    "partials": []
+  },
+  "Pandas": {
+    "partials": []
+  },
+  "Jupyter": {
+    "partials": []
+  },
+  "Tailwind CSS": {
+    "partials": []
+  },
+  "Java": {
+    "partials": []
+  },
+  "C++": {
+    "direct": "c++",
+    "partials": [
+      "c#",
+      "c++"
+    ]
+  },
+  "FastAPI": {
+    "partials": []
+  },
+  "PostgreSQL": {
+    "partials": []
+  },
+  "Prisma": {
+    "partials": []
+  },
+  "MongoDB": {
+    "partials": []
+  },
+  "Git": {
+    "partials": []
+  },
+  "GitHub": {
+    "partials": []
+  },
+  "Docker": {
+    "partials": []
+  },
+  "Linux": {
+    "partials": []
+  },
+  "LangChain": {
+    "partials": []
+  },
+  "Scikit-learn": {
+    "partials": []
+  },
+  "Keras": {
+    "partials": []
+  },
+  "AWS": {
+    "partials": []
+  },
+  "Kubernetes": {
+    "partials": []
+  },
+  "Redis": {
+    "partials": []
+  },
+  "Figma": {
+    "partials": []
+  },
+  "Claude": {
+    "partials": []
+  },
+  "OpenAI": {
+    "partials": []
+  },
+  "Gemini": {
+    "partials": []
+  },
+  "Mistral AI": {
+    "partials": []
+  },
+  "Grok": {
+    "partials": []
+  },
+  "DeepSeek": {
+    "partials": []
+  },
+  "Cohere": {
+    "partials": []
+  },
+  "Groq": {
+    "partials": []
+  },
+  "Perplexity": {
+    "partials": []
+  },
+  "Together AI": {
+    "partials": []
+  },
+  "Stability AI": {
+    "partials": []
+  },
+  "Runway": {
+    "partials": []
+  },
+  "Midjourney": {
+    "partials": []
+  },
+  "Qwen": {
+    "partials": []
+  },
+  "Kimi": {
+    "partials": []
+  }
+}
